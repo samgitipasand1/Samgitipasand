@@ -1,109 +1,154 @@
+html
 <!DOCTYPE html>
-<html lang="fa">
-
+<html lang="fa" dir="rtl"> <!-- اضافه کردن dir="rtl" برای درست شدن چیدمان فارسی -->
+‌
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sam Gitipasand</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Gitipasand | Official Website</title>
+‌
+<!-- Font Awesome برای آیکون‌ها -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+‌
+<!-- اضافه کردن فونت Poppins برای بخش انگلیسی -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+‌
+<style>
+/* من استایل‌ها را از داخل تگ‌ها به اینجا آوردم تا کد تمیزتر و مدیریت آن راحت‌تر باشد */
+body {
+background: linear-gradient(135deg, #111, #1c1c1c, #000);
+color: white;
+/* اولویت با فونت فارسی (Tahoma) و بعد فونت انگلیسی (Poppins) */
+font-family: 'Tahoma', 'Poppins', sans-serif;
+text-align: center;
+padding: 40px 20px;
+margin: 0;
+min-height: 100vh;
+}
+‌
+.container {
+max-width: 800px;
+margin: auto;
+background: rgba(255, 255, 255, 0.08);
+backdrop-filter: blur(18px);
+-webkit-backdrop-filter: blur(18px); /* برای پشتیبانی در Safari */
+padding: 40px;
+border-radius: 30px;
+box-shadow: 0 10px 40px rgba(0, 0, 0, .45);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+‌
+h1 {
+font-family: 'Poppins', sans-serif; /* نام برای انگلیسی */
+font-size: 48px;
+letter-spacing: 3px;
+margin-bottom: 10px;
+font-weight: 700;
+direction: ltr; /* نام انگلیسی باید چپ‌به‌راست باشد */
+}
+‌
+.sub-title {
+font-family: 'Poppins', sans-serif;
+font-size: 18px;
+color: #dddddd;
+margin-bottom: 40px;
+direction: ltr;
+}
+‌
+.profile-img {
+width: 240px;
+height: 240px;
+border-radius: 50%;
+object-fit: cover;
+border: 5px solid rgba(255, 255, 255, .9);
+box-shadow: 0 10px 35px rgba(0, 0, 0, .45);
+margin-bottom: 30px;
+transition: 0.4s;
+}
+‌
+.profile-img:hover {
+transform: scale(1.05);
+}
+‌
+h2 {
+margin-top: 40px;
+font-size: 30px;
+color: white;
+}
+‌
+.content-text {
+font-size: 18px;
+line-height: 1.8;
+color: #eeeeee;
+}
+‌
+/* بخش انگلیسی را چپ‌به‌راست می‌کنیم */
+.english-section {
+direction: ltr;
+text-align: left;
+font-family: 'Poppins', sans-serif;
+}
+‌
+.social-icons a {
+margin: 0 15px;
+text-decoration: none;
+transition: 0.3s;
+display: inline-block;
+}
+‌
+.social-icons a:hover {
+transform: translateY(-5px);
+}
+</style>
 </head>
-</div>
-<body style="
-background:linear-gradient(135deg,#111,#1c1c1c,#000);
-color:white;
-font-family:Poppins,Tahoma,sans-serif;
-text-align:center;
-padding:40px;
-margin:0;
-min-height:100vh;
-">
-<div style="
-max-width:900px;
-margin:auto;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
-padding:40px;
-border-radius:30px;
-box-shadow:0 10px 40px rgba(0,0,0,.45);
-">
-  <h1 style="
-font-size:48px;
-letter-spacing:3px;
-margin-bottom:10px;
-font-weight:700;
-">
-SAM GITIPASAND
-</h1>
-
-<p style="
-font-size:18px;
-color:#dddddd;
-margin-bottom:40px;
-">
-Official Actor • Official Website
+‌
+<body>
+‌
+<div class="container">
+<!-- بخش انگلیسی بالا -->
+<h1 dir="ltr">SAM GITIPASAND</h1>
+<p class="sub-title" dir="ltr">Official Actor • Official Website</p>
+‌
+<img src="Screenshot_20251227_151640_Instagram.jpg" alt="Sam Gitipasand" class="profile-img">
+‌
+<!-- بخش فارسی -->
+<div class="persian-section">
+<h2>درباره سام</h2>
+<p class="content-text">
+سلام، من <strong>سام گیتی‌پسند</strong> هستم.<br>
+به وب‌سایت رسمی من خوش آمدید.<br>
+این وب‌سایت برای معرفی فعالیت‌ها، آثار و راه‌های ارتباط با من طراحی شده است.<br>
+از همراهی شما سپاسگزارم.
 </p>
-
-  <img src="Screenshot_20251227_151640_Instagram.jpg"
-alt="Sam Gitipasand"
-style="
-width:240px;
-height:240px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid rgba(255,255,255,.9);
-box-shadow:0 10px 35px rgba(0,0,0,.45);
-margin-bottom:30px;
-transition:.4s;
-">
-
- <h2 style="margin-top:40px;font-size:30px;color:white;">
-درباره سام
-  </h2>
-
-  <p style="font-size:18px; line-height:2;">
-    سلام، من <strong>سام گیتی‌پسند</strong> هستم.<br>
-    به وب‌سایت رسمی من خوش آمدید.<br>
-    این وب‌سایت برای معرفی فعالیت‌ها، آثار و راه‌های ارتباط با من طراحی شده است.<br>
-    از همراهی شما سپاسگزارم.
-  </p>
-
-  <h2 style="margin-top:45px;font-size:30px;color:white;">
-About Sam
-  </h2>
-
-  <p style="font-size:18px; line-height:2;">
-    Hello, I'm <strong>Sam Gitipasand</strong>.<br>
-    Welcome to my official website.<br>
-    This website was created to introduce my activities, projects, and ways to connect with me.<br>
-    Thank you for visiting, and I hope you enjoy your time here.
-  </p>
-
-  <h2>Follow Me</h2>
-
-  <div style="margin-top:20px;">
-
-    <a href="https://www.instagram.com/sam_gitipasand1"
-       target="_blank"
-       style="margin:15px; color:#E1306C; font-size:42px;">
-      <i class="fab fa-instagram"></i>
-    </a>
-
-    <a href="https://t.me/sam_gitipasand1"
-       target="_blank"
-       style="margin:15px; color:#229ED9; font-size:42px;">
-      <i class="fab fa-telegram"></i>
-    </a>
-
-    <a href="https://wa.me/989369957018"
-       target="_blank"
-       style="margin:15px; color:#25D366; font-size:42px;">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-
-  </div>
-
+</div>
+‌
+<!-- بخش انگلیسی -->
+<div class="english-section">
+<h2>About Sam</h2>
+<p class="content-text">
+Hello, I'm <strong>Sam Gitipasand</strong>.<br>
+Welcome to my official website.<br>
+This website was created to introduce my activities, projects, and ways to connect with me.<br>
+Thank you for visiting, and I hope you enjoy your time here.
+</p>
+</div>
+‌
+<!-- بخش شبکه‌های اجتماعی -->
+<h2 style="margin-top: 50px;">Follow Me</h2>
+<div class="social-icons">
+<a href="https://www.instagram.com/sam_gitipasand1" target="_blank" style="color: #E1306C; font-size: 42px;">
+<i class="fab fa-instagram"></i>
+</a>
+‌
+<a href="https://t.me/sam_gitipasand1" target="_blank" style="color: #229ED9; font-size: 42px;">
+<i class="fab fa-telegram"></i>
+</a>
+‌
+<a href="https://wa.me/989369957018" target="_blank" style="color: #25D366; font-size: 42px;">
+<i class="fab fa-whatsapp"></i>
+</a>
+</div>
+</div>
+‌
 </body>
-
 </html>

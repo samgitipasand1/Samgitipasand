@@ -1,124 +1,90 @@
 <!DOCTYPE html>
-<html lang="fa">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Gitipasand</title>
-
+    <title>Sam Gitipasand | Official Actor Portfolio</title>
+    
+    <!-- Google Fonts: Poppins for English, Vazirmatn for Persian -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body style="
-background:linear-gradient(135deg,#111,#1c1c1c,#000);
-color:white;
-font-family:Poppins,Tahoma,sans-serif;
-text-align:center;
-padding:40px;
-margin:0;
-min-height:100vh;
-"> 
-    <div class="language-switcher">
-    <button onclick="setLanguage('fa')">🇮🇷 فارسی</button>
-    <button onclick="setLanguage('en')">🇬🇧 English</button>
-    </div>
+    <!-- Language Switcher -->
+    <nav class="lang-nav">
+        <button class="lang-btn" onclick="setLanguage('fa')">🇮 فارسی</button>
+        <button class="lang-btn" onclick="setLanguage('en')">🇬 English</button>
+    </nav>
 
-    <div style="
-max-width:900px;
-margin:auto;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
-padding:40px;
-border-radius:30px;
-box-shadow:0 10px 40px rgba(0,0,0,.45);
-">
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="profile-wrapper">
+                <img src="Screenshot_20251227_151640_Instagram.jpg" alt="Sam Gitipasand" class="profile-img">
+            </div>
+            
+            <h1 class="name-title">SAM GITIPASAND</h1>
+            <p class="subtitle">Actor • Artist • Creator</p>
+        </section>
 
-        <h1 style="
-font-size:clamp(28px,6vw,48px);
-letter-spacing:3px;
-margin-bottom:10px;
-font-weight:700;
-">
-SAM GITIPASAND
-        </h1>
+        <!-- About Section -->
+        <section class="about-section">
+            <!-- Persian Content -->
+            <div id="about-fa" class="lang-content" style="display: none;">
+                <h2>درباره سام</h2>
+                <p>سلام، من <strong>سام گیتی‌پسند</strong> هستم. به وب‌سایت رسمی من خوش آمدید. این وب‌سایت برای معرفی فعالیت‌ها، آثار و راه‌های ارتباط با من طراحی شده است. از همراهی شما سپاسگزارم.</p>
+            </div>
 
-        <p style="
-font-size:18px;
-color:#dddddd;
-margin-bottom:40px;
-">
-            Actor • Artist • Creator
-        </p>
-        <img src="Screenshot_20251227_151640_Instagram.jpg"
-     alt="Sam Gitipasand"
-     style="
-        width:240px;
-        height:240px;
-        border-radius:50%;
-        object-fit:cover;
-        border:5px solid rgba(255,255,255,.9);
-        box-shadow:0 10px 35px rgba(0,0,0,.45);
-        margin-bottom:30px;
-        transition:.4s;
-">
+            <!-- English Content -->
+            <div id="about-en" class="lang-content">
+                <h2>About Sam</h2>
+                <p>Hello, I'm <strong>Sam Gitipasand</strong>. Welcome to my official website. This website was created to introduce my activities, projects, and ways to connect with me. Thank you for visiting!</p>
+            </div>
+        </section>
 
-<h2 style="
-    margin-top:40px;
-    font-size:30px;
-    color:white;
-">
-    درباره سام
-</h2>
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <h2 class="section-title">Follow Me</h2>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/sam_gitipasand1" target="_blank" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/sam_gitipasand1" target="_blank" class="icon telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/989369957018" target="_blank" class="icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </section>
+    </main>
 
-<p style="
-    font-size:18px;
-    line-height:2;
-">
-    سلام، من <strong>سام گیتی‌پسند</strong> هستم.<br>
-    به وب‌سایت رسمی من خوش آمدید.<br>
-    این وب‌سایت برای معرفی فعالیت‌ها، آثار و راه‌های ارتباط با من طراحی شده است.<br>
-    از همراهی شما سپاسگزارم.
-</p>
+    <footer class="footer">
+        <p>&copy; 2025 Sam Gitipasand. All rights reserved.</p>
+    </footer>
 
-<h2 style="
-    margin-top:45px;
-    font-size:30px;
-    color:white;
-">
-    About Sam
-</h2>
-<p style="font-size:18px; line-height:2;">
-Hello, I'm <strong>Sam Gitipasand</strong>.<br>
-Welcome to my official website.<br>
-This website was created to introduce my activities, projects, and ways to connect with me.<br>
-Thank you for visiting, and I hope you enjoy your time here.
-</p>
+    <!-- JavaScript for Language Switching -->
+    <script>
+        function setLanguage(lang) {
+            const faContent = document.getElementById('about-fa');
+            const enContent = document.getElementById('about-en');
+            const body = document.body;
 
-<h2>Follow Me</h2>
-
-<div style="margin-top:20px;">
-
-<a href="https://www.instagram.com/sam_gitipasand1"
-target="_blank"
-style="margin:15px; color:#E1306C; font-size:42px;">
-<i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://t.me/sam_gitipasand1"
-target="_blank"
-style="margin:15px; color:#229ED9; font-size:42px;">
-<i class="fab fa-telegram"></i>
-</a>
-
-<a href="https://wa.me/989369957018"
-target="_blank"
-style="margin:15px; color:#25D366; font-size:42px;">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-</div>
-
+            if (lang === 'fa') {
+                faContent.style.display = 'block';
+                enContent.style.display = 'none';
+                body.dir = 'rtl';
+                body.style.fontFamily = "'Vazirmatn', sans-serif";
+            } else {
+                faContent.style.display = 'none';
+                enContent.style.display = 'block';
+                body.dir = 'ltr';
+                body.style.fontFamily = "'Poppins', sans-serif";
+            }
+        }
+        // Initialize with English
+        setLanguage('en');
+    </script>
 </body>
 </html>
+

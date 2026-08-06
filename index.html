@@ -12,6 +12,7 @@
             --glass: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.15);
             --accent: #00d4ff;
+            --tab-active: rgba(0, 212, 255, 0.2);
         }
 
         [data-theme="light"] {
@@ -20,14 +21,15 @@
             --glass: rgba(0, 0, 0, 0.05);
             --glass-border: rgba(0, 0, 0, 0.1);
             --accent: #0071e3;
+            --tab-active: rgba(0, 113, 227, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
 
-        /* --- Header: Welcome & Controls --- */
+        /* --- Header Section --- */
         .site-header {
-            height: 25vh; /* ایجاد فضای کافی برای هدر */
+            height: 20vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,163 +37,123 @@
             text-align: center;
             padding: 20px;
             opacity: 0;
-            animation: fadeInUp 1.5s ease-out forwards;
+            animation: fadeInUp 1.2s ease-out forwards;
         }
 
-        .controls-row {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
+        .controls-row { display: flex; gap: 12px; margin-bottom: 15px; }
         .btn-control {
             background: var(--glass);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             color: var(--text);
-            width: 38px;
-            height: 38px;
-            border-radius: 12px; /* طراحی Squircle مدرن */
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
+            width: 36px; height: 36px; border-radius: 10px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
             transition: all 0.3s ease;
         }
-
-        .btn-control:hover {
-            background: var(--accent);
-            color: #000;
-            transform: translateY(-3px);
-        }
+        .btn-control:hover { background: var(--accent); color: #000; transform: translateY(-3px); }
 
         .welcome-text {
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+            font-size: clamp(0.9rem, 2vw, 1.3rem);
+            font-weight: 300; letter-spacing: 2px;
             background: linear-gradient(to right, var(--text), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         /* --- Piano Gallery --- */
         .piano-wrapper {
-            display: flex;
-            width: 100%;
-            height: 60vh;
-            gap: 8px;
-            padding: 0 10px;
+            display: flex; width: 100%; height: 45vh; gap: 6px; padding: 0 10px;
         }
-
         .piano-item {
-            flex: 1;
-            height: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
+            flex: 1; height: 100%; border-radius: 12px; overflow: hidden;
+            position: relative; cursor: pointer; transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             border: 1px solid var(--glass-border);
         }
+        .piano-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .piano-item:hover { flex: 5; }
+        .piano-item:hover img { transform: scale(1.05); }
 
-        .piano-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        .piano-item:hover {
-            flex: 6;
-            border-radius: 20px;
-        }
-
-        .piano-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* --- Main Content Container --- */
+        /* --- Tabs System --- */
         .content-container {
-            margin: -50px 20px 60px;
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 40px;
-            padding: 50px 30px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 850px; margin: -40px auto 60px;
+            background: var(--glass); backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border); border-radius: 35px;
+            padding: 40px 30px; position: relative; z-index: 10;
         }
 
         .actor-name {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 200;
-            letter-spacing: 5px;
-            margin-bottom: 25px;
+            font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 200;
+            text-align: center; margin-bottom: 30px;
             background: linear-gradient(to right, var(--text), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 35px;
-            opacity: 0.85;
+        .tabs-nav {
+            display: flex; justify-content: center; gap: 10px;
+            margin-bottom: 30px; border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
         }
 
-        .social-footer {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+        .tab-btn {
+            background: none; border: none; color: var(--text);
+            padding: 8px 20px; cursor: pointer; font-size: 1rem;
+            opacity: 0.5; transition: all 0.3s; border-radius: 20px;
         }
-        .social-footer a {
-            color: var(--text);
-            font-size: 1.8rem;
-            transition: 0.3s;
+
+        .tab-btn.active {
+            opacity: 1; background: var(--tab-active); color: var(--accent);
+            font-weight: bold;
         }
+
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+
+        /* --- Content Styles --- */
+        .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; text-align: right; }
+        .info-item { margin-bottom: 15px; }
+        .info-label { font-weight: bold; color: var(--accent); display: block; font-size: 0.9rem; }
+        .info-value { font-size: 1.1rem; }
+
+        .list-item {
+            background: var(--glass); padding: 15px; border-radius: 15px;
+            margin-bottom: 12px; border-left: 3px solid var(--accent);
+            list-style: none; text-align: right;
+        }
+        .list-item strong { color: var(--accent); display: block; margin-bottom: 4px; }
+        .list-item span { font-size: 0.9rem; opacity: 0.8; }
+
+        .quote-box {
+            font-style: italic; text-align: center; margin-top: 30px;
+            padding: 20px; border-top: 1px solid var(--glass-border);
+            opacity: 0.8; font-size: 1.1rem;
+        }
+
+        .social-footer { display: flex; justify-content: center; gap: 25px; margin-top: 40px; }
+        .social-footer a { color: var(--text); font-size: 1.8rem; transition: 0.3s; }
         .social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
 
-        /* Animations */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .site-header { height: 20vh; }
-            .piano-wrapper { height: 45vh; gap: 4px; padding: 0 5px; }
-            .content-container { margin-top: -30px; padding: 30px 20px; }
-            .welcome-text { font-size: 0.9rem; letter-spacing: 1px; }
+            .bio-grid { grid-template-columns: 1fr; }
+            .tabs-nav { flex-wrap: wrap; }
+            .tab-btn { padding: 6px 12px; font-size: 0.85rem; }
+            .content-container { margin-top: -20px; padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- هدر سایت: شامل دکمه‌ها و متن خوش‌آمدگویی -->
     <header class="site-header">
         <div class="controls-row">
-            <button class="btn-control" onclick="toggleLanguage()" title="Language">
-                <i class="fas fa-language"></i>
-            </button>
-            <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="Theme">
-                <i class="fas fa-moon"></i>
-            </button>
+            <button class="btn-control" onclick="toggleLanguage()" title="Language"><i class="fas fa-language"></i></button>
+            <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="Theme"><i class="fas fa-moon"></i></button>
         </div>
-        
         <h2 class="welcome-text fa-text">به دنیای هنر من خوش آمدید</h2>
         <h2 class="welcome-text en-text" style="display:none">Welcome to my world</h2>
     </header>
 
-    <!-- گالری پیانویی -->
     <div class="piano-wrapper">
         <div class="piano-item"><img src="1Sam.jpg" alt="Sam 1"></div>
         <div class="piano-item"><img src="3sam.jpg" alt="Sam 2"></div>
@@ -202,18 +164,73 @@
         <div class="piano-item"><img src="9sam.jpg" alt="Sam 7"></div>
     </div>
 
-    <!-- کادر محتوا -->
     <div class="content-container">
         <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
         <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
-        <div class="about-text fa-text">
-            در انتظار ورود به بخش رزومه و مشخصات هنری...<br>
-            (به زودی اطلاعات حرفه‌ای سام در اینجا قرار خواهد گرفت)
+        <!-- Tabs Navigation -->
+        <nav class="tabs-nav">
+            <button class="tab-btn active fa-text" onclick="openTab(event, 'tab-about')">درباره من</button>
+            <button class="tab-btn active en-text" onclick="openTab(event, 'tab-about')" style="display:none">About Me</button>
+            
+            <button class="tab-btn fa-text" onclick="openTab(event, 'tab-acting')">بازیگری</button>
+            <button class="tab-btn en-text" onclick="openTab(event, 'tab-acting')" style="display:none">Acting</button>
+
+            <button class="tab-btn fa-text" onclick="openTab(event, 'tab-commercial')">تبلیغات</button>
+            <button class="tab-btn en-text" onclick="openTab(event, 'tab-commercial')" style="display:none">Commercials</button>
+        </nav>
+
+        <!-- Tab 1: About Me -->
+        <div id="tab-about" class="tab-content active">
+            <div class="bio-grid">
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label fa-text">تاریخ تولد</span><span class="info-value en-text" style="display:none">April 18, 2019</span><span class="info-value fa-text" style="display:block">۲۹ فروردین ۱۳۹۸</span></div>
+                    <div class="info-item"><span class="info-label fa-text">قد</span><span class="info-value">۱۳۸ cm</span></div>
+                    <div class="info-item"><span class="info-label fa-text">رنگ پوست</span><span class="info-value fa-text">روشن</span><span class="info-value en-text" style="display:none">Fair</span></div>
+                </div>
+                <div class="info-group">
+                    <div class="info-item"><span class="info-label fa-text">زبان‌ها</span><span class="info-value fa-text">فارسی، انگلیسی، چینی</span><span class="info-value en-text" style="display:none">Persian, English, Chinese</span></div>
+                    <div class="info-item"><span class="info-label fa-text">مهارت‌های ورزشی</span><span class="info-value fa-text">شنا، دوچرخه‌سواری، بدمینتون، بسکتبال</span><span class="info-value en-text" style="display:none">Swimming, Cycling, Badminton, Basketball</span></div>
+                </div>
+            </div>
+            <div class="quote-box fa-text">«من عاشق کشف شخصیت‌های پیچیده انسانی از طریق هنر هستم تا آن من را صیقل دهد.»</div>
+            <div class="quote-box en-text" style="display:none">"I am passionate about exploring complex human characters through art, as it shapes and refines who I am."</div>
         </div>
-        <div class="about-text en-text" style="display:none">
-            Waiting for the professional bio and resume...<br>
-            (Professional details will be updated soon)
+
+        <!-- Tab 2: Acting -->
+        <div id="tab-acting" class="tab-content">
+            <div class="fa-text">
+                <div class="list-item"><strong>سریال مرز</strong><span>کارگردان: سید حاتمی (نقش اصلی کودک)</span></div>
+                <div class="list-item"><strong>سریال برتا</strong><span>کارگردان: آقای ترابی</span></div>
+                <div class="list-item"><strong>سریال نگین ارباب</strong><span>کارگردان: محمد حسین لطیفی</span></div>
+                <div class="list-item"><strong>فیلم کوتاه جشنواره‌ای</strong><span>کارگردان: ریحانه نبویان (نقش اصلی)</span></div>
+                <div class="list-item"><strong>فیلم جشنواره‌ای</strong><span>کارگردان: الهام محمدزاده</span></div>
+                <div class="list-item"><strong>فیلم جشنواره‌ای (کروماکی)</strong><span>کارگردان: محمود کریمی (نقش اصلی)</span></div>
+                <div class="list-item"><strong>موزیک ویدیو</strong><span>آقای روزبه بمانی (نقش کودکی)</span></div>
+            </div>
+            <div class="en-text" style="display:none">
+                <div class="list-item"><strong>Series: Marz</strong><span>Dir: Seyed Hatami (Lead Child Role)</span></div>
+                <div class="list-item"><strong>Series: Berta</strong><span>Dir: Mr. Torabi</span></div>
+                <div class="list-item"><strong>Series: Negin Arbāb</strong><span>Dir: Mohammad Hossein Latifi</span></div>
+                <div class="list-item"><strong>Festival Short Film</strong><span>Dir: Reyhaneh Nobavian (Lead Role)</span></div>
+                <div class="list-item"><strong>Music Video</strong><span>Artist: Roozbeh Bemani (Child Role)</span></div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Commercials -->
+        <div id="tab-commercial" class="tab-content">
+            <div class="fa-text">
+                <div class="list-item"><strong>برند کاله و ماجان</strong><span>تیزر تبلیغاتی و عکاسی</span></div>
+                <div class="list-item"><strong>برند آربیانا</strong><span>همکاری مستمر تبلیغاتی</span></div>
+                <div class="list-item"><strong>برندهای مختلف</strong><span>شکلات فرمند، دوو، آقای فرش، بیمه دی</span></div>
+                <div class="list-item"><strong>نخودی نمکی</strong><span>عکاسی صنعتی و تبلیغاتی</span></div>
+            </div>
+            <div class="en-text" style="display:none">
+                <div class="list-item"><strong>Kalleh & Majan</strong><span>Commercials & Photoshoots</span></div>
+                <div class="list-item"><strong>Arbiana</strong><span>Regular Commercial Collaborations</span></div>
+                <div class="list-item"><strong>Other Brands</strong><span>Formand, Daewoo, Aghaye Farsh, Diba Insurance</span></div>
+                <div class="list-item"><strong>Nakhodi Namaki</strong><span>Industrial Photography</span></div>
+            </div>
         </div>
 
         <div class="social-footer">
@@ -240,18 +257,37 @@
             const html = document.documentElement;
             const faElements = document.querySelectorAll('.fa-text');
             const enElements = document.querySelectorAll('.en-text');
+            const tabBtns = document.querySelectorAll('.tab-btn');
 
             if (html.dir === "rtl") {
                 html.dir = "ltr";
                 html.lang = "en";
                 faElements.forEach(el => el.style.display = 'none');
                 enElements.forEach(el => el.style.display = 'block');
+                // Reset active tab on lang switch to avoid visual glitches
+                document.querySelector('.tab-btn.active').click();
             } else {
                 html.dir = "rtl";
                 html.lang = "fa";
                 faElements.forEach(el => el.style.display = 'block');
                 enElements.forEach(el => el.style.display = 'none');
+                document.querySelector('.tab-btn.active').click();
             }
+        }
+
+        function openTab(evt, tabId) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            const tabButtons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
         }
     </script>
 </body>

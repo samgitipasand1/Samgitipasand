@@ -6,7 +6,6 @@
     <title>Sam Gitipasand | Official Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* تنظیمات رنگی اصلی */
         :root {
             --bg: #000000;
             --text: #ffffff;
@@ -26,14 +25,53 @@
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
 
-        /* ۱. گالری پیانویی با حرکت هوشمند */
+        /* --- دکمه‌های تنظیمات (نسخه جدید: گوشه بالا) --- */
+        .top-controls {
+            position: fixed;
+            top: 20px;
+            /* در حالت RTL سمت راست، در حالت LTR سمت چپ قرار می‌گیرد */
+            right: 20px; 
+            z-index: 2000;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* وقتی زبان انگلیسی شود، دکمه‌ها به سمت چپ بروند */
+        html[dir="ltr"] .top-controls {
+            right: auto;
+            left: 20px;
+        }
+
+        .btn-control {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%; /* دایره‌ای و مدرن */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-control:hover {
+            background: var(--accent);
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* --- گالری پیانویی --- */
         .piano-wrapper {
             display: flex;
             width: 100%;
             height: 75vh;
             gap: 8px;
             padding: 10px;
-            background: transparent;
         }
 
         .piano-item {
@@ -43,7 +81,6 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            /* حرکت بسیار نرم شبیه پیانو */
             transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
             border: 1px solid var(--glass-border);
         }
@@ -55,17 +92,16 @@
             transition: transform 0.7s ease;
         }
 
-        /* افکت باز شدن عکس (بزرگ شدن) */
         .piano-item:hover {
-            flex: 6; /* باز شدن کشیده */
+            flex: 6;
             border-radius: 20px;
         }
 
         .piano-item:hover img {
-            transform: scale(1.1); /* زوم ملایم برای نمایش کامل‌تر */
+            transform: scale(1.1);
         }
 
-        /* ۲. کادر شیشه‌ای محتوا */
+        /* --- محتوا --- */
         .content-container {
             margin: -60px 20px 60px;
             background: var(--glass);
@@ -80,13 +116,12 @@
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
         .actor-name {
             font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 200;
-            letter-spacing: 6px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             margin-bottom: 25px;
             background: linear-gradient(to right, var(--text), var(--accent));
@@ -113,44 +148,28 @@
         }
         .social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
 
-        /* ۳. دکمه‌های تنظیمات (انتقال یافته به پایین برای زیبایی) */
-        .settings-footer {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            display: flex;
-            gap: 15px;
-        }
-        .btn-control {
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--text);
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .btn-control:hover { background: var(--accent); color: #000; }
-
-        /* موبایل بهینه شده */
+        /* موبایل */
         @media (max-width: 768px) {
-            .piano-wrapper { height: 55vh; gap: 4px; padding: 5px; }
+            .piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
             .piano-item { border-radius: 0; }
-            .content-container { margin-top: 0; border-radius: 40px 40px 0 0; padding: 40px 20px; }
-            .actor-name { font-size: 1.8rem; letter-spacing: 2px; }
-            .about-text { font-size: 1rem; }
+            .top-controls { top: 10px; }
+            .btn-control { width: 40px; height: 40px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- گالری پیانویی -->
+    <!-- دکمه‌های کنترلی (حالا در گوشه بالا و بسیار شیک) -->
+    <div class="top-controls">
+        <button class="btn-control" onclick="toggleLanguage()" title="تغییر زبان">
+            <i class="fas fa-language"></i>
+        </button>
+        <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- گالری -->
     <div class="piano-wrapper">
         <div class="piano-item"><img src="1Sam.jpg"></div>
         <div class="piano-item"><img src="3sam.jpg"></div>
@@ -161,13 +180,11 @@
         <div class="piano-item"><img src="9sam.jpg"></div>
     </div>
 
-    <!-- بخش محتوا -->
+    <!-- محتوا -->
     <div class="content-container">
-        <!-- نام هنری -->
         <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
         <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
-        <!-- متن درباره من -->
         <div class="about-text fa-text">
             من سام هستم، به وبسایت رسمی من خوش آمدید.<br>
             این وبسایت برای معرفی فعالیت‌ها، آثار هنری و راه‌های ارتباط با من طراحی شده است.<br>
@@ -179,7 +196,6 @@
             Thank you for your support.
         </div>
 
-        <!-- آیکون‌ها -->
         <div class="social-footer">
             <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
             <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -187,18 +203,7 @@
         </div>
     </div>
 
-    <!-- دکمه‌های کنترل (انتقال یافته به پایین) -->
-    <div class="settings-footer">
-        <button class="btn-control" onclick="toggleLanguage()">
-            <i class="fas fa-language"></i> <span class="fa-text">فارسی</span><span class="en-text" style="display:none">English</span>
-        </button>
-        <button class="btn-control" onclick="toggleTheme()" id="themeBtn">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-
     <script>
-        // تابع تغییر تم (شب/روز)
         function toggleTheme() {
             const body = document.body;
             const btn = document.getElementById('themeBtn');
@@ -211,7 +216,6 @@
             }
         }
 
-        // تابع تغییر زبان
         function toggleLanguage() {
             const html = document.documentElement;
             const faElements = document.querySelectorAll('.fa-text');

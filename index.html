@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Gitipasand</title>
+    <title>Sam Gitipasand | Official Website</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* متغیرهای رنگی برای حالت شب و روز */
+        /* تنظیمات رنگی اصلی */
         :root {
             --bg: #000000;
             --text: #ffffff;
@@ -16,127 +16,142 @@
         }
 
         [data-theme="light"] {
-            --bg: #e0e0e0;
+            --bg: #f0f0f0;
             --text: #1a1a1a;
             --glass: rgba(0, 0, 0, 0.05);
             --glass-border: rgba(0, 0, 0, 0.1);
             --accent: #0071e3;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.4s ease; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
 
-        /* دکمه‌های تنظیمات بالا */
-        .settings-bar {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            z-index: 1000; display: flex; gap: 10px;
-        }
-        .btn-small {
-            background: var(--glass); backdrop-filter: blur(10px); border: 1px solid var(--glass-border);
-            color: var(--text); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem;
-        }
-
-        /* ۱. گالری پیانویی عمودی (در کنار هم) */
-        .piano-gallery {
+        /* ۱. گالری پیانویی با حرکت هوشمند */
+        .piano-wrapper {
             display: flex;
             width: 100%;
-            height: 70vh; /* ارتفاع بخش عکس‌ها */
-            gap: 5px;
+            height: 75vh;
+            gap: 8px;
             padding: 10px;
             background: transparent;
         }
+
         .piano-item {
             flex: 1;
             height: 100%;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            /* حرکت بسیار نرم شبیه پیانو */
+            transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
+            border: 1px solid var(--glass-border);
         }
+
         .piano-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        /* افکت باز شدن عکس در دسکتاپ */
-        @media (min-width: 769px) {
-            .piano-item:hover { flex: 4; }
+            transition: transform 0.7s ease;
         }
 
-        /* ۲. کادر شیشه‌ای برای متن‌ها و آیکون‌ها */
+        /* افکت باز شدن عکس (بزرگ شدن) */
+        .piano-item:hover {
+            flex: 6; /* باز شدن کشیده */
+            border-radius: 20px;
+        }
+
+        .piano-item:hover img {
+            transform: scale(1.1); /* زوم ملایم برای نمایش کامل‌تر */
+        }
+
+        /* ۲. کادر شیشه‌ای محتوا */
         .content-container {
-            margin: -50px 20px 50px; /* کشیدن کادر به سمت بالا روی عکس‌ها */
+            margin: -60px 20px 60px;
             background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 40px 20px;
+            border-radius: 40px;
+            padding: 50px 30px;
             text-align: center;
             position: relative;
             z-index: 10;
-            max-width: 800px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        /* نام هنری با فونت خاص */
         .actor-name {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 200;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             background: linear-gradient(to right, var(--text), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: var(--text);
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 35px;
             opacity: 0.9;
         }
 
-        /* ۳. آیکون‌های اجتماعی در انتها */
         .social-footer {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
         }
         .social-footer a {
             color: var(--text);
-            font-size: 1.8rem;
-            text-decoration: none;
+            font-size: 2rem;
             transition: 0.3s;
         }
-        .social-footer a:hover { color: var(--accent); transform: scale(1.2); }
+        .social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
 
-        /* تنظیمات مخصوص موبایل (عکس‌ها تمام صفحه شوند) */
+        /* ۳. دکمه‌های تنظیمات (انتقال یافته به پایین برای زیبایی) */
+        .settings-footer {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+        }
+        .btn-control {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-control:hover { background: var(--accent); color: #000; }
+
+        /* موبایل بهینه شده */
         @media (max-width: 768px) {
-            .piano-gallery {
-                height: 50vh; /* در موبایل ارتفاع کمتر شود تا متن دیده شود */
-                padding: 0;
-                gap: 2px;
-            }
+            .piano-wrapper { height: 55vh; gap: 4px; padding: 5px; }
             .piano-item { border-radius: 0; }
-            .actor-name { font-size: 2rem; }
-            .content-container { margin-top: 0; border-radius: 30px 30px 0 0; }
+            .content-container { margin-top: 0; border-radius: 40px 40px 0 0; padding: 40px 20px; }
+            .actor-name { font-size: 1.8rem; letter-spacing: 2px; }
+            .about-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="settings-bar">
-        <button class="btn-small" onclick="toggleTheme()" id="themeBtn"><i class="fas fa-moon"></i></button>
-        <button class="btn-small" onclick="toggleLanguage()">EN / FA</button>
-    </div>
-
-    <!-- بخش اول: گالری پیانویی -->
-    <div class="piano-gallery">
+    <!-- گالری پیانویی -->
+    <div class="piano-wrapper">
         <div class="piano-item"><img src="1Sam.jpg"></div>
         <div class="piano-item"><img src="3sam.jpg"></div>
         <div class="piano-item"><img src="4sam.jpg"></div>
@@ -146,12 +161,11 @@
         <div class="piano-item"><img src="9sam.jpg"></div>
     </div>
 
-    <!-- بخش دوم: محتوا در کادر شیشه‌ای -->
+    <!-- بخش محتوا -->
     <div class="content-container">
-        
-        <!-- نام انگلیسی -->
-        <h1 class="actor-name fa-text" style="display:none">سام گیت‌پاسند</h1>
-        <h1 class="actor-name en-text">SAM GITIPASAND</h1>
+        <!-- نام هنری -->
+        <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
+        <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
         <!-- متن درباره من -->
         <div class="about-text fa-text">
@@ -165,17 +179,26 @@
             Thank you for your support.
         </div>
 
-        <!-- بخش آیکون‌ها -->
+        <!-- آیکون‌ها -->
         <div class="social-footer">
             <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
             <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
+    </div>
 
+    <!-- دکمه‌های کنترل (انتقال یافته به پایین) -->
+    <div class="settings-footer">
+        <button class="btn-control" onclick="toggleLanguage()">
+            <i class="fas fa-language"></i> <span class="fa-text">فارسی</span><span class="en-text" style="display:none">English</span>
+        </button>
+        <button class="btn-control" onclick="toggleTheme()" id="themeBtn">
+            <i class="fas fa-moon"></i>
+        </button>
     </div>
 
     <script>
-        // تغییر تم (شب/روز)
+        // تابع تغییر تم (شب/روز)
         function toggleTheme() {
             const body = document.body;
             const btn = document.getElementById('themeBtn');
@@ -188,7 +211,7 @@
             }
         }
 
-        // تغییر زبان
+        // تابع تغییر زبان
         function toggleLanguage() {
             const html = document.documentElement;
             const faElements = document.querySelectorAll('.fa-text');

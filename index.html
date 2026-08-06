@@ -3,20 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Gitipasand | Official Actor Portfolio</title>
-    
-    <!-- Google Fonts: Poppins for English, Vazirmatn for Persian -->
+    <title>Sam Gitipasand | Official Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
-    <!-- Link to CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Reset & Dark Theme */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; overflow-x: hidden; }
+        body[dir="rtl"] { font-family: 'Vazirmatn', sans-serif; }
+
+        /* Glassmorphism Effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        /* Language Switcher */
+        .lang-nav { position: fixed; top: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
+        body[dir="rtl"] .lang-nav { right: auto; left: 20px; }
+        .lang-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px 15px; border-radius: 50px; cursor: pointer; font-size: 14px; backdrop-filter: blur(5px); }
+
+        .container { max-width: 600px; margin: 80px auto 40px; padding: 0 20px; }
+
+        /* Hero Section & Responsive Image */
+        .hero { text-align: center; margin-bottom: 30px; }
+        .profile-wrapper { width: 180px; height: 180px; margin: 0 auto 20px; }
+        .profile-img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); 
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .name-title { font-size: 2rem; letter-spacing: 2px; margin-bottom: 5px; }
+        .subtitle { color: #bbb; font-weight: 300; }
+
+        /* About & Social Sections */
+        .section-title { margin-bottom: 15px; font-size: 1.5rem; }
+        .social-icons { display: flex; justify-content: center; gap: 25px; font-size: 1.8rem; }
+        .social-icons a { color: #fff; transition: transform 0.3s ease, color 0.3s ease; }
+        .social-icons a:hover { transform: translateY(-5px); color: #00d2ff; }
+
+        /* Footer */
+        .footer { text-align: center; padding: 40px 0; color: #555; font-size: 12px; }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .container { margin-top: 100px; }
+            .name-title { font-size: 1.6rem; }
+            .profile-wrapper { width: 150px; height: 150px; }
+            .glass-card { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Language Switcher -->
     <nav class="lang-nav">
         <button class="lang-btn" onclick="setLanguage('fa')">🇮 فارسی</button>
         <button class="lang-btn" onclick="setLanguage('en')">🇬 English</button>
@@ -26,35 +72,32 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="profile-wrapper">
+                <!-- Note: Ensure this filename is correct in your folder -->
                 <img src="Screenshot_20251227_151640_Instagram.jpg" alt="Sam Gitipasand" class="profile-img">
             </div>
-            
             <h1 class="name-title">SAM GITIPASAND</h1>
             <p class="subtitle">Actor • Artist • Creator</p>
         </section>
 
         <!-- About Section -->
-        <section class="about-section">
-            <!-- Persian Content -->
+        <section class="glass-card">
             <div id="about-fa" class="lang-content" style="display: none;">
-                <h2>درباره سام</h2>
-                <p>سلام، من <strong>سام گیتی‌پسند</strong> هستم. به وب‌سایت رسمی من خوش آمدید. این وب‌سایت برای معرفی فعالیت‌ها، آثار و راه‌های ارتباط با من طراحی شده است. از همراهی شما سپاسگزارم.</p>
+                <h2 style="margin-bottom:10px;">درباره سام</h2>
+                <p style="line-height:1.8;">سلام، من <strong style="color:#00d2ff;">سام گیتی‌پسند</strong> هستم. به وب‌سایت رسمی من خوش آمدید. این وب‌سایت برای معرفی فعالیت‌ها، آثار و راه‌های ارتباط با من طراحی شده است.</p>
             </div>
-
-            <!-- English Content -->
             <div id="about-en" class="lang-content">
-                <h2>About Sam</h2>
-                <p>Hello, I'm <strong>Sam Gitipasand</strong>. Welcome to my official website. This website was created to introduce my activities, projects, and ways to connect with me. Thank you for visiting!</p>
+                <h2 style="margin-bottom:10px;">About Sam</h2>
+                <p style="line-height:1.8;">Hello, I'm <strong style="color:#00d2ff;">Sam Gitipasand</strong>. Welcome to my official website. This website was created to introduce my activities and projects.</p>
             </div>
         </section>
 
         <!-- Social Media Section -->
-        <section class="social-section">
+        <section class="glass-card" style="text-align: center;">
             <h2 class="section-title">Follow Me</h2>
             <div class="social-icons">
-                <a href="https://www.instagram.com/sam_gitipasand1" target="_blank" class="icon instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://t.me/sam_gitipasand1" target="_blank" class="icon telegram"><i class="fab fa-telegram"></i></a>
-                <a href="https://wa.me/989369957018" target="_blank" class="icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/sam_gitipasand1" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
         </section>
     </main>
@@ -63,9 +106,8 @@
         <p>&copy; 2025 Sam Gitipasand. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Language Switching -->
     <script>
-        function setLanguage(lang) {
+        function setLanguage(la) {
             const faContent = document.getElementById('about-fa');
             const enContent = document.getElementById('about-en');
             const body = document.body;
@@ -82,9 +124,7 @@
                 body.style.fontFamily = "'Poppins', sans-serif";
             }
         }
-        // Initialize with English
         setLanguage('en');
     </script>
 </body>
 </html>
-

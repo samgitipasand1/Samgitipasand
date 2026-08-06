@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sam Gitipasand | Official Website</title>
+    <title>Sam Gitipasand | Official Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --bg: #000000;
             --text: #ffffff;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
             --accent: #00d4ff;
         }
 
         [data-theme="light"] {
-            --bg: #f0f0f0;
+            --bg: #f8f9fa;
             --text: #1a1a1a;
             --glass: rgba(0, 0, 0, 0.05);
             --glass-border: rgba(0, 0, 0, 0.1);
@@ -25,53 +25,65 @@
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
 
-        /* --- دکمه‌های تنظیمات (نسخه جدید: گوشه بالا) --- */
-        .top-controls {
-            position: fixed;
-            top: 20px;
-            /* در حالت RTL سمت راست، در حالت LTR سمت چپ قرار می‌گیرد */
-            right: 20px; 
-            z-index: 2000;
+        /* --- Header: Welcome & Controls --- */
+        .site-header {
+            height: 25vh; /* ایجاد فضای کافی برای هدر */
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
         }
 
-        /* وقتی زبان انگلیسی شود، دکمه‌ها به سمت چپ بروند */
-        html[dir="ltr"] .top-controls {
-            right: auto;
-            left: 20px;
+        .controls-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
         }
 
         .btn-control {
             background: var(--glass);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             color: var(--text);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%; /* دایره‌ای و مدرن */
+            width: 38px;
+            height: 38px;
+            border-radius: 12px; /* طراحی Squircle مدرن */
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
         .btn-control:hover {
             background: var(--accent);
             color: #000;
-            transform: scale(1.1);
+            transform: translateY(-3px);
         }
 
-        /* --- گالری پیانویی --- */
+        .welcome-text {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Piano Gallery --- */
         .piano-wrapper {
             display: flex;
             width: 100%;
-            height: 75vh;
+            height: 60vh;
             gap: 8px;
-            padding: 10px;
+            padding: 0 10px;
         }
 
         .piano-item {
@@ -101,9 +113,9 @@
             transform: scale(1.1);
         }
 
-        /* --- محتوا --- */
+        /* --- Main Content Container --- */
         .content-container {
-            margin: -60px 20px 60px;
+            margin: -50px 20px 60px;
             background: var(--glass);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
@@ -113,7 +125,7 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            max-width: 750px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -122,7 +134,6 @@
             font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 200;
             letter-spacing: 5px;
-            text-transform: uppercase;
             margin-bottom: 25px;
             background: linear-gradient(to right, var(--text), var(--accent));
             -webkit-background-clip: text;
@@ -130,10 +141,10 @@
         }
 
         .about-text {
-            font-size: 1.15rem;
-            line-height: 2;
+            font-size: 1.1rem;
+            line-height: 1.8;
             margin-bottom: 35px;
-            opacity: 0.9;
+            opacity: 0.85;
         }
 
         .social-footer {
@@ -143,62 +154,71 @@
         }
         .social-footer a {
             color: var(--text);
-            font-size: 2rem;
+            font-size: 1.8rem;
             transition: 0.3s;
         }
         .social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
 
-        /* موبایل */
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
-            .piano-item { border-radius: 0; }
-            .top-controls { top: 10px; }
-            .btn-control { width: 40px; height: 40px; font-size: 1rem; }
+            .site-header { height: 20vh; }
+            .piano-wrapper { height: 45vh; gap: 4px; padding: 0 5px; }
+            .content-container { margin-top: -30px; padding: 30px 20px; }
+            .welcome-text { font-size: 0.9rem; letter-spacing: 1px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- دکمه‌های کنترلی (حالا در گوشه بالا و بسیار شیک) -->
-    <div class="top-controls">
-        <button class="btn-control" onclick="toggleLanguage()" title="تغییر زبان">
-            <i class="fas fa-language"></i>
-        </button>
-        <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
+    <!-- هدر سایت: شامل دکمه‌ها و متن خوش‌آمدگویی -->
+    <header class="site-header">
+        <div class="controls-row">
+            <button class="btn-control" onclick="toggleLanguage()" title="Language">
+                <i class="fas fa-language"></i>
+            </button>
+            <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        
+        <h2 class="welcome-text fa-text">به دنیای هنر من خوش آمدید</h2>
+        <h2 class="welcome-text en-text" style="display:none">Welcome to my world</h2>
+    </header>
 
-    <!-- گالری -->
+    <!-- گالری پیانویی -->
     <div class="piano-wrapper">
-        <div class="piano-item"><img src="1Sam.jpg"></div>
-        <div class="piano-item"><img src="3sam.jpg"></div>
-        <div class="piano-item"><img src="4sam.jpg"></div>
-        <div class="piano-item"><img src="5sam.jpg"></div>
-        <div class="piano-item"><img src="7sam.jpg"></div>
-        <div class="piano-item"><img src="8sam.jpg"></div>
-        <div class="piano-item"><img src="9sam.jpg"></div>
+        <div class="piano-item"><img src="1Sam.jpg" alt="Sam 1"></div>
+        <div class="piano-item"><img src="3sam.jpg" alt="Sam 2"></div>
+        <div class="piano-item"><img src="4sam.jpg" alt="Sam 3"></div>
+        <div class="piano-item"><img src="5sam.jpg" alt="Sam 4"></div>
+        <div class="piano-item"><img src="7sam.jpg" alt="Sam 5"></div>
+        <div class="piano-item"><img src="8sam.jpg" alt="Sam 6"></div>
+        <div class="piano-item"><img src="9sam.jpg" alt="Sam 7"></div>
     </div>
 
-    <!-- محتوا -->
+    <!-- کادر محتوا -->
     <div class="content-container">
         <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
         <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
         <div class="about-text fa-text">
-            من سام هستم، به وبسایت رسمی من خوش آمدید.<br>
-            این وبسایت برای معرفی فعالیت‌ها، آثار هنری و راه‌های ارتباط با من طراحی شده است.<br>
-            از همراهی شما سپاسگزارم.
+            در انتظار ورود به بخش رزومه و مشخصات هنری...<br>
+            (به زودی اطلاعات حرفه‌ای سام در اینجا قرار خواهد گرفت)
         </div>
         <div class="about-text en-text" style="display:none">
-            I am Sam. Welcome to my official website.<br>
-            This website is designed to introduce my activities, artworks, and ways to connect with me.<br>
-            Thank you for your support.
+            Waiting for the professional bio and resume...<br>
+            (Professional details will be updated soon)
         </div>
 
         <div class="social-footer">
             <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.instagram.com/sam_gitipasand1" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
     </div>

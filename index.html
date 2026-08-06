@@ -25,11 +25,11 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; line-height: 1.6; }
 
         /* --- Header Section --- */
         .site-header {
-            height: 20vh;
+            height: 25vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -40,96 +40,143 @@
             animation: fadeInUp 1.2s ease-out forwards;
         }
 
-        .controls-row { display: flex; gap: 12px; margin-bottom: 15px; }
+        .controls-row { display: flex; gap: 12px; margin-bottom: 20px; }
         .btn-control {
             background: var(--glass);
             backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
             color: var(--text);
-            width: 36px; height: 36px; border-radius: 10px;
+            width: 40px; height: 40px; border-radius: 10px;
             cursor: pointer; display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
-        .btn-control:hover { background: var(--accent); color: #000; transform: translateY(-3px); }
 
+        /* --- Bold Welcome Text --- */
         .welcome-text {
-            font-size: clamp(0.9rem, 2vw, 1.3rem);
-            font-weight: 300; letter-spacing: 2px;
-            background: linear-gradient(to right, var(--text), var(--accent));
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-weight: 800; /* Extra Bold */
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, var(--accent));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
         /* --- Piano Gallery --- */
-        .piano-wrapper {
-            display: flex; width: 100%; height: 45vh; gap: 6px; padding: 0 10px;
-        }
+        .piano-wrapper { display: flex; width: 100%; height: 40vh; gap: 6px; padding: 0 10px; }
         .piano-item {
             flex: 1; height: 100%; border-radius: 12px; overflow: hidden;
             position: relative; cursor: pointer; transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             border: 1px solid var(--glass-border);
         }
-        .piano-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        .piano-item img { width: 100%; height: 100%; object-fit: cover; }
         .piano-item:hover { flex: 5; }
-        .piano-item:hover img { transform: scale(1.05); }
 
-        /* --- Tabs System --- */
+        /* --- Content Container --- */
         .content-container {
-            max-width: 850px; margin: -40px auto 60px;
+            max-width: 850px; margin: -50px auto 80px;
             background: var(--glass); backdrop-filter: blur(30px);
-            border: 1px solid var(--glass-border); border-radius: 35px;
-            padding: 40px 30px; position: relative; z-index: 10;
+            border: 1px solid var(--glass-border); border-radius: 40px;
+            padding: 50px 40px; position: relative; z-index: 10;
         }
 
+        /* --- Bold Actor Name --- */
         .actor-name {
-            font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 200;
-            text-align: center; margin-bottom: 30px;
+            font-size: clamp(2rem, 6vw, 3.5rem); 
+            font-weight: 900; /* Super Bold */
+            text-align: center; margin-bottom: 40px;
             background: linear-gradient(to right, var(--text), var(--accent));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
+        /* --- Tabs Navigation --- */
         .tabs-nav {
-            display: flex; justify-content: center; gap: 10px;
-            margin-bottom: 30px; border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 15px;
+            display: flex; justify-content: center; gap: 15px;
+            margin-bottom: 40px; border-bottom: 2px solid var(--glass-border);
+            padding-bottom: 20px;
         }
 
         .tab-btn {
             background: none; border: none; color: var(--text);
-            padding: 8px 20px; cursor: pointer; font-size: 1rem;
-            opacity: 0.5; transition: all 0.3s; border-radius: 20px;
+            padding: 10px 25px; cursor: pointer; font-size: 1.1rem;
+            opacity: 0.5; transition: all 0.3s; border-radius: 30px;
+            font-weight: 600; /* Semi-Bold for tabs */
         }
 
         .tab-btn.active {
             opacity: 1; background: var(--tab-active); color: var(--accent);
-            font-weight: bold;
+            font-weight: 800; /* Extra Bold for active tab */
+            box-shadow: 0 4px 15px var(--tab-active);
         }
 
         .tab-content { display: none; animation: fadeIn 0.5s ease; }
         .tab-content.active { display: block; }
 
-        /* --- Content Styles --- */
-        .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; text-align: right; }
-        .info-item { margin-bottom: 15px; }
-        .info-label { font-weight: bold; color: var(--accent); display: block; font-size: 0.9rem; }
-        .info-value { font-size: 1.1rem; }
+        /* --- Content Improvements --- */
+        .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; text-align: right; }
+        
+        .info-item { 
+            margin-bottom: 18px; /* Better spacing */
+            line-height: 1.4; /* Controlled line height */
+        }
+        .info-label { 
+            font-weight: 800; /* Bold labels */
+            color: var(--accent); 
+            display: block; 
+            font-size: 1rem; 
+            margin-bottom: 2px;
+        }
+        .info-value { 
+            font-size: 1.2rem; 
+            font-weight: 500; 
+        }
+
+        /* English specific bolding for values */
+        .en-text.info-value { font-weight: 700; }
 
         .list-item {
-            background: var(--glass); padding: 15px; border-radius: 15px;
-            margin-bottom: 12px; border-left: 3px solid var(--accent);
+            background: var(--glass); padding: 20px; border-radius: 18px;
+            margin-bottom: 15px; border-right: 4px solid var(--accent); /* Changed to right for RTL */
             list-style: none; text-align: right;
         }
-        .list-item strong { color: var(--accent); display: block; margin-bottom: 4px; }
-        .list-item span { font-size: 0.9rem; opacity: 0.8; }
+        [dir="ltr"] .list-item { border-right: none; border-left: 4px solid var(--accent); text-align: left; }
+        
+        .list-item strong { color: var(--accent); display: block; font-size: 1.2rem; font-weight: 800; }
+        .list-item span { font-size: 1rem; opacity: 0.9; font-weight: 400; }
 
+        /* --- Shine Effect for Quote --- */
         .quote-box {
-            font-style: italic; text-align: center; margin-top: 30px;
-            padding: 20px; border-top: 1px solid var(--glass-border);
-            opacity: 0.8; font-size: 1.1rem;
+            position: relative;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            overflow: hidden;
+            border-top: 1px solid var(--glass-border);
         }
 
-        .social-footer { display: flex; justify-content: center; gap: 25px; margin-top: 40px; }
-        .social-footer a { color: var(--text); font-size: 1.8rem; transition: 0.3s; }
-        .social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
+        .quote-box::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 50%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+            transition: none;
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -60%; }
+            20% { left: 120%; }
+            100% { left: 120%; }
+        }
+
+        .social-footer { display: flex; justify-content: center; gap: 30px; margin-top: 50px; }
+        .social-footer a { color: var(--text); font-size: 2rem; transition: 0.3s; }
+        .social-footer a:hover { color: var(--accent); transform: scale(1.2); }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -137,13 +184,13 @@
         /* Responsive */
         @media (max-width: 768px) {
             .bio-grid { grid-template-columns: 1fr; }
-            .tabs-nav { flex-wrap: wrap; }
-            .tab-btn { padding: 6px 12px; font-size: 0.85rem; }
+            .tabs-nav { flex-wrap: wrap; gap: 5px; }
+            .tab-btn { padding: 8px 15px; font-size: 0.9rem; }
             .content-container { margin-top: -20px; padding: 30px 20px; }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
 
     <header class="site-header">
         <div class="controls-row">
@@ -151,7 +198,7 @@
             <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="Theme"><i class="fas fa-moon"></i></button>
         </div>
         <h2 class="welcome-text fa-text">به دنیای هنر من خوش آمدید</h2>
-        <h2 class="welcome-text en-text" style="display:none">Welcome to my world</h2>
+        <h2 class="welcome-text en-text" style="display:none">Welcome to my World</h2>
     </header>
 
     <div class="piano-wrapper">
@@ -168,10 +215,9 @@
         <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
         <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
-        <!-- Tabs Navigation -->
         <nav class="tabs-nav">
             <button class="tab-btn active fa-text" onclick="openTab(event, 'tab-about')">درباره من</button>
-            <button class="tab-btn active en-text" onclick="openTab(event, 'tab-about')" style="display:none">About Me</button>
+            <button class="tab-btn en-text" onclick="openTab(event, 'tab-about')" style="display:none">About Me</button>
             
             <button class="tab-btn fa-text" onclick="openTab(event, 'tab-acting')">بازیگری</button>
             <button class="tab-btn en-text" onclick="openTab(event, 'tab-acting')" style="display:none">Acting</button>
@@ -184,17 +230,36 @@
         <div id="tab-about" class="tab-content active">
             <div class="bio-grid">
                 <div class="info-group">
-                    <div class="info-item"><span class="info-label fa-text">تاریخ تولد</span><span class="info-value en-text" style="display:none">April 18, 2019</span><span class="info-value fa-text" style="display:block">۲۹ فروردین ۱۳۹۸</span></div>
-                    <div class="info-item"><span class="info-label fa-text">قد</span><span class="info-value">۱۳۸ cm</span></div>
-                    <div class="info-item"><span class="info-label fa-text">رنگ پوست</span><span class="info-value fa-text">روشن</span><span class="info-value en-text" style="display:none">Fair</span></div>
+                    <div class="info-item">
+                        <span class="info-label fa-text">تاریخ تولد</span>
+                        <span class="info-value fa-text">۲۹ فروردین ۱۳۹۸</span>
+                        <span class="info-value en-text" style="display:none">April 18, 2019</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label fa-text">قد</span>
+                        <span class="info-value">۱۳۸ cm</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label fa-text">رنگ پوست</span>
+                        <span class="info-value fa-text">روشن</span>
+                        <span class="info-value en-text" style="display:none">Fair</span>
+                    </div>
                 </div>
                 <div class="info-group">
-                    <div class="info-item"><span class="info-label fa-text">زبان‌ها</span><span class="info-value fa-text">فارسی، انگلیسی، چینی</span><span class="info-value en-text" style="display:none">Persian, English, Chinese</span></div>
-                    <div class="info-item"><span class="info-label fa-text">مهارت‌های ورزشی</span><span class="info-value fa-text">شنا، دوچرخه‌سواری، بدمینتون، بسکتبال</span><span class="info-value en-text" style="display:none">Swimming, Cycling, Badminton, Basketball</span></div>
+                    <div class="info-item">
+                        <span class="info-label fa-text">زبان‌ها</span>
+                        <span class="info-value fa-text">فارسی، انگلیسی، چینی</span>
+                        <span class="info-value en-text" style="display:none">Persian, English, Chinese</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label fa-text">مهارت‌ها</span>
+                        <span class="info-value fa-text">شنا، دوچرخه‌سواری، بدمینتون، بسکتبال</span>
+                        <span class="info-value en-text" style="display:none">Swimming, Cycling, Badminton, Basketball</span>
+                    </div>
                 </div>
             </div>
-            <div class="quote-box fa-text">«من عاشق کشف شخصیت‌های پیچیده انسانی از طریق هنر هستم تا آن من را صیقل دهد.»</div>
-            <div class="quote-box en-text" style="display:none">"I am passionate about exploring complex human characters through art, as it shapes and refines who I am."</div>
+            <div class="quote-box fa-text">«من عاشق کشف شخصیت‌های پیچیده انسانی از طریق هنر هستم.»</div>
+            <div class="quote-box en-text" style="display:none">"I am passionate about exploring complex human characters through art."</div>
         </div>
 
         <!-- Tab 2: Acting -->
@@ -203,17 +268,15 @@
                 <div class="list-item"><strong>سریال مرز</strong><span>کارگردان: سید حاتمی (نقش اصلی کودک)</span></div>
                 <div class="list-item"><strong>سریال برتا</strong><span>کارگردان: آقای ترابی</span></div>
                 <div class="list-item"><strong>سریال نگین ارباب</strong><span>کارگردان: محمد حسین لطیفی</span></div>
-                <div class="list-item"><strong>فیلم کوتاه جشنواره‌ای</strong><span>کارگردان: ریحانه نبویان (نقش اصلی)</span></div>
-                <div class="list-item"><strong>فیلم جشنواره‌ای</strong><span>کارگردان: الهام محمدزاده</span></div>
-                <div class="list-item"><strong>فیلم جشنواره‌ای (کروماکی)</strong><span>کارگردان: محمود کریمی (نقش اصلی)</span></div>
-                <div class="list-item"><strong>موزیک ویدیو</strong><span>آقای روزبه بمانی (نقش کودکی)</span></div>
+                <div class="list-item"><strong>فیلم کوتاه جشنواره‌ای</strong><span>کارگردان: ریحانه نبویان</span></div>
+                <div class="list-item"><strong>موزیک ویدیو</strong><span>آقای روزبه بمانی</span></div>
             </div>
             <div class="en-text" style="display:none">
                 <div class="list-item"><strong>Series: Marz</strong><span>Dir: Seyed Hatami (Lead Child Role)</span></div>
                 <div class="list-item"><strong>Series: Berta</strong><span>Dir: Mr. Torabi</span></div>
                 <div class="list-item"><strong>Series: Negin Arbāb</strong><span>Dir: Mohammad Hossein Latifi</span></div>
-                <div class="list-item"><strong>Festival Short Film</strong><span>Dir: Reyhaneh Nobavian (Lead Role)</span></div>
-                <div class="list-item"><strong>Music Video</strong><span>Artist: Roozbeh Bemani (Child Role)</span></div>
+                <div class="list-item"><strong>Festival Short Film</strong><span>Dir: Reyhaneh Nobavian</span></div>
+                <div class="list-item"><strong>Music Video</strong><span>Artist: Roozbeh Bemani</span></div>
             </div>
         </div>
 
@@ -221,15 +284,13 @@
         <div id="tab-commercial" class="tab-content">
             <div class="fa-text">
                 <div class="list-item"><strong>برند کاله و ماجان</strong><span>تیزر تبلیغاتی و عکاسی</span></div>
-                <div class="list-item"><strong>برند آربیانا</strong><span>همکاری مستمر تبلیغاتی</span></div>
-                <div class="list-item"><strong>برندهای مختلف</strong><span>شکلات فرمند، دوو، آقای فرش، بیمه دی</span></div>
-                <div class="list-item"><strong>نخودی نمکی</strong><span>عکاسی صنعتی و تبلیغاتی</span></div>
+                <div class="list-item"><strong>برند آربیانا</strong><span>همکاری تبلیغاتی</span></div>
+                <div class="list-item"><strong>برندهای دیگر</strong><span>دوو، آقای فرش، بیمه دی</span></div>
             </div>
             <div class="en-text" style="display:none">
                 <div class="list-item"><strong>Kalleh & Majan</strong><span>Commercials & Photoshoots</span></div>
-                <div class="list-item"><strong>Arbiana</strong><span>Regular Commercial Collaborations</span></div>
-                <div class="list-item"><strong>Other Brands</strong><span>Formand, Daewoo, Aghaye Farsh, Diba Insurance</span></div>
-                <div class="list-item"><strong>Nakhodi Namaki</strong><span>Industrial Photography</span></div>
+                <div class="list-item"><strong>Arbiana</strong><span>Commercial Collaborations</span></div>
+                <div class="list-item"><strong>Other Brands</strong><span>Daewoo, Aghaye Farsh, Diba Insurance</span></div>
             </div>
         </div>
 
@@ -257,21 +318,17 @@
             const html = document.documentElement;
             const faElements = document.querySelectorAll('.fa-text');
             const enElements = document.querySelectorAll('.en-text');
-            const tabBtns = document.querySelectorAll('.tab-btn');
 
             if (html.dir === "rtl") {
                 html.dir = "ltr";
                 html.lang = "en";
                 faElements.forEach(el => el.style.display = 'none');
                 enElements.forEach(el => el.style.display = 'block');
-                // Reset active tab on lang switch to avoid visual glitches
-                document.querySelector('.tab-btn.active').click();
             } else {
                 html.dir = "rtl";
                 html.lang = "fa";
                 faElements.forEach(el => el.style.display = 'block');
                 enElements.forEach(el => el.style.display = 'none');
-                document.querySelector('.tab-btn.active').click();
             }
         }
 
@@ -280,12 +337,10 @@
             for (let i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove("active");
             }
-
             const tabButtons = document.getElementsByClassName("tab-btn");
             for (let i = 0; i < tabButtons.length; i++) {
                 tabButtons[i].classList.remove("active");
             }
-
             document.getElementById(tabId).classList.add("active");
             evt.currentTarget.classList.add("active");
         }

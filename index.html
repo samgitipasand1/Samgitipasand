@@ -7,19 +7,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root {
---bg: #000000;
---text: #ffffff;
---glass: rgba(255, 255, 255, 0.1);
---glass-border: rgba(255, 255, 255, 0.2);
---accent: #00d4ff;
+    --bg: #000000;
+    --text: #ffffff;
+    --glass: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --accent: #00d4ff;
 }
 
 [data-theme="light"] {
---bg: #f0f0f0;
---text: #1a1a1a;
---glass: rgba(0, 0, 0, 0.05);
---glass-border: rgba(0, 0, 0, 0.1);
---accent: #0071e3;
+    --bg: #f0f0f0;
+    --text: #1a1a1a;
+    --glass: rgba(0, 0, 0, 0.05);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --accent: #0071e3;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
@@ -27,220 +27,214 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahom
 
 /* --- دکمه‌های تنظیمات (ثابت در بالا سمت راست) --- */
 .top-controls {
-position: fixed;
-top: 20px;
-right: 20px;
-z-index: 2000;
-display: flex;
-gap: 10px;
-flex-direction: row-reverse;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    gap: 10px;
+    flex-direction: row-reverse;
 }
 
 html[dir="ltr"] .top-controls {
-right: 20px;
-left: auto;
+    right: 20px;
+    left: auto;
 }
 
 .btn-control {
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-color: var(--text);
-width: 45px;
-height: 45px;
-border-radius: 50%;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 0.9rem;
-font-weight: bold;
-box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .btn-control:hover {
-background: var(--accent);
-color: #000;
-transform: scale(1.1);
+    background: var(--accent);
+    color: #000;
+    transform: scale(1.1);
 }
 
 /* --- پیام خوش‌آمدگویی --- */
 .welcome-text {
-text-align: center;
-font-size: clamp(1.2rem, 3.5vw, 2rem);
-font-weight: 300;
-letter-spacing: 3px;
-margin: 80px 15px 10px;
-background: linear-gradient(to right, var(--text), var(--accent));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+    text-align: center;
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin: 80px 15px 10px;
+    background: linear-gradient(to right, var(--text), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* --- گالری پیانویی --- */
 .piano-wrapper {
-display: flex;
-width: 100%;
-height: 75vh;
-gap: 8px;
-padding: 10px;
+    display: flex;
+    width: 100%;
+    height: 75vh;
+    gap: 8px;
+    padding: 10px;
 }
 
 .piano-item {
-flex: 1;
-height: 100%;
-border-radius: 15px;
-overflow: hidden;
-position: relative;
-cursor: pointer;
-transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
-border: 1px solid var(--glass-border);
+    flex: 1;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
+    border: 1px solid var(--glass-border);
 }
 
 .piano-item img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.7s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
 }
 
 .piano-item:hover {
-flex: 6;
-border-radius: 20px;
+    flex: 6;
+    border-radius: 20px;
 }
 
 .piano-item:hover img {
-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 /* --- محتوا --- */
 .content-container {
-margin: -60px 20px 60px;
-background: var(--glass);
-backdrop-filter: blur(25px);
--webkit-backdrop-filter: blur(25px);
-border: 1px solid var(--glass-border);
-border-radius: 40px;
-padding: 50px 30px;
-text-align: center;
-position: relative;
-z-index: 10;
-max-width: 750px;
-margin-left: auto;
-margin-right: auto;
+    margin: -60px 20px 60px;
+    background: var(--glass);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 50px 30px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .actor-name {
-font-size: clamp(2rem, 6vw, 3.5rem);
-font-weight: 200;
-letter-spacing: 5px;
-text-transform: uppercase;
-margin-bottom: 25px;
-background: linear-gradient(to right, var(--text), var(--accent));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 200;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, var(--text), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* --- تب‌ها --- */
 .tabs-container {
-display: flex;
-justify-content: center;
-gap: 10px;
-flex-wrap: wrap;
-margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
 .tab-btn {
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-color: var(--text);
-padding: 12px 28px;
-border-radius: 30px;
-cursor: pointer;
-font-size: 0.95rem;
-font-family: inherit;
-transition: all 0.3s ease;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    color: var(--text);
+    padding: 12px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
 }
 
 .tab-btn:hover {
-border-color: var(--accent);
-transform: translateY(-2px);
-box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
 }
 
 .tab-btn.active {
-background: var(--accent);
-color: #000;
-border-color: var(--accent);
-font-weight: 600;
-box-shadow: 0 8px 25px rgba(0, 212, 255, 0.35);
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    font-weight: 600;
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.35);
 }
 
 .tab-content {
-display: none;
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-border-radius: 25px;
-padding: 30px 25px;
-line-height: 2;
-opacity: 0.9;
-font-size: 1.05rem;
-text-align: right;
+    display: none;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 30px 25px;
+    line-height: 2;
+    opacity: 0.9;
+    font-size: 1.05rem;
+    text-align: right;
 }
 
 html[dir="ltr"] .tab-content {
-text-align: left;
+    text-align: left;
 }
 
 .tab-content.active {
-display: block;
-animation: fadeIn 0.4s ease;
+    display: block;
+    animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .category-title {
-color: var(--accent);
-font-weight: 600;
-margin-top: 15px;
-margin-bottom: 5px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
-.category-title:first-child {
-margin-top: 0;
-}
-
-/* --- فوتر شبکه‌های اجتماعی --- */
 .social-footer {
-display: flex;
-justify-content: center;
-gap: 30px;
-margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 35px;
 }
 .social-footer a {
-color: var(--text);
-font-size: 2rem;
-transition: 0.3s;
+    color: var(--text);
+    font-size: 2rem;
+    transition: 0.3s;
 }
 .social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
 
-/* موبایل */
 @media (max-width: 768px) {
-.welcome-text { margin-top: 70px; }
-.piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
-.piano-item { border-radius: 0; }
-.top-controls { top: 10px; right: 10px; }
-.btn-control { width: 40px; height: 40px; font-size: 0.8rem; }
-.content-container { padding: 35px 18px; border-radius: 30px; }
-.tab-btn { padding: 10px 18px; font-size: 0.85rem; flex: 1 1 auto; }
-.tab-content { padding: 22px 16px; font-size: 0.95rem; }
+    .welcome-text { margin-top: 70px; }
+    .piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
+    .piano-item { border-radius: 0; }
+    .top-controls { top: 10px; right: 10px; }
+    .btn-control { width: 40px; height: 40px; font-size: 0.8rem; }
+    .content-container { padding: 35px 18px; border-radius: 30px; }
+    .tab-btn { padding: 10px 18px; font-size: 0.85rem; flex: 1 1 auto; }
+    .tab-content { padding: 22px 16px; font-size: 0.95rem; }
 }
 </style>
 </head>
@@ -248,11 +242,19 @@ transition: 0.3s;
 
 <!-- دکمه‌های کنترلی -->
 <div class="top-controls">
-<button class="btn-control" onclick="toggleLanguage()" id="langBtn" title="تغییر زبان">EN</button>
-<button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
-<i class="fas fa-moon"></i>
-</button>
+    <button class="btn-control" onclick="toggleLanguage()" id="langBtn" title="تغییر زبان">EN</button>
+    <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
+        <i class="fas fa-moon"></i>
+    </button>
+    <button class="btn-control" onclick="toggleMusic()" id="musicBtn" title="تغییر موزیک">
+        <i class="fas fa-music"></i>
+    </button>
 </div>
+
+<!-- المان صوتی -->
+<audio id="bg-audio" loop>
+    <source src="the_mountain-genetics-163878.mp3" type="audio/mpeg">
+</audio>
 
 <!-- پیام خوش‌آمدگویی -->
 <h2 class="welcome-text fa-text">به وب‌سایت من خوش آمدید</h2>
@@ -260,145 +262,140 @@ transition: 0.3s;
 
 <!-- گالری پیانویی -->
 <div class="piano-wrapper">
-<div class="piano-item"><img src="1sam.jpg"></div>
-<div class="piano-item"><img src="3sam.jpg"></div>
-<div class="piano-item"><img src="4sam.jpg"></div>
-<div class="piano-item"><img src="5sam.jpg"></div>
-<div class="piano-item"><img src="7sam.jpg"></div>
-<div class="piano-item"><img src="8sam.jpg"></div>
-<div class="piano-item"><img src="9sam.jpg"></div>
+    <div class="piano-item"><img src="1sam.jpg"></div>
+    <div class="piano-item"><img src="3sam.jpg"></div>
+    <div class="piano-item"><img src="4sam.jpg"></div>
+    <div class="piano-item"><img src="5sam.jpg"></div>
+    <div class="piano-item"><img src="7sam.jpg"></div>
+    <div class="piano-item"><img src="8sam.jpg"></div>
+    <div class="piano-item"><img src="9sam.jpg"></div>
 </div>
 
 <!-- محتوا -->
 <div class="content-container">
-<h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
-<h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
+    <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
+    <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
-<!-- تب‌ها -->
-<div class="tabs-container">
-<button class="tab-btn active" onclick="openTab(event, 'about')">
-<span class="fa-text">درباره من</span>
-<span class="en-text" style="display:none">About Me</span>
-</button>
-<button class="tab-btn" onclick="openTab(event, 'career')">
-<span class="fa-text">سریال‌ها و تیزرها</span>
-<span class="en-text" style="display:none">Series & Commercials</span>
-</button>
-<button class="tab-btn" onclick="openTab(event, 'skills')">
-<span class="fa-text">مهارت‌ها</span>
-<span class="en-text" style="display:none">Skills</span>
-</button>
-</div>
+    <!-- تب‌ها -->
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="openTab(event, 'about')">
+            <span class="fa-text">درباره من</span>
+            <span class="en-text" style="display:none">About Me</span>
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'career')">
+            <span class="fa-text">سریال‌ها و تیزرها</span>
+            <span class="en-text" style="display:none">Series & Commercials</span>
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'skills')">
+            <span class="fa-text">مهارت‌ها</span>
+            <span class="en-text" style="display:none">Skills</span>
+        </button>
+    </div>
 
-<!-- تب ۱: درباره من -->
-<div id="about" class="tab-content active">
-<div class="fa-text">
-من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
-متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>
-عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.
-</div>
-<div class="en-text" style="display:none">
-I am Sam Gitipasand; a child actor & model.<br>
-Born in 2019, started my professional career in 2022.<br>
-I love art, camera and performing, with experience working with various brands and projects.
-</div>
-</div>
+    <div id="about" class="tab-content active">
+        <div class="fa-text">من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.</div>
+        <div class="en-text" style="display:none">I am Sam Gitipasand; a child actor & model.<br>Born in 2019, started my professional career in 2022.<br>I love art, camera and performing, with experience working with various brands and projects.</div>
+    </div>
 
-<!-- تب ۲: سریال‌ها و تیزرها (اصلاح شده) -->
-<div id="career" class="tab-content">
-<div class="fa-text">
-<div class="category-title">سریال‌ها و فیلم‌ها:</div>
-سریال «مرز» به کارگردانی آقای سید حاتمی (در نقش اصلی کودک)<br>
-سریال تاریخی «نگین ارباب» به کارگردانی آقای محمد حسین لطیفی<br>
-سریال نمایش خانگی «برتا» به کارگردانی آقای ترابی<br>
-فیلم جشنواره در نقش اصلی به کارگردانی خانم ریحانه نبویان<br>
-فیلم جشنواره به کارگردانی خانم الهام محمدزاده<br>
-فیلم جشنواره به کارگردانی آقای اسدی پور<br>
-فیلم جشنواره (تکنیک کروماکی) در نقش اصلی به کارگردانی آقای محمود کریمی<br>
-بازی در موزیک ویدیو در نقش کودکی آقای روزبه بمانی
-<div class="category-title">تیزرها و تبلیغات:</div>
-بازی در تیزرهای تلویزیونی و سوشال مدیا برای برندهای مطرح: کاله، ماجان، آقای فرش، بیمه دی، آربیانا، شکلات فرمند و بینگو<br>
-همکاری با محصولات دوو<br>
-عکاسی صنعتی برای برند بین‌المللی «نخودی نمکی»<br>
-همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک
-</div>
-<div class="en-text" style="display:none">
-<div class="category-title">Series & Films:</div>
-"Marz" Series directed by Mr. Seyed Hatami (Leading Child Role)<br>
-"Negin-e-Arbab" Historical Series directed by Mr. Mohammad Hossein Latifi<br>
-"Berta" Home Video Series directed by Mr. Torabi<br>
-Festival Film (Leading Role) directed by Mrs. Reyhaneh Nabavian<br>
-Festival Film directed by Mrs. Elham Mohammadzadeh<br>
-Festival Film directed by Mr. Asadipour<br>
-Festival Film (Chroma Key Technique - Leading Role) directed by Mr. Mahmoud Karimi<br>
-Music Video appearance playing the childhood of Mr. Roozbeh Bemani
-<div class="category-title">Commercials & Modeling:</div>
-TV & Social Media Commercials for top brands: Kaleh, Majan, Mr. Farsh, Day Insurance, Arbiana, Farmand Chocolate, and Bingo<br>
-Collaboration with Daewoo products<br>
-Commercial photography for the international brand "Nokhodi Namaki"<br>
-Modeling collaboration with over 300 children's clothing brands
-</div>
-</div>
+    <div id="career" class="tab-content">
+        <div class="fa-text">
+            <div class="category-title">سریال‌ها و فیلم‌ها:</div>
+            سریال «مرز» به کارگردانی آقای سید حاتمی (در نقش اصلی کودک)<br>
+            سریال تاریخی «نگین ارباب» به کارگردانی آقای محمد حسین لطیفی<br>
+            سریال نمایش خانگی «برتا» به کارگردانی آقای ترابی<br>
+            فیلم جشنواره در نقش اصلی به کارگردانی خانم ریحانه نبویان<br>
+            فیلم جشنواره به کارگردانی خانم الهام محمدزاده<br>
+            فیلم جشنواره به کارگردانی آقای اسدی پور<br>
+            فیلم جشنواره (تکنیک کروماکی) در نقش اصلی به کارگردانی آقای محمود کریمی<br>
+            بازی در موزیک ویدیو در نقش کودکی آقای روزبه بمانی
+            <div class="category-title">تیزرها و تبلیغات:</div>
+            بازی در تیزرهای تلویزیونی و سوشال مدیا برای برندهای مطرح: کاله، ماجان، آقای فرش، بیمه دی، آربیانا، شکلات فرمند و بینگو<br>
+            همکاری با محصولات دوو<br>
+            عکاسی صنعتی برای برند بین‌المللی «نخودی نمکی»<br>
+            همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک
+        </div>
+        <div class="en-text" style="display:none">
+            <div class="category-title">Series & Films:</div>
+            "Marz" Series directed by Mr. Seyed Hatami (Leading Child Role)<br>
+            "Negin-e-Arbab" Historical Series directed by Mr. Mohammad Hossein Latifi<br>
+            "Berta" Home Video Series directed by Mr. Torabi<br>
+            Festival Film (Leading Role) directed by Mrs. Reyhaneh Nabavian<br>
+            Festival Film directed by Mrs. Elham Mohammadzadeh<br>
+            Festival Film directed by Mr. Asadipour<br>
+            Festival Film (Chroma Key Technique - Leading Role) directed by Mr. Mahmoud Karimi<br>
+            Music Video appearance playing the childhood of Mr. Roozbeh Bemani
+            <div class="category-title">Commercials & Modeling:</div>
+            TV & Social Media Commercials for top brands: Kaleh, Majan, Mr. Farsh, Day Insurance, Arbiana, Farmand Chocolate, and Bingo<br>
+            Collaboration with Daewoo products<br>
+            Commercial photography for the international brand "Nokhodi Namaki"<br>
+            Modeling collaboration with over 300 children's clothing brands
+        </div>
+    </div>
 
-<!-- تب ۳: مهارت‌ها (اصلاح شده) -->
-<div id="skills" class="tab-content">
-<div class="fa-text">
-مسلط به سه زبان انگلیسی، فارسی و چینی.<br>
-مسلط در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.
-</div>
-<div class="en-text" style="display:none">
-Fluent in three languages: English, Persian, and Chinese.<br>
-Skilled in sports: Cycling, Badminton, Swimming, Basketball, and Gymnastics.
-</div>
-</div>
+    <div id="skills" class="tab-content">
+        <div class="fa-text">مسلط به سه زبان انگلیسی، فارسی و چینی.<br>مسلط در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.</div>
+        <div class="en-text" style="display:none">Fluent in three languages: English, Persian, and Chinese.<br>Skilled in sports: Cycling, Badminton, Swimming, Basketball, and Gymnastics.</div>
+    </div>
 
-<!-- شبکه‌های اجتماعی -->
-<div class="social-footer">
-<a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
-<a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
+    <div class="social-footer">
+        <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
+        <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
 </div>
 
 <script>
-function toggleTheme() {
-const body = document.body;
-const btn = document.getElementById('themeBtn');
-if (body.getAttribute('data-theme') === 'light') {
-body.removeAttribute('data-theme');
-btn.innerHTML = '<i class="fas fa-moon"></i>';
-} else {
-body.setAttribute('data-theme', 'light');
-btn.innerHTML = '<i class="fas fa-sun"></i>';
+// کنترل موزیک
+function toggleMusic() {
+    const audio = document.getElementById('bg-audio');
+    const musicBtn = document.getElementById('musicBtn');
+    if (audio.paused) {
+        audio.play();
+        musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+        audio.pause();
+        musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+    }
 }
+
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById('themeBtn');
+    if (body.getAttribute('data-theme') === 'light') {
+        body.removeAttribute('data-theme');
+        btn.innerHTML = '<i class="fas fa-moon"></i>';
+    } else {
+        body.setAttribute('data-theme', 'light');
+        btn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
 }
 
 function toggleLanguage() {
-const html = document.documentElement;
-const langBtn = document.getElementById('langBtn');
-const faElements = document.querySelectorAll('.fa-text');
-const enElements = document.querySelectorAll('.en-text');
+    const html = document.documentElement;
+    const langBtn = document.getElementById('langBtn');
+    const faElements = document.querySelectorAll('.fa-text');
+    const enElements = document.querySelectorAll('.en-text');
 
-if (html.dir === "rtl") {
-html.dir = "ltr";
-html.lang = "en";
-langBtn.innerText = "FA";
-faElements.forEach(el => el.style.display = 'none');
-enElements.forEach(el => el.style.display = 'block');
-} else {
-html.dir = "rtl";
-html.lang = "fa";
-langBtn.innerText = "EN";
-faElements.forEach(el => el.style.display = 'block');
-enElements.forEach(el => el.style.display = 'none');
-}
+    if (html.dir === "rtl") {
+        html.dir = "ltr";
+        html.lang = "en";
+        langBtn.innerText = "FA";
+        faElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = 'block');
+    } else {
+        html.dir = "rtl";
+        html.lang = "fa";
+        langBtn.innerText = "EN";
+        faElements.forEach(el => el.style.display = 'block');
+        enElements.forEach(el => el.style.display = 'none');
+    }
 }
 
 function openTab(evt, tabName) {
-document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-document.getElementById(tabName).classList.add('active');
-evt.currentTarget.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    evt.currentTarget.classList.add('active');
 }
 </script>
 </body>

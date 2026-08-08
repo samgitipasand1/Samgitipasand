@@ -1,12 +1,10 @@
-html = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sam Gitipasand | Official Website</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<!-- تغییر: پیش‌بارگذاری عکس اول برای شروع سریع‌تر -->
-<link rel="preload" as="image" href="1sam.jpg" fetchpriority="high">
 <style>
 :root {
 --bg: #000000;
@@ -27,17 +25,22 @@ html = '''<!DOCTYPE html>
 * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
 body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
 
-/* --- دکمه‌های تنظیمات (گوشه بالا) --- */
+/* --- دکمه‌های تنظیمات (ثابت در بالا سمت راست) --- */
 .top-controls {
 position: fixed;
 top: 20px;
-right: 20px;   /* تغییر: همیشه بالا-راست می‌ماند */
+right: 20px; /* همیشه سمت راست می‌ماند */
 z-index: 2000;
 display: flex;
 gap: 10px;
+flex-direction: row-reverse; /* برای حفظ ترتیب دکمه‌ها در همه حال */
 }
 
-/* تغییر: این قانون حذف شد تا دکمه‌ها در حالت انگلیسی به چپ نروند */
+/* جلوگیری از جابجایی دکمه‌ها در حالت انگلیسی */
+html[dir="ltr"] .top-controls {
+right: 20px;
+left: auto;
+}
 
 .btn-control {
 background: var(--glass);
@@ -52,7 +55,8 @@ cursor: pointer;
 display: flex;
 align-items: center;
 justify-content: center;
-font-size: 1.1rem;
+font-size: 0.9rem;
+font-weight: bold;
 box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
@@ -62,26 +66,19 @@ color: #000;
 transform: scale(1.1);
 }
 
-/* تغییر: استایل اختصاصی دکمه زبان برای متن FA/EN */
-.btn-control.lang-btn {
-font-size: 0.85rem;
-font-weight: 700;
-letter-spacing: 0.5px;
-}
-
-/* --- پیام خوش‌آمدگویی (استایل آبی) --- */
+/* --- پیام خوش‌آمدگویی (با فاصله از دکمه‌ها) --- */
 .welcome-text {
 text-align: center;
 font-size: clamp(1.2rem, 3.5vw, 2rem);
 font-weight: 300;
 letter-spacing: 3px;
-margin: 95px 15px 5px;   /* تغییر: فاصله از بالا بیشتر شد تا زیر دکمه‌ها نیفتد */
+margin: 80px 15px 10px; /* افزایش فاصله بالا از 35 به 80 برای تداخل نکردن */
 background: linear-gradient(to right, var(--text), var(--accent));
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
 
-/* --- گالری پیانویی (بدون هیچ تغییری) --- */
+/* --- گالری پیانویی --- */
 .piano-wrapper {
 display: flex;
 width: 100%;
@@ -232,15 +229,14 @@ transition: 0.3s;
 
 /* موبایل */
 @media (max-width: 768px) {
+.welcome-text { margin-top: 70px; } /* فاصله در موبایل */
 .piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
 .piano-item { border-radius: 0; }
-.top-controls { top: 10px; }
-.btn-control { width: 40px; height: 40px; font-size: 1rem; }
+.top-controls { top: 10px; right: 10px; }
+.btn-control { width: 40px; height: 40px; font-size: 0.8rem; }
 .content-container { padding: 35px 18px; border-radius: 30px; }
 .tab-btn { padding: 10px 18px; font-size: 0.85rem; flex: 1 1 auto; }
 .tab-content { padding: 22px 16px; font-size: 0.95rem; }
-/* تغییر: در موبایل هم متن خوش‌آمدگویی زیر دکمه‌ها می‌رود */
-.welcome-text { margin-top: 80px; }
 }
 </style>
 </head>
@@ -248,25 +244,25 @@ transition: 0.3s;
 
 <!-- دکمه‌های کنترلی -->
 <div class="top-controls">
-<button class="btn-control lang-btn" onclick="toggleLanguage()" id="langBtn" title="تغییر زبان">FA</button>
+<button class="btn-control" onclick="toggleLanguage()" id="langBtn" title="تغییر زبان">EN</button>
 <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
 <i class="fas fa-moon"></i>
 </button>
 </div>
 
-<!-- پیام خوش‌آمدگویی (بالای گالری) -->
+<!-- پیام خوش‌آمدگویی -->
 <h2 class="welcome-text fa-text">به وب‌سایت من خوش آمدید</h2>
 <h2 class="welcome-text en-text" style="display:none">Welcome to my website</h2>
 
-<!-- گالری پیانویی (ظاهر دست‌نخورده — فقط ویژگی‌های لود اضافه شد) -->
+<!-- گالری پیانویی -->
 <div class="piano-wrapper">
-<div class="piano-item"><img src="1sam.jpg" fetchpriority="high" decoding="async"></div>
-<div class="piano-item"><img src="3sam.jpg" loading="lazy" decoding="async"></div>
-<div class="piano-item"><img src="4sam.jpg" loading="lazy" decoding="async"></div>
-<div class="piano-item"><img src="5sam.jpg" loading="lazy" decoding="async"></div>
-<div class="piano-item"><img src="7sam.jpg" loading="lazy" decoding="async"></div>
-<div class="piano-item"><img src="8sam.jpg" loading="lazy" decoding="async"></div>
-<div class="piano-item"><img src="9sam.jpg" loading="lazy" decoding="async"></div>
+<div class="piano-item"><img src="1sam.jpg"></div>
+<div class="piano-item"><img src="3sam.jpg"></div>
+<div class="piano-item"><img src="4sam.jpg"></div>
+<div class="piano-item"><img src="5sam.jpg"></div>
+<div class="piano-item"><img src="7sam.jpg"></div>
+<div class="piano-item"><img src="8sam.jpg"></div>
+<div class="piano-item"><img src="9sam.jpg"></div>
 </div>
 
 <!-- محتوا -->
@@ -290,53 +286,22 @@ transition: 0.3s;
 </button>
 </div>
 
-<!-- تب ۱: درباره من -->
+<!-- محتوای تب‌ها (همان قبلی) -->
 <div id="about" class="tab-content active">
-<div class="fa-text">
-من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
-متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>
-عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.
-</div>
-<div class="en-text" style="display:none">
-I am Sam Gitipasand; a child actor & model.<br>
-Born in 2019, started my professional career in 2022.<br>
-I love art, camera and performing, with experience working with various brands and projects.
-</div>
+<div class="fa-text">من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.</div>
+<div class="en-text" style="display:none">I am Sam Gitipasand; a child actor & model.<br>Born in 2019, started my professional career in 2022.<br>I love art, camera and performing, with experience working with various brands and projects.</div>
 </div>
 
-<!-- تب ۲: سریال‌ها و تیزرها -->
 <div id="career" class="tab-content">
-<div class="fa-text">
-<div class="category-title">سریال‌ها</div>
-مرز، نگین ارباب، برتا
-<div class="category-title" style="margin-top:15px">تیزرها</div>
-کاله، ماجان، آقای فرش، بیمه دی، دوو
-</div>
-<div class="en-text" style="display:none">
-<div class="category-title">TV Series</div>
-Marz, Negin-e-Arbab, Berta
-<div class="category-title" style="margin-top:15px">Commercials</div>
-Kaleh, Majan, Mr. Farsh, Day Insurance, Daewoo
-</div>
+<div class="fa-text"><div class="category-title">سریال‌ها</div>مرز، نگین ارباب، برتا<div class="category-title" style="margin-top:15px">تیزرها</div>کاله، ماجان، آقای فرش، بیمه دی، دوو</div>
+<div class="en-text" style="display:none"><div class="category-title">TV Series</div>Marz, Negin-e-Arbab, Berta<div class="category-title" style="margin-top:15px">Commercials</div>Kaleh, Majan, Mr. Farsh, Day Insurance, Daewoo</div>
 </div>
 
-<!-- تب ۳: مهارت‌ها -->
 <div id="skills" class="tab-content">
-<div class="fa-text">
-<div class="category-title">زبان‌ها</div>
-فارسی، انگلیسی، چینی
-<div class="category-title" style="margin-top:15px">ورزش‌ها</div>
-شنا، بسکتبال، ژیمناستیک
-</div>
-<div class="en-text" style="display:none">
-<div class="category-title">Languages</div>
-Persian, English, Chinese
-<div class="category-title" style="margin-top:15px">Sports</div>
-Swimming, Basketball, Gymnastics
-</div>
+<div class="fa-text"><div class="category-title">زبان‌ها</div>فارسی، انگلیسی، چینی<div class="category-title" style="margin-top:15px">ورزش‌ها</div>شنا، بسکتبال، ژیمناستیک</div>
+<div class="en-text" style="display:none"><div class="category-title">Languages</div>Persian, English, Chinese<div class="category-title" style="margin-top:15px">Sports</div>Swimming, Basketball, Gymnastics</div>
 </div>
 
-<!-- شبکه‌های اجتماعی -->
 <div class="social-footer">
 <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
 <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -359,22 +324,22 @@ btn.innerHTML = '<i class="fas fa-sun"></i>';
 
 function toggleLanguage() {
 const html = document.documentElement;
+const langBtn = document.getElementById('langBtn');
 const faElements = document.querySelectorAll('.fa-text');
 const enElements = document.querySelectorAll('.en-text');
-const langBtn = document.getElementById('langBtn');
 
 if (html.dir === "rtl") {
 html.dir = "ltr";
 html.lang = "en";
+langBtn.innerText = "FA";
 faElements.forEach(el => el.style.display = 'none');
 enElements.forEach(el => el.style.display = 'block');
-langBtn.textContent = 'EN';   /* تغییر: در حالت انگلیسی دکمه EN می‌شود */
 } else {
 html.dir = "rtl";
 html.lang = "fa";
+langBtn.innerText = "EN";
 faElements.forEach(el => el.style.display = 'block');
 enElements.forEach(el => el.style.display = 'none');
-langBtn.textContent = 'FA';   /* تغییر: در حالت فارسی دکمه FA می‌شود */
 }
 }
 
@@ -386,10 +351,4 @@ evt.currentTarget.classList.add('active');
 }
 </script>
 </body>
-</html>'''
-
-with open('/mnt/data/Sam_Portfolio_v2.html', 'w', encoding='utf-8') as f:
-    f.write(html)
-
-print("فایل ذخیره شد ✅")
-print("اندازه:", len(html.encode('utf-8')), "bytes")
+</html>

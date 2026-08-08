@@ -29,14 +29,13 @@ body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahom
 .top-controls {
 position: fixed;
 top: 20px;
-right: 20px; /* همیشه سمت راست می‌ماند */
+right: 20px;
 z-index: 2000;
 display: flex;
 gap: 10px;
-flex-direction: row-reverse; /* برای حفظ ترتیب دکمه‌ها در همه حال */
+flex-direction: row-reverse;
 }
 
-/* جلوگیری از جابجایی دکمه‌ها در حالت انگلیسی */
 html[dir="ltr"] .top-controls {
 right: 20px;
 left: auto;
@@ -66,13 +65,13 @@ color: #000;
 transform: scale(1.1);
 }
 
-/* --- پیام خوش‌آمدگویی (با فاصله از دکمه‌ها) --- */
+/* --- پیام خوش‌آمدگویی --- */
 .welcome-text {
 text-align: center;
 font-size: clamp(1.2rem, 3.5vw, 2rem);
 font-weight: 300;
 letter-spacing: 3px;
-margin: 80px 15px 10px; /* افزایش فاصله بالا از 35 به 80 برای تداخل نکردن */
+margin: 80px 15px 10px;
 background: linear-gradient(to right, var(--text), var(--accent));
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
@@ -210,7 +209,12 @@ to { opacity: 1; transform: translateY(0); }
 .category-title {
 color: var(--accent);
 font-weight: 600;
+margin-top: 15px;
 margin-bottom: 5px;
+}
+
+.category-title:first-child {
+margin-top: 0;
 }
 
 /* --- فوتر شبکه‌های اجتماعی --- */
@@ -229,7 +233,7 @@ transition: 0.3s;
 
 /* موبایل */
 @media (max-width: 768px) {
-.welcome-text { margin-top: 70px; } /* فاصله در موبایل */
+.welcome-text { margin-top: 70px; }
 .piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
 .piano-item { border-radius: 0; }
 .top-controls { top: 10px; right: 10px; }
@@ -286,22 +290,69 @@ transition: 0.3s;
 </button>
 </div>
 
-<!-- محتوای تب‌ها (همان قبلی) -->
+<!-- تب ۱: درباره من -->
 <div id="about" class="tab-content active">
-<div class="fa-text">من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.</div>
-<div class="en-text" style="display:none">I am Sam Gitipasand; a child actor & model.<br>Born in 2019, started my professional career in 2022.<br>I love art, camera and performing, with experience working with various brands and projects.</div>
+<div class="fa-text">
+من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
+متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>
+عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.
+</div>
+<div class="en-text" style="display:none">
+I am Sam Gitipasand; a child actor & model.<br>
+Born in 2019, started my professional career in 2022.<br>
+I love art, camera and performing, with experience working with various brands and projects.
+</div>
 </div>
 
+<!-- تب ۲: سریال‌ها و تیزرها (اصلاح شده) -->
 <div id="career" class="tab-content">
-<div class="fa-text"><div class="category-title">سریال‌ها</div>مرز، نگین ارباب، برتا<div class="category-title" style="margin-top:15px">تیزرها</div>کاله، ماجان، آقای فرش، بیمه دی، دوو</div>
-<div class="en-text" style="display:none"><div class="category-title">TV Series</div>Marz, Negin-e-Arbab, Berta<div class="category-title" style="margin-top:15px">Commercials</div>Kaleh, Majan, Mr. Farsh, Day Insurance, Daewoo</div>
+<div class="fa-text">
+<div class="category-title">سریال‌ها و فیلم‌ها:</div>
+سریال «مرز» به کارگردانی آقای سید حاتمی (در نقش اصلی کودک)<br>
+سریال تاریخی «نگین ارباب» به کارگردانی آقای محمد حسین لطیفی<br>
+سریال نمایش خانگی «برتا» به کارگردانی آقای ترابی<br>
+فیلم جشنواره در نقش اصلی به کارگردانی خانم ریحانه نبویان<br>
+فیلم جشنواره به کارگردانی خانم الهام محمدزاده<br>
+فیلم جشنواره به کارگردانی آقای اسدی پور<br>
+فیلم جشنواره (تکنیک کروماکی) در نقش اصلی به کارگردانی آقای محمود کریمی<br>
+بازی در موزیک ویدیو در نقش کودکی آقای روزبه بمانی
+<div class="category-title">تیزرها و تبلیغات:</div>
+بازی در تیزرهای تلویزیونی و سوشال مدیا برای برندهای مطرح: کاله، ماجان، آقای فرش، بیمه دی، آربیانا، شکلات فرمند و بینگو<br>
+همکاری با محصولات دوو<br>
+عکاسی صنعتی برای برند بین‌المللی «نخودی نمکی»<br>
+همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک
+</div>
+<div class="en-text" style="display:none">
+<div class="category-title">Series & Films:</div>
+"Marz" Series directed by Mr. Seyed Hatami (Leading Child Role)<br>
+"Negin-e-Arbab" Historical Series directed by Mr. Mohammad Hossein Latifi<br>
+"Berta" Home Video Series directed by Mr. Torabi<br>
+Festival Film (Leading Role) directed by Mrs. Reyhaneh Nabavian<br>
+Festival Film directed by Mrs. Elham Mohammadzadeh<br>
+Festival Film directed by Mr. Asadipour<br>
+Festival Film (Chroma Key Technique - Leading Role) directed by Mr. Mahmoud Karimi<br>
+Music Video appearance playing the childhood of Mr. Roozbeh Bemani
+<div class="category-title">Commercials & Modeling:</div>
+TV & Social Media Commercials for top brands: Kaleh, Majan, Mr. Farsh, Day Insurance, Arbiana, Farmand Chocolate, and Bingo<br>
+Collaboration with Daewoo products<br>
+Commercial photography for the international brand "Nokhodi Namaki"<br>
+Modeling collaboration with over 300 children's clothing brands
+</div>
 </div>
 
+<!-- تب ۳: مهارت‌ها (اصلاح شده) -->
 <div id="skills" class="tab-content">
-<div class="fa-text"><div class="category-title">زبان‌ها</div>فارسی، انگلیسی، چینی<div class="category-title" style="margin-top:15px">ورزش‌ها</div>شنا، بسکتبال، ژیمناستیک</div>
-<div class="en-text" style="display:none"><div class="category-title">Languages</div>Persian, English, Chinese<div class="category-title" style="margin-top:15px">Sports</div>Swimming, Basketball, Gymnastics</div>
+<div class="fa-text">
+مسلط به سه زبان انگلیسی، فارسی و چینی.<br>
+مسلط در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.
+</div>
+<div class="en-text" style="display:none">
+Fluent in three languages: English, Persian, and Chinese.<br>
+Skilled in sports: Cycling, Badminton, Swimming, Basketball, and Gymnastics.
+</div>
 </div>
 
+<!-- شبکه‌های اجتماعی -->
 <div class="social-footer">
 <a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
 <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>

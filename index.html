@@ -97,20 +97,20 @@ html[dir="ltr"] .top-controls {
     height: 75vh;
     gap: 8px;
     padding: 10px;
-    perspective: 1000px; /* ایجاد عمق سه‌بعدی برای شبیه‌سازی کلاویه‌ها */
+    perspective: 1000px;
 }
 
 .piano-item {
     flex: 1;
     height: 100%;
-    border-radius: 0 0 15px 15px; /* لبه‌های گرد پایین کلاویه */
+    border-radius: 0 0 15px 15px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s, transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
     border: 1px solid var(--glass-border);
-    border-top: none; /* اتصال به بالای پیانو */
-    transform-origin: center top; /* چرخش و حرکت از لولای بالایی مثل کلاویه واقعی */
+    border-top: none;
+    transform-origin: center top;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
@@ -124,7 +124,7 @@ html[dir="ltr"] .top-controls {
 .piano-item:hover {
     flex: 6;
     border-radius: 0 0 20px 20px;
-    transform: rotateX(0deg) translateY(0); /* خروج از افکت کلید فشرده هنگام هاور */
+    transform: rotateX(0deg) translateY(0);
 }
 
 .piano-item:hover img {
@@ -144,7 +144,6 @@ html[dir="ltr"] .top-controls {
 .piano-wrapper.music-playing .piano-item:nth-child(6) { animation-delay: 1.5s; }
 .piano-wrapper.music-playing .piano-item:nth-child(7) { animation-delay: 1.8s; }
 
-/* انیمیشن واقعی فشرده شدن کلاویه (حرکت دورانی به عقب و پایین رفتن کلید) */
 @keyframes pianoKeyDown {
     0%, 100% {
         transform: rotateX(0deg) translateY(0);
@@ -152,9 +151,9 @@ html[dir="ltr"] .top-controls {
         filter: brightness(1);
     }
     45% {
-        transform: rotateX(-5deg) translateY(6px) translateZ(-10px); /* زاویه گرفتن کلاویه به سمت داخل پیانو */
+        transform: rotateX(-5deg) translateY(6px) translateZ(-10px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 12px var(--key-shadow);
-        filter: brightness(0.9); /* تاریک شدن ملایم در اثر فرو رفتن در سایه */
+        filter: brightness(0.9);
     }
     55% {
         transform: rotateX(-5deg) translateY(6px) translateZ(-10px);
@@ -262,6 +261,36 @@ html[dir="ltr"] .tab-content {
     margin-bottom: 5px;
 }
 
+/* --- گالری پشت صحنه --- */
+.backstage-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.backstage-gallery a {
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.04);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+.backstage-gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.backstage-gallery a:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
 .social-footer {
     display: flex;
     justify-content: center;
@@ -300,6 +329,11 @@ html[dir="ltr"] .tab-content {
     .piano-wrapper.music-playing .piano-item {
         animation-duration: 2.5s;
     }
+
+    .backstage-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
 }
 </style>
 </head>
@@ -327,13 +361,13 @@ html[dir="ltr"] .tab-content {
 
 <!-- گالری پیانویی -->
 <div class="piano-wrapper" id="pianoWrapper">
-    <div class="piano-item"><img src="1sam.jpg" alt="Sam photo 1"></div>
-    <div class="piano-item"><img src="3sam.jpg" alt="Sam photo 2"></div>
-    <div class="piano-item"><img src="4sam.jpg" alt="Sam photo 3"></div>
-    <div class="piano-item"><img src="5sam.jpg" alt="Sam photo 4"></div>
-    <div class="piano-item"><img src="7sam.jpg" alt="Sam photo 5"></div>
-    <div class="piano-item"><img src="8sam.jpg" alt="Sam photo 6"></div>
-    <div class="piano-item"><img src="9sam.jpg" alt="Sam photo 7"></div>
+    <div class="piano-item"><img src="1sam.jpg" alt="Sam photo 1" loading="lazy" decoding="async"></div>
+    <div class="piano-item"><img src="3sam.jpg" alt="Sam photo 2" loading="lazy" decoding="async"></div>
+    <div class="piano-item"><img src="4sam.jpg" alt="Sam photo 3" loading="lazy" decoding="async"></div>
+    <div class="piano-item"><img src="5sam.jpg" alt="Sam photo 4" loading="lazy" decoding="async"></div>
+    <div class="piano-item"><img src="7sam.jpg" alt="Sam photo 5" loading="lazy" decoding="async"></div>
+    <div class="piano-item"><img src="8sam.jpg" alt="Sam photo 6" loading="lazy" decoding="async"></div>
+    <div class="piano-item"><img src="9sam.jpg" alt="Sam photo 7" loading="lazy" decoding="async"></div>
 </div>
 
 <!-- محتوا -->
@@ -354,6 +388,10 @@ html[dir="ltr"] .tab-content {
         <button class="tab-btn" onclick="openTab(event, 'skills')">
             <span class="fa-text">مهارت‌ها</span>
             <span class="en-text" style="display:none">Skills</span>
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'backstage')">
+            <span class="fa-text">پشت صحنه نگین ارباب</span>
+            <span class="en-text" style="display:none">Negin-e-Arbab Backstage</span>
         </button>
     </div>
 
@@ -400,6 +438,41 @@ html[dir="ltr"] .tab-content {
     <div id="skills" class="tab-content">
         <div class="fa-text">مسلط به سه زبان انگلیسی، فارسی و چینی.<br>مسلط در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.</div>
         <div class="en-text" style="display:none">Fluent in three languages: English, Persian, and Chinese.<br>Skilled in sports: Cycling, Badminton, Swimming, Basketball, and Gymnastics.</div>
+    </div>
+
+    <!-- تب جدید پشت صحنه -->
+    <div id="backstage" class="tab-content">
+        <div class="fa-text">
+            <div class="category-title">پشت صحنه سریال نگین ارباب</div>
+            این بخش مخصوص عکس‌های پشت صحنه سریال «نگین ارباب» است.
+            <div class="backstage-gallery">
+                <a href="s1.jpg" target="_blank"><img src="s1.jpg" alt="Backstage photo 1" loading="lazy" decoding="async"></a>
+                <a href="s2.jpg" target="_blank"><img src="s2.jpg" alt="Backstage photo 2" loading="lazy" decoding="async"></a>
+                <a href="s3.jpg" target="_blank"><img src="s3.jpg" alt="Backstage photo 3" loading="lazy" decoding="async"></a>
+                <a href="s4.jpg" target="_blank"><img src="s4.jpg" alt="Backstage photo 4" loading="lazy" decoding="async"></a>
+                <a href="s5.jpg" target="_blank"><img src="s5.jpg" alt="Backstage photo 5" loading="lazy" decoding="async"></a>
+                <a href="s6.jpg" target="_blank"><img src="s6.jpg" alt="Backstage photo 6" loading="lazy" decoding="async"></a>
+                <a href="s7.jpg" target="_blank"><img src="s7.jpg" alt="Backstage photo 7" loading="lazy" decoding="async"></a>
+                <a href="s8.jpg" target="_blank"><img src="s8.jpg" alt="Backstage photo 8" loading="lazy" decoding="async"></a>
+                <a href="s9.jpg" target="_blank"><img src="s9.jpg" alt="Backstage photo 9" loading="lazy" decoding="async"></a>
+            </div>
+        </div>
+
+        <div class="en-text" style="display:none">
+            <div class="category-title">Negin-e-Arbab Backstage</div>
+            This section is dedicated to backstage photos from the series "Negin-e-Arbab".
+            <div class="backstage-gallery">
+                <a href="s1.jpg" target="_blank"><img src="s1.jpg" alt="Backstage photo 1" loading="lazy" decoding="async"></a>
+                <a href="s2.jpg" target="_blank"><img src="s2.jpg" alt="Backstage photo 2" loading="lazy" decoding="async"></a>
+                <a href="s3.jpg" target="_blank"><img src="s3.jpg" alt="Backstage photo 3" loading="lazy" decoding="async"></a>
+                <a href="s4.jpg" target="_blank"><img src="s4.jpg" alt="Backstage photo 4" loading="lazy" decoding="async"></a>
+                <a href="s5.jpg" target="_blank"><img src="s5.jpg" alt="Backstage photo 5" loading="lazy" decoding="async"></a>
+                <a href="s6.jpg" target="_blank"><img src="s6.jpg" alt="Backstage photo 6" loading="lazy" decoding="async"></a>
+                <a href="s7.jpg" target="_blank"><img src="s7.jpg" alt="Backstage photo 7" loading="lazy" decoding="async"></a>
+                <a href="s8.jpg" target="_blank"><img src="s8.jpg" alt="Backstage photo 8" loading="lazy" decoding="async"></a>
+                <a href="s9.jpg" target="_blank"><img src="s9.jpg" alt="Backstage photo 9" loading="lazy" decoding="async"></a>
+            </div>
+        </div>
     </div>
 
     <div class="social-footer">

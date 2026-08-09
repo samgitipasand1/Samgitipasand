@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sam Gitipasand | Official Website</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <style>
 :root {
 --bg: #000000;
@@ -146,12 +147,8 @@ transform: rotateX(0deg) translateY(0);
 box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0px var(--key-shadow);
 filter: brightness(1);
 }
-45% {
-transform: rotateX(-5deg) translateY(6px) translateZ(-10px);
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 12px var(--key-shadow);
-filter: brightness(0.9);
-}
-55% {
+
+45%, 55% {
 transform: rotateX(-5deg) translateY(6px) translateZ(-10px);
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 12px var(--key-shadow);
 filter: brightness(0.9);
@@ -244,8 +241,15 @@ animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: translateY(0); }
+from {
+opacity: 0;
+transform: translateY(12px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 .category-title {
@@ -303,11 +307,30 @@ transform: translateY(-5px);
 }
 
 @media (max-width: 768px) {
-.welcome-text { margin-top: 70px; }
-.piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
-.piano-item { border-radius: 0 0 8px 8px; }
-.top-controls { top: 10px; right: 10px; }
-.btn-control { width: 40px; height: 40px; font-size: 0.8rem; }
+.welcome-text {
+margin-top: 70px;
+}
+
+.piano-wrapper {
+height: 50vh;
+gap: 4px;
+padding: 5px;
+}
+
+.piano-item {
+border-radius: 0 0 8px 8px;
+}
+
+.top-controls {
+top: 10px;
+right: 10px;
+}
+
+.btn-control {
+width: 40px;
+height: 40px;
+font-size: 0.8rem;
+}
 
 .content-container {
 margin: 20px auto 45px;
@@ -316,8 +339,16 @@ border-radius: 30px;
 width: calc(100% - 20px);
 }
 
-.tab-btn { padding: 10px 18px; font-size: 0.85rem; flex: 1 1 auto; }
-.tab-content { padding: 22px 16px; font-size: 0.95rem; }
+.tab-btn {
+padding: 10px 18px;
+font-size: 0.85rem;
+flex: 1 1 auto;
+}
+
+.tab-content {
+padding: 22px 16px;
+font-size: 0.95rem;
+}
 
 .piano-wrapper.music-playing .piano-item {
 animation-duration: 2.5s;
@@ -330,13 +361,16 @@ gap: 10px;
 }
 </style>
 </head>
+
 <body>
 
 <div class="top-controls">
 <button class="btn-control" onclick="toggleLanguage()" id="langBtn" title="تغییر زبان">EN</button>
+
 <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
 <i class="fas fa-moon"></i>
 </button>
+
 <button class="btn-control" onclick="toggleMusic()" id="musicBtn" title="تغییر موزیک">
 <i class="fas fa-music"></i>
 </button>
@@ -360,43 +394,67 @@ gap: 10px;
 </div>
 
 <div class="content-container">
+
 <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
 <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
 <div class="tabs-container">
+
 <button class="tab-btn active" onclick="openTab(event, 'about')">
 <span class="fa-text">درباره من</span>
 <span class="en-text" style="display:none">About Me</span>
 </button>
+
 <button class="tab-btn" onclick="openTab(event, 'career')">
 <span class="fa-text">سریال‌ها و تیزرها</span>
 <span class="en-text" style="display:none">Series & Commercials</span>
 </button>
+
 <button class="tab-btn" onclick="openTab(event, 'skills')">
 <span class="fa-text">مهارت‌ها</span>
 <span class="en-text" style="display:none">Skills</span>
 </button>
+
 <button class="tab-btn" onclick="openTab(event, 'backstage')">
 <span class="fa-text">پشت صحنه نگین ارباب</span>
 <span class="en-text" style="display:none">Negin-e-Arbab Backstage</span>
 </button>
+
 <button class="tab-btn" onclick="openTab(event, 'berta-backstage')">
 <span class="fa-text">پشت صحنه سریال برتا</span>
 <span class="en-text" style="display:none">Berta Series Backstage</span>
 </button>
+
 <button class="tab-btn" onclick="openTab(event, 'marz-backstage')">
 <span class="fa-text">پشت صحنه سریال مرز</span>
 <span class="en-text" style="display:none">Marz Series Backstage</span>
 </button>
+
+<!-- تب جدید موزیک ویدیو -->
+<button class="tab-btn" onclick="openTab(event, 'music-video')">
+<span class="fa-text">موزیک ویدیو</span>
+<span class="en-text" style="display:none">Music Video</span>
+</button>
+
 <button class="tab-btn" onclick="openTab(event, 'festival-backstage')">
 <span class="fa-text">پشت صحنه فیلم‌های جشنواره‌ای</span>
 <span class="en-text" style="display:none">Festival Films Backstage</span>
 </button>
+
 </div>
 
 <div id="about" class="tab-content active">
-<div class="fa-text">من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.</div>
-<div class="en-text" style="display:none">I am Sam Gitipasand; a child actor & model.<br>Born in 2019, started my professional career in 2022.<br>I love art, camera and performing, with experience working with various brands and projects.</div>
+<div class="fa-text">
+من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
+متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>
+عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.
+</div>
+
+<div class="en-text" style="display:none">
+I am Sam Gitipasand; a child actor & model.<br>
+Born in 2019, started my professional career in 2022.<br>
+I love art, camera and performing, with experience working with various brands and projects.
+</div>
 </div>
 
 <div id="career" class="tab-content">
@@ -410,12 +468,14 @@ gap: 10px;
 فیلم جشنواره به کارگردانی آقای اسدی پور<br>
 فیلم جشنواره (تکنیک کروماکی) در نقش اصلی به کارگردانی آقای محمود کریمی<br>
 بازی در موزیک ویدیو در نقش کودکی آقای روزبه بمانی
+
 <div class="category-title">تیزرها و تبلیغات:</div>
 بازی در تیزرهای تلویزیونی و سوشال مدیا برای برندهای مطرح: کاله، ماجان، آقای فرش، بیمه دی، آربیانا، شکلات فرمند و بینگو<br>
 همکاری با محصولات دوو<br>
 عکاسی صنعتی برای برند بین‌المللی «نخودی نمکی»<br>
 همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک
 </div>
+
 <div class="en-text" style="display:none">
 <div class="category-title">Series & Films:</div>
 "Marz" Series directed by Mr. Seyed Hatami (Leading Child Role)<br>
@@ -426,6 +486,7 @@ Festival Film directed by Mrs. Elham Mohammadzadeh<br>
 Festival Film directed by Mr. Asadipour<br>
 Festival Film (Chroma Key Technique - Leading Role) directed by Mr. Mahmoud Karimi<br>
 Music Video appearance playing the childhood of Mr. Roozbeh Bemani
+
 <div class="category-title">Commercials & Modeling:</div>
 TV & Social Media Commercials for top brands: Kaleh, Majan, Mr. Farsh, Day Insurance, Arbiana, Farmand Chocolate, and Bingo<br>
 Collaboration with Daewoo products<br>
@@ -435,14 +496,23 @@ Modeling collaboration with over 300 children's clothing brands
 </div>
 
 <div id="skills" class="tab-content">
-<div class="fa-text">مسلط به سه زبان انگلیسی، فارسی و چینی.<br>مسلط در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.</div>
-<div class="en-text" style="display:none">Fluent in three languages: English, Persian, and Chinese.<br>Skilled in sports: Cycling, Badminton, Swimming, Basketball, and Gymnastics.</div>
+<div class="fa-text">
+مسلط به سه زبان انگلیسی، فارسی و چینی.<br>
+مسلط در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.
+</div>
+
+<div class="en-text" style="display:none">
+Fluent in three languages: English, Persian, and Chinese.<br>
+Skilled in sports: Cycling, Badminton, Swimming, Basketball, and Gymnastics.
+</div>
 </div>
 
 <div id="backstage" class="tab-content">
+
 <div class="fa-text">
 <div class="category-title">پشت صحنه سریال نگین ارباب</div>
 این بخش مخصوص عکس‌های پشت صحنه سریال «نگین ارباب» است.
+
 <div class="backstage-gallery">
 <a href="s1.jpg" target="_blank"><img src="s1.jpg" alt="Backstage photo 1" loading="lazy" decoding="async"></a>
 <a href="s2.jpg" target="_blank"><img src="s2.jpg" alt="Backstage photo 2" loading="lazy" decoding="async"></a>
@@ -454,9 +524,11 @@ Modeling collaboration with over 300 children's clothing brands
 <a href="s8.jpg" target="_blank"><img src="s8.jpg" alt="Backstage photo 8" loading="lazy" decoding="async"></a>
 </div>
 </div>
+
 <div class="en-text" style="display:none">
 <div class="category-title">Negin-e-Arbab Backstage</div>
 This section is dedicated to backstage photos from the series "Negin-e-Arbab".
+
 <div class="backstage-gallery">
 <a href="s1.jpg" target="_blank"><img src="s1.jpg" alt="Backstage photo 1" loading="lazy" decoding="async"></a>
 <a href="s2.jpg" target="_blank"><img src="s2.jpg" alt="Backstage photo 2" loading="lazy" decoding="async"></a>
@@ -468,12 +540,15 @@ This section is dedicated to backstage photos from the series "Negin-e-Arbab".
 <a href="s8.jpg" target="_blank"><img src="s8.jpg" alt="Backstage photo 8" loading="lazy" decoding="async"></a>
 </div>
 </div>
+
 </div>
 
 <div id="berta-backstage" class="tab-content">
+
 <div class="fa-text">
 <div class="category-title">پشت صحنه سریال برتا</div>
 این بخش مخصوص عکس‌های پشت صحنه سریال «برتا» است.
+
 <div class="backstage-gallery">
 <a href="s45.jpg" target="_blank"><img src="s45.jpg" alt="Berta Backstage 1" loading="lazy" decoding="async"></a>
 <a href="s46.jpg" target="_blank"><img src="s46.jpg" alt="Berta Backstage 2" loading="lazy" decoding="async"></a>
@@ -484,9 +559,11 @@ This section is dedicated to backstage photos from the series "Negin-e-Arbab".
 <a href="s51.jpg" target="_blank"><img src="s51.jpg" alt="Berta Backstage 7" loading="lazy" decoding="async"></a>
 </div>
 </div>
+
 <div class="en-text" style="display:none">
 <div class="category-title">Berta Series Backstage</div>
 This section is dedicated to backstage photos from the "Berta" series.
+
 <div class="backstage-gallery">
 <a href="s45.jpg" target="_blank"><img src="s45.jpg" alt="Berta Backstage 1" loading="lazy" decoding="async"></a>
 <a href="s46.jpg" target="_blank"><img src="s46.jpg" alt="Berta Backstage 2" loading="lazy" decoding="async"></a>
@@ -497,13 +574,15 @@ This section is dedicated to backstage photos from the "Berta" series.
 <a href="s51.jpg" target="_blank"><img src="s51.jpg" alt="Berta Backstage 7" loading="lazy" decoding="async"></a>
 </div>
 </div>
+
 </div>
 
-<!-- تب پشت صحنه سریال مرز -->
 <div id="marz-backstage" class="tab-content">
+
 <div class="fa-text">
 <div class="category-title">پشت صحنه سریال مرز</div>
 این بخش مخصوص عکس‌های پشت صحنه سریال «مرز» است.
+
 <div class="backstage-gallery">
 <a href="s52.jpg" target="_blank"><img src="s52.jpg" alt="Marz Backstage 1" loading="lazy" decoding="async"></a>
 <a href="s53.jpg" target="_blank"><img src="s53.jpg" alt="Marz Backstage 2" loading="lazy" decoding="async"></a>
@@ -518,33 +597,69 @@ This section is dedicated to backstage photos from the "Berta" series.
 <a href="s62.jpg" target="_blank"><img src="s62.jpg" alt="Marz Backstage 11" loading="lazy" decoding="async"></a>
 <a href="s63.jpg" target="_blank"><img src="s63.jpg" alt="Marz Backstage 12" loading="lazy" decoding="async"></a>
 <a href="s64.jpg" target="_blank"><img src="s64.jpg" alt="Marz Backstage 13" loading="lazy" decoding="async"></a>
-</div>
-</div>
-<div class="en-text" style="display:none">
-<div class="category-title">Marz Series Backstage</div>
-This section is dedicated to backstage photos from the "Marz" series.
-<div class="backstage-gallery">
-<a href="s52.jpg" target="_blank"><img src="s52.jpg" alt="Marz Backstage 1" loading="lazy" decoding="async"></a>
-<a href="s53.jpg" target="_blank"><img src="s53.jpg" alt="Marz Backstage 2" loading="lazy" decoding="async"></a>
-<a href="s54.jpg" target="_blank"><img src="s54.jpg" alt="Marz Backstage 3" loading="lazy" decoding="async"></a>
-<a href="s55.jpg" target="_blank"><img src="s55.jpg" alt="Marz Backstage 4" loading="lazy" decoding="async"></a>
-<a href="s56.jpg" target="_blank"><img src="s56.jpg" alt="Marz Backstage 5" loading="lazy" decoding="async"></a>
-<a href="s57.jpg" target="_blank"><img src="s57.jpg" alt="Marz Backstage 6" loading="lazy" decoding="async"></a>
-<a href="s58.jpg" target="_blank"><img src="s58.jpg" alt="Marz Backstage 7" loading="lazy" decoding="async"></a>
-<a href="s59.jpg" target="_blank"><img src="s59.jpg" alt="Marz Backstage 8" loading="lazy" decoding="async"></a>
-<a href="s60.jpg" target="_blank"><img src="s60.jpg" alt="Marz Backstage 9" loading="lazy" decoding="async"></a>
-<a href="s61.jpg" target="_blank"><img src="s61.jpg" alt="Marz Backstage 10" loading="lazy" decoding="async"></a>
-<a href="s62.jpg" target="_blank"><img src="s62.jpg" alt="Marz Backstage 11" loading="lazy" decoding="async"></a>
-<a href="s63.jpg" target="_blank"><img src="s63.jpg" alt="Marz Backstage 12" loading="lazy" decoding="async"></a>
-<a href="s64.jpg" target="_blank"><img src="s64.jpg" alt="Marz Backstage 13" loading="lazy" decoding="async"></a>
-</div>
 </div>
 </div>
 
+<div class="en-text" style="display:none">
+<div class="category-title">Marz Series Backstage</div>
+This section is dedicated to backstage photos from the "Marz" series.
+
+<div class="backstage-gallery">
+<a href="s52.jpg" target="_blank"><img src="s52.jpg" alt="Marz Backstage 1" loading="lazy" decoding="async"></a>
+<a href="s53.jpg" target="_blank"><img src="s53.jpg" alt="Marz Backstage 2" loading="lazy" decoding="async"></a>
+<a href="s54.jpg" target="_blank"><img src="s54.jpg" alt="Marz Backstage 3" loading="lazy" decoding="async"></a>
+<a href="s55.jpg" target="_blank"><img src="s55.jpg" alt="Marz Backstage 4" loading="lazy" decoding="async"></a>
+<a href="s56.jpg" target="_blank"><img src="s56.jpg" alt="Marz Backstage 5" loading="lazy" decoding="async"></a>
+<a href="s57.jpg" target="_blank"><img src="s57.jpg" alt="Marz Backstage 6" loading="lazy" decoding="async"></a>
+<a href="s58.jpg" target="_blank"><img src="s58.jpg" alt="Marz Backstage 7" loading="lazy" decoding="async"></a>
+<a href="s59.jpg" target="_blank"><img src="s59.jpg" alt="Marz Backstage 8" loading="lazy" decoding="async"></a>
+<a href="s60.jpg" target="_blank"><img src="s60.jpg" alt="Marz Backstage 9" loading="lazy" decoding="async"></a>
+<a href="s61.jpg" target="_blank"><img src="s61.jpg" alt="Marz Backstage 10" loading="lazy" decoding="async"></a>
+<a href="s62.jpg" target="_blank"><img src="s62.jpg" alt="Marz Backstage 11" loading="lazy" decoding="async"></a>
+<a href="s63.jpg" target="_blank"><img src="s63.jpg" alt="Marz Backstage 12" loading="lazy" decoding="async"></a>
+<a href="s64.jpg" target="_blank"><img src="s64.jpg" alt="Marz Backstage 13" loading="lazy" decoding="async"></a>
+</div>
+</div>
+
+</div>
+
+<!-- تب جدید موزیک ویدیو -->
+<div id="music-video" class="tab-content">
+
+<div class="fa-text">
+<div class="category-title">موزیک ویدیو</div>
+تصاویر مربوط به حضور سام گیتی‌پسند در موزیک ویدیو.
+
+<div class="backstage-gallery">
+<a href="s65.jpg" target="_blank"><img src="s65.jpg" alt="Music video photo 1" loading="lazy" decoding="async"></a>
+<a href="s66.jpg" target="_blank"><img src="s66.jpg" alt="Music video photo 2" loading="lazy" decoding="async"></a>
+<a href="s67.jpg" target="_blank"><img src="s67.jpg" alt="Music video photo 3" loading="lazy" decoding="async"></a>
+<a href="s68.jpg" target="_blank"><img src="s68.jpg" alt="Music video photo 4" loading="lazy" decoding="async"></a>
+<a href="s69.jpg" target="_blank"><img src="s69.jpg" alt="Music video photo 5" loading="lazy" decoding="async"></a>
+</div>
+</div>
+
+<div class="en-text" style="display:none">
+<div class="category-title">Music Video</div>
+Photos from Sam Gitipasand's music video project.
+
+<div class="backstage-gallery">
+<a href="s65.jpg" target="_blank"><img src="s65.jpg" alt="Music video photo 1" loading="lazy" decoding="async"></a>
+<a href="s66.jpg" target="_blank"><img src="s66.jpg" alt="Music video photo 2" loading="lazy" decoding="async"></a>
+<a href="s67.jpg" target="_blank"><img src="s67.jpg" alt="Music video photo 3" loading="lazy" decoding="async"></a>
+<a href="s68.jpg" target="_blank"><img src="s68.jpg" alt="Music video photo 4" loading="lazy" decoding="async"></a>
+<a href="s69.jpg" target="_blank"><img src="s69.jpg" alt="Music video photo 5" loading="lazy" decoding="async"></a>
+</div>
+</div>
+
+</div>
+
 <div id="festival-backstage" class="tab-content">
+
 <div class="fa-text">
 <div class="category-title">پشت صحنه فیلم‌های جشنواره‌ای</div>
 این بخش مخصوص عکس‌های پشت صحنه فیلم‌های جشنواره‌ای است.
+
 <div class="backstage-gallery">
 <a href="s11.jpg" target="_blank"><img src="s11.jpg" alt="Festival backstage photo 1" loading="lazy" decoding="async"></a>
 <a href="s12.jpg" target="_blank"><img src="s12.jpg" alt="Festival backstage photo 2" loading="lazy" decoding="async"></a>
@@ -560,9 +675,11 @@ This section is dedicated to backstage photos from the "Marz" series.
 <a href="s10.JPG" target="_blank"><img src="s10.JPG" alt="Festival backstage photo 12" loading="lazy" decoding="async"></a>
 </div>
 </div>
+
 <div class="en-text" style="display:none">
 <div class="category-title">Festival Films Backstage</div>
 This section is dedicated to backstage photos from festival films.
+
 <div class="backstage-gallery">
 <a href="s11.jpg" target="_blank"><img src="s11.jpg" alt="Festival backstage photo 1" loading="lazy" decoding="async"></a>
 <a href="s12.jpg" target="_blank"><img src="s12.jpg" alt="Festival backstage photo 2" loading="lazy" decoding="async"></a>
@@ -578,6 +695,7 @@ This section is dedicated to backstage photos from festival films.
 <a href="s10.JPG" target="_blank"><img src="s10.JPG" alt="Festival backstage photo 12" loading="lazy" decoding="async"></a>
 </div>
 </div>
+
 </div>
 
 <div class="social-footer">
@@ -585,44 +703,59 @@ This section is dedicated to backstage photos from festival films.
 <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
 <a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
+
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 const savedTheme = localStorage.getItem("theme") || "dark";
+
 if (savedTheme === "light") {
-document.body.setAttribute('data-theme', 'light');
-document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
+document.body.setAttribute("data-theme", "light");
+document.getElementById("themeBtn").innerHTML = '<i class="fas fa-sun"></i>';
 }
 
 const savedLang = localStorage.getItem("lang") || "fa";
+
 if (savedLang === "en") {
 const html = document.documentElement;
 html.dir = "ltr";
 html.lang = "en";
-document.getElementById('langBtn').innerText = "FA";
-document.querySelectorAll('.fa-text').forEach(el => el.style.display = 'none');
-document.querySelectorAll('.en-text').forEach(el => el.style.display = 'block');
+
+document.getElementById("langBtn").innerText = "FA";
+
+document.querySelectorAll(".fa-text").forEach(el => {
+el.style.display = "none";
+});
+
+document.querySelectorAll(".en-text").forEach(el => {
+el.style.display = "block";
+});
 }
 });
 
 function updatePianoState(isPlaying) {
-const pianoWrapper = document.getElementById('pianoWrapper');
+const pianoWrapper = document.getElementById("pianoWrapper");
+
 if (isPlaying) {
-pianoWrapper.classList.add('music-playing');
+pianoWrapper.classList.add("music-playing");
 } else {
-pianoWrapper.classList.remove('music-playing');
+pianoWrapper.classList.remove("music-playing");
 }
 }
 
 function toggleMusic() {
-const audio = document.getElementById('bg-audio');
-const musicBtn = document.getElementById('musicBtn');
+const audio = document.getElementById("bg-audio");
+const musicBtn = document.getElementById("musicBtn");
 
 if (audio.paused) {
-audio.play().catch(e => console.log("نیاز به تعامل کاربر برای شروع موزیک است."));
+audio.play().catch(() => {
+console.log("نیاز به تعامل کاربر برای شروع موزیک است.");
+});
+
 musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
 updatePianoState(true);
+
 } else {
 audio.pause();
 musicBtn.innerHTML = '<i class="fas fa-music"></i>';
@@ -630,25 +763,27 @@ updatePianoState(false);
 }
 }
 
-document.getElementById('bg-audio').addEventListener('play', function () {
-document.getElementById('musicBtn').innerHTML = '<i class="fas fa-pause"></i>';
+document.getElementById("bg-audio").addEventListener("play", function () {
+document.getElementById("musicBtn").innerHTML = '<i class="fas fa-pause"></i>';
 updatePianoState(true);
 });
 
-document.getElementById('bg-audio').addEventListener('pause', function () {
-document.getElementById('musicBtn').innerHTML = '<i class="fas fa-music"></i>';
+document.getElementById("bg-audio").addEventListener("pause", function () {
+document.getElementById("musicBtn").innerHTML = '<i class="fas fa-music"></i>';
 updatePianoState(false);
 });
 
 function toggleTheme() {
 const body = document.body;
-const btn = document.getElementById('themeBtn');
-if (body.getAttribute('data-theme') === 'light') {
-body.removeAttribute('data-theme');
+const btn = document.getElementById("themeBtn");
+
+if (body.getAttribute("data-theme") === "light") {
+body.removeAttribute("data-theme");
 btn.innerHTML = '<i class="fas fa-moon"></i>';
 localStorage.setItem("theme", "dark");
+
 } else {
-body.setAttribute('data-theme', 'light');
+body.setAttribute("data-theme", "light");
 btn.innerHTML = '<i class="fas fa-sun"></i>';
 localStorage.setItem("theme", "light");
 }
@@ -656,33 +791,55 @@ localStorage.setItem("theme", "light");
 
 function toggleLanguage() {
 const html = document.documentElement;
-const langBtn = document.getElementById('langBtn');
-const faElements = document.querySelectorAll('.fa-text');
-const enElements = document.querySelectorAll('.en-text');
+const langBtn = document.getElementById("langBtn");
+const faElements = document.querySelectorAll(".fa-text");
+const enElements = document.querySelectorAll(".en-text");
 
 if (html.dir === "rtl") {
 html.dir = "ltr";
 html.lang = "en";
 langBtn.innerText = "FA";
-faElements.forEach(el => el.style.display = 'none');
-enElements.forEach(el => el.style.display = 'block');
+
+faElements.forEach(el => {
+el.style.display = "none";
+});
+
+enElements.forEach(el => {
+el.style.display = "block";
+});
+
 localStorage.setItem("lang", "en");
+
 } else {
 html.dir = "rtl";
 html.lang = "fa";
 langBtn.innerText = "EN";
-faElements.forEach(el => el.style.display = 'block');
-enElements.forEach(el => el.style.display = 'none');
+
+faElements.forEach(el => {
+el.style.display = "block";
+});
+
+enElements.forEach(el => {
+el.style.display = "none";
+});
+
 localStorage.setItem("lang", "fa");
 }
 }
 
 function openTab(evt, tabName) {
-document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-document.getElementById(tabName).classList.add('active');
-evt.currentTarget.classList.add('active');
+document.querySelectorAll(".tab-content").forEach(tab => {
+tab.classList.remove("active");
+});
+
+document.querySelectorAll(".tab-btn").forEach(button => {
+button.classList.remove("active");
+});
+
+document.getElementById(tabName).classList.add("active");
+evt.currentTarget.classList.add("active");
 }
 </script>
+
 </body>
 </html>

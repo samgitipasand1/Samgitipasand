@@ -12,6 +12,7 @@
     --glass: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
     --accent: #00d4ff;
+    --key-shadow: rgba(0, 212, 255, 0.2);
 }
 
 [data-theme="light"] {
@@ -20,6 +21,7 @@
     --glass: rgba(0, 0, 0, 0.05);
     --glass-border: rgba(0, 0, 0, 0.1);
     --accent: #0071e3;
+    --key-shadow: rgba(0, 113, 227, 0.15);
 }
 
 * {
@@ -88,25 +90,28 @@ html[dir="ltr"] .top-controls {
     -webkit-text-fill-color: transparent;
 }
 
-/* --- گالری پیانویی --- */
+/* --- گالری پیانویی سه‌بعدی --- */
 .piano-wrapper {
     display: flex;
     width: 100%;
     height: 75vh;
     gap: 8px;
     padding: 10px;
+    perspective: 1000px; /* ایجاد عمق سه‌بعدی برای شبیه‌سازی کلاویه‌ها */
 }
 
 .piano-item {
     flex: 1;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 0 0 15px 15px; /* لبه‌های گرد پایین کلاویه */
     overflow: hidden;
     position: relative;
     cursor: pointer;
     transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s, transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
     border: 1px solid var(--glass-border);
-    transform-origin: center bottom;
+    border-top: none; /* اتصال به بالای پیانو */
+    transform-origin: center top; /* چرخش و حرکت از لولای بالایی مثل کلاویه واقعی */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .piano-item img {
@@ -118,39 +123,43 @@ html[dir="ltr"] .top-controls {
 
 .piano-item:hover {
     flex: 6;
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
+    transform: rotateX(0deg) translateY(0); /* خروج از افکت کلید فشرده هنگام هاور */
 }
 
 .piano-item:hover img {
     transform: scale(1.1);
 }
 
+/* افکت حرکت دکمه‌های پیانو با پخش موزیک */
 .piano-wrapper.music-playing .piano-item {
-    animation: pianoPulse 1.45s ease-in-out infinite;
-    filter: brightness(1.05) saturate(1.08);
-    box-shadow: 0 0 18px rgba(0, 212, 255, 0.08);
+    animation: pianoKeyDown 2.2s ease-in-out infinite;
 }
 
 .piano-wrapper.music-playing .piano-item:nth-child(1) { animation-delay: 0s; }
-.piano-wrapper.music-playing .piano-item:nth-child(2) { animation-delay: 0.12s; }
-.piano-wrapper.music-playing .piano-item:nth-child(3) { animation-delay: 0.24s; }
-.piano-wrapper.music-playing .piano-item:nth-child(4) { animation-delay: 0.36s; }
-.piano-wrapper.music-playing .piano-item:nth-child(5) { animation-delay: 0.48s; }
-.piano-wrapper.music-playing .piano-item:nth-child(6) { animation-delay: 0.60s; }
-.piano-wrapper.music-playing .piano-item:nth-child(7) { animation-delay: 0.72s; }
+.piano-wrapper.music-playing .piano-item:nth-child(2) { animation-delay: 0.3s; }
+.piano-wrapper.music-playing .piano-item:nth-child(3) { animation-delay: 0.6s; }
+.piano-wrapper.music-playing .piano-item:nth-child(4) { animation-delay: 0.9s; }
+.piano-wrapper.music-playing .piano-item:nth-child(5) { animation-delay: 1.2s; }
+.piano-wrapper.music-playing .piano-item:nth-child(6) { animation-delay: 1.5s; }
+.piano-wrapper.music-playing .piano-item:nth-child(7) { animation-delay: 1.8s; }
 
-@keyframes pianoPulse {
+/* انیمیشن واقعی فشرده شدن کلاویه (حرکت دورانی به عقب و پایین رفتن کلید) */
+@keyframes pianoKeyDown {
     0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: rotateX(0deg) translateY(0);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0px var(--key-shadow);
+        filter: brightness(1);
     }
-    25% {
-        transform: translateY(-6px) scale(1.01);
+    45% {
+        transform: rotateX(-5deg) translateY(6px) translateZ(-10px); /* زاویه گرفتن کلاویه به سمت داخل پیانو */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 12px var(--key-shadow);
+        filter: brightness(0.9); /* تاریک شدن ملایم در اثر فرو رفتن در سایه */
     }
-    50% {
-        transform: translateY(0) scale(1);
-    }
-    75% {
-        transform: translateY(4px) scale(0.995);
+    55% {
+        transform: rotateX(-5deg) translateY(6px) translateZ(-10px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 12px var(--key-shadow);
+        filter: brightness(0.9);
     }
 }
 
@@ -274,7 +283,7 @@ html[dir="ltr"] .tab-content {
 @media (max-width: 768px) {
     .welcome-text { margin-top: 70px; }
     .piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
-    .piano-item { border-radius: 0; }
+    .piano-item { border-radius: 0 0 8px 8px; }
     .top-controls { top: 10px; right: 10px; }
     .btn-control { width: 40px; height: 40px; font-size: 0.8rem; }
 
@@ -289,7 +298,7 @@ html[dir="ltr"] .tab-content {
     .tab-content { padding: 22px 16px; font-size: 0.95rem; }
 
     .piano-wrapper.music-playing .piano-item {
-        animation-duration: 1.8s;
+        animation-duration: 2.5s;
     }
 }
 </style>
@@ -401,6 +410,25 @@ html[dir="ltr"] .tab-content {
 </div>
 
 <script>
+// اعمال تنظیمات ذخیره شده قبلی در لود اولیه صفحه
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    if (savedTheme === "light") {
+        document.body.setAttribute('data-theme', 'light');
+        document.getElementById('themeBtn').innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    const savedLang = localStorage.getItem("lang") || "fa";
+    if (savedLang === "en") {
+        const html = document.documentElement;
+        html.dir = "ltr";
+        html.lang = "en";
+        document.getElementById('langBtn').innerText = "FA";
+        document.querySelectorAll('.fa-text').forEach(el => el.style.display = 'none');
+        document.querySelectorAll('.en-text').forEach(el => el.style.display = 'block');
+    }
+});
+
 function updatePianoState(isPlaying) {
     const pianoWrapper = document.getElementById('pianoWrapper');
     if (isPlaying) {
@@ -415,7 +443,7 @@ function toggleMusic() {
     const musicBtn = document.getElementById('musicBtn');
 
     if (audio.paused) {
-        audio.play();
+        audio.play().catch(e => console.log("نیاز به تعامل کاربر برای شروع موزیک است."));
         musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
         updatePianoState(true);
     } else {
@@ -441,9 +469,11 @@ function toggleTheme() {
     if (body.getAttribute('data-theme') === 'light') {
         body.removeAttribute('data-theme');
         btn.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem("theme", "dark");
     } else {
         body.setAttribute('data-theme', 'light');
         btn.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem("theme", "light");
     }
 }
 
@@ -459,12 +489,14 @@ function toggleLanguage() {
         langBtn.innerText = "FA";
         faElements.forEach(el => el.style.display = 'none');
         enElements.forEach(el => el.style.display = 'block');
+        localStorage.setItem("lang", "en");
     } else {
         html.dir = "rtl";
         html.lang = "fa";
         langBtn.innerText = "EN";
         faElements.forEach(el => el.style.display = 'block');
         enElements.forEach(el => el.style.display = 'none');
+        localStorage.setItem("lang", "fa");
     }
 }
 

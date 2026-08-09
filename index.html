@@ -93,9 +93,9 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* =========================
+    /* -------------------------
        Piano Gallery
-    ========================= */
+    -------------------------- */
 
     .piano-wrapper {
       display: flex;
@@ -130,11 +130,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform .7s ease, filter .4s ease;
       pointer-events: none;
+      transition: transform .7s ease, filter .4s ease;
     }
 
-    /* حالت هاور در دسکتاپ */
+    /* حالت بازشدن با قرار گرفتن موس */
     .piano-item:hover {
       flex: 6;
       border-radius: 0 0 20px 20px;
@@ -145,11 +145,7 @@
       transform: scale(1.1);
     }
 
-    /*
-      حالت کلیک:
-      عکس مثل کلید پیانو بالا می‌آید.
-      لایت‌باکس برای عکس‌های پیانویی باز نمی‌شود.
-    */
+    /* حالت بازشدن با لمس یا کلیک */
     .piano-item.piano-active {
       flex: 6;
       border-radius: 0 0 20px 20px;
@@ -217,9 +213,9 @@
       }
     }
 
-    /* =========================
+    /* -------------------------
        Main Content
-    ========================= */
+    -------------------------- */
 
     .content-container {
       width: calc(100% - 40px);
@@ -319,39 +315,9 @@
       margin: 15px 0 5px;
     }
 
-    /* =========================
-       Project Cards
-    ========================= */
-
-    .project-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .project-card {
-      padding: 20px;
-      border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, .04);
-      transition: .3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-
-    .project-card h3 {
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-    }
-
-    /* =========================
+    /* -------------------------
        Backstage Gallery
-    ========================= */
+    -------------------------- */
 
     .backstage-filters {
       display: flex;
@@ -415,9 +381,9 @@
       filter: brightness(1.1);
     }
 
-    /* =========================
+    /* -------------------------
        Lightbox
-    ========================= */
+    -------------------------- */
 
     .lightbox {
       position: fixed;
@@ -482,9 +448,9 @@
       color: #000;
     }
 
-    /* =========================
+    /* -------------------------
        Social
-    ========================= */
+    -------------------------- */
 
     .social-footer {
       display: flex;
@@ -504,9 +470,9 @@
       transform: translateY(-5px);
     }
 
-    /* =========================
+    /* -------------------------
        Responsive
-    ========================= */
+    -------------------------- */
 
     @media (max-width: 768px) {
       .welcome-text {
@@ -519,7 +485,6 @@
         padding: 5px;
       }
 
-      /* هر ۷ عکس در موبایل نمایش داده می‌شوند */
       .piano-item {
         border-radius: 0 0 8px 8px;
       }
@@ -567,10 +532,6 @@
         gap: 10px;
       }
 
-      .project-list {
-        grid-template-columns: 1fr;
-      }
-
       .lightbox-prev {
         inset-inline-start: 10px;
       }
@@ -606,15 +567,10 @@
     <source src="the_mountain-genetics-163878.mp3" type="audio/mpeg">
   </audio>
 
-  <h2 class="welcome-text fa-text">
-    به وب‌سایت من خوش آمدید
-  </h2>
+  <h2 class="welcome-text fa-text">به وب‌سایت من خوش آمدید</h2>
+  <h2 class="welcome-text en-text" style="display:none">Welcome to my website</h2>
 
-  <h2 class="welcome-text en-text" style="display:none">
-    Welcome to my website
-  </h2>
-
-  <!-- گالری پیانویی: با کلیک فقط حالت کلید پیانو فعال می‌شود -->
+  <!-- گالری پیانویی -->
   <div class="piano-wrapper" id="pianoWrapper">
 
     <div class="piano-item">
@@ -649,16 +605,10 @@
 
   <div class="content-container">
 
-    <h1 class="actor-name fa-text">
-      سام گیتی‌پسند
-    </h1>
-
-    <h1 class="actor-name en-text" style="display:none">
-      SAM GITIPASAND
-    </h1>
+    <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
+    <h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
     <div class="tabs-container">
-
       <button class="tab-btn active" onclick="openTab(event, 'about')">
         <span class="fa-text">درباره من</span>
         <span class="en-text" style="display:none">About Me</span>
@@ -673,20 +623,16 @@
         <span class="fa-text">پشت صحنه</span>
         <span class="en-text" style="display:none">Behind the Scenes</span>
       </button>
-
     </div>
 
     <!-- درباره من -->
     <div id="about" class="tab-content active">
-
       <div class="fa-text">
         من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
         متولد ۱۳۹۸ و آغاز فعالیت حرفه‌ای من از سال ۱۴۰۱ بوده است.<br>
         علاقه‌مند به هنر، بازیگری، مدلینگ و حضور جلوی دوربین هستم و تجربه همکاری با پروژه‌ها و برندهای مختلف را دارم.
 
-        <div class="category-title">
-          زبان‌ها و مهارت‌ها
-        </div>
+        <div class="category-title">زبان‌ها و مهارت‌ها</div>
 
         مسلط به زبان‌های فارسی، انگلیسی و چینی.<br>
         آشنا و فعال در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.
@@ -697,24 +643,17 @@
         Born in 2019, I began my professional career in 2022.<br>
         I am passionate about art, acting, modeling, and working in front of the camera, with experience collaborating on various projects and brands.
 
-        <div class="category-title">
-          Languages & Skills
-        </div>
+        <div class="category-title">Languages & Skills</div>
 
         Fluent in Persian, English, and Chinese.<br>
         Experienced in cycling, badminton, swimming, basketball, and gymnastics.
       </div>
-
     </div>
 
     <!-- پروژه‌ها -->
     <div id="projects" class="tab-content">
-
       <div class="fa-text">
-
-        <div class="category-title">
-          سریال‌ها و فیلم‌ها
-        </div>
+        <div class="category-title">سریال‌ها و فیلم‌ها</div>
 
         سریال «مرز» به کارگردانی آقای سید حاتمی؛ در نقش اصلی کودک.<br>
         سریال تاریخی «نگین ارباب» به کارگردانی آقای محمدحسین لطیفی.<br>
@@ -725,23 +664,17 @@
         فیلم جشنواره‌ای با تکنیک کروماکی در نقش اصلی به کارگردانی آقای محمود کریمی.<br>
         حضور در موزیک‌ویدیو در نقش کودکی آقای روزبه بمانی.
 
-        <div class="category-title">
-          تیزرها و تبلیغات
-        </div>
+        <div class="category-title">تیزرها و تبلیغات</div>
 
         حضور در تیزرهای تلویزیونی و سوشال‌مدیا برای برندهایی مانند کاله، ماجان،
         آقای فرش، بیمه دی، آربیانا، شکلات فرمند، بینگو، دیجی‌کالا، Opark و صرافی تبدیل.<br>
         همکاری با محصولات دوو.<br>
         عکاسی صنعتی برای برند بین‌المللی «نخودی‌نمکی».<br>
         همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک.
-
       </div>
 
       <div class="en-text" style="display:none">
-
-        <div class="category-title">
-          Series & Films
-        </div>
+        <div class="category-title">Series & Films</div>
 
         "Marz" series directed by Mr. Seyed Hatami; leading child role.<br>
         Historical series "Negin-e-Arbab" directed by Mr. Mohammad Hossein Latifi.<br>
@@ -752,9 +685,7 @@
         Festival film using chroma key technique in a leading role directed by Mr. Mahmoud Karim.<br>
         Music video appearance as the childhood version of Mr. Roozbeh Bemani.
 
-        <div class="category-title">
-          Commercials & Modeling
-        </div>
+        <div class="category-title">Commercials & Modeling</div>
 
         Appearances in TV and social media commercials for brands such as Kaleh,
         Majan, Mr. Farsh, Day Insurance, Arbiana, Farmand Chocolate, Bingo,
@@ -762,30 +693,23 @@
         Collaboration with Daewoo products.<br>
         Industrial photography for the international brand "Nokhodi Namaki".<br>
         Photography and modeling collaborations with over 300 children's clothing brands.
-
       </div>
-
     </div>
 
     <!-- پشت صحنه -->
     <div id="backstage" class="tab-content">
 
       <div class="fa-text">
-        <div class="category-title">
-          پشت صحنه پروژه‌ها
-        </div>
+        <div class="category-title">پشت صحنه پروژه‌ها</div>
         مجموعه عکس موردنظر را انتخاب کنید.
       </div>
 
       <div class="en-text" style="display:none">
-        <div class="category-title">
-          Project Backstage
-        </div>
+        <div class="category-title">Project Backstage</div>
         Select a collection to view the photos.
       </div>
 
       <div class="backstage-filters">
-
         <button class="filter-btn active" onclick="showGallery('series', this)">
           <span class="fa-text">سریال‌ها</span>
           <span class="en-text" style="display:none">Series</span>
@@ -805,16 +729,13 @@
           <span class="fa-text">موزیک ویدیو</span>
           <span class="en-text" style="display:none">Music Video</span>
         </button>
-
       </div>
 
       <div id="galleryDescription"></div>
       <div id="backstageGallery" class="backstage-gallery"></div>
-
     </div>
 
     <div class="social-footer">
-
       <a href="https://t.me/sam_gitipasand1" target="_blank" rel="noopener" aria-label="Telegram">
         <i class="fab fa-telegram"></i>
       </a>
@@ -829,14 +750,12 @@
       <a href="https://wa.me/989369957018" target="_blank" rel="noopener" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
       </a>
-
     </div>
 
   </div>
 
-  <!-- لایت‌باکس فقط برای تصاویر پشت‌صحنه -->
+  <!-- لایت‌باکس؛ فقط برای تصاویر پشت صحنه -->
   <div id="lightbox" class="lightbox">
-
     <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
       &times;
     </button>
@@ -850,7 +769,6 @@
     <button class="lightbox-next" onclick="nextImage()" aria-label="Next image">
       <i class="fas fa-chevron-left"></i>
     </button>
-
   </div>
 
   <script>
@@ -861,34 +779,13 @@
         faDescription: "تصاویر پشت صحنه سریال‌های «نگین ارباب»، «برتا» و «مرز».",
         enDescription: "Backstage photos from Negin-e-Arbab, Berta, and Marz series.",
         images: [
-          "s1.jpg",
-          "s2.jpg",
-          "s3.jpg",
-          "s4.jpg",
-          "s5.jpg",
-          "s6.jpg",
-          "s7.jpg",
-          "s8.jpg",
-          "s45.jpg",
-          "s46.jpg",
-          "s47.jpg",
-          "s48.jpg",
-          "s49.jpg",
-          "s50.jpg",
-          "s51.jpg",
-          "s52.jpg",
-          "s53.jpg",
-          "s54.jpg",
-          "s55.jpg",
-          "s56.jpg",
-          "s57.jpg",
-          "s58.jpg",
-          "s59.jpg",
-          "s60.jpg",
-          "s61.jpg",
-          "s62.jpg",
-          "s63.jpg",
-          "s64.jpg"
+          "s1.jpg", "s2.jpg", "s3.jpg", "s4.jpg",
+          "s5.jpg", "s6.jpg", "s7.jpg", "s8.jpg",
+          "s45.jpg", "s46.jpg", "s47.jpg", "s48.jpg",
+          "s49.jpg", "s50.jpg", "s51.jpg", "s52.jpg",
+          "s53.jpg", "s54.jpg", "s55.jpg", "s56.jpg",
+          "s57.jpg", "s58.jpg", "s59.jpg", "s60.jpg",
+          "s61.jpg", "s62.jpg", "s63.jpg", "s64.jpg"
         ]
       },
 
@@ -898,18 +795,9 @@
         faDescription: "این بخش مخصوص عکس‌های پشت صحنه فیلم‌های جشنواره‌ای است.",
         enDescription: "This section is dedicated to backstage photos from festival films.",
         images: [
-          "s11.jpg",
-          "s12.jpg",
-          "s13.jpg",
-          "s14.jpg",
-          "s15.jpg",
-          "s16.jpg",
-          "s17.jpg",
-          "s19.jpg",
-          "s20.jpg",
-          "s21.jpg",
-          "s9.JPG",
-          "s10.JPG"
+          "s11.jpg", "s12.jpg", "s13.jpg", "s14.jpg",
+          "s15.jpg", "s16.jpg", "s17.jpg", "s19.jpg",
+          "s20.jpg", "s21.jpg", "s9.JPG", "s10.JPG"
         ]
       },
 
@@ -919,22 +807,10 @@
         faDescription: "تصاویر پشت صحنه مربوط به همکاری با برندهای مختلف.",
         enDescription: "Backstage photos from various brand collaborations.",
         images: [
-          "s23.jpg",
-          "s24.jpg",
-          "s25.jpg",
-          "s26.jpg",
-          "s27.jpg",
-          "s28.jpg",
-          "s29.jpg",
-          "s30.jpg",
-          "s32.jpg",
-          "s34.jpg",
-          "s35.jpg",
-          "s36.jpg",
-          "s37.jpg",
-          "s38.jpg",
-          "s39.jpg",
-          "s40.jpg"
+          "s23.jpg", "s24.jpg", "s25.jpg", "s26.jpg",
+          "s27.jpg", "s28.jpg", "s29.jpg", "s30.jpg",
+          "s32.jpg", "s34.jpg", "s35.jpg", "s36.jpg",
+          "s37.jpg", "s38.jpg", "s39.jpg", "s40.jpg"
         ]
       },
 
@@ -944,11 +820,7 @@
         faDescription: "تصاویر مربوط به حضور سام گیتی‌پسند در موزیک ویدیو.",
         enDescription: "Photos from Sam Gitipasand's music video project.",
         images: [
-          "s65.jpg",
-          "s66.jpg",
-          "s67.jpg",
-          "s68.jpg",
-          "s69.jpg"
+          "s65.jpg", "s66.jpg", "s67.jpg", "s68.jpg", "s69.jpg"
         ]
       }
     };
@@ -986,11 +858,7 @@
         document.querySelector(".filter-btn.active")
       );
 
-      /*
-        رفتار جدید گالری پیانویی:
-        کلیک روی عکس، فقط آن کلید را بالا می‌آورد.
-        لایت‌باکس باز نمی‌شود.
-      */
+      /* باز و بسته‌شدن کلیدهای پیانویی */
       document.querySelectorAll(".piano-item").forEach(item => {
         item.addEventListener("click", () => {
           const wasActive = item.classList.contains("piano-active");
@@ -1003,6 +871,21 @@
             item.classList.add("piano-active");
           }
         });
+      });
+
+      /*
+        تغییر جدید:
+        اگر کاربر در هر جای صفحه، خارج از گالری پیانویی لمس/کلیک کند،
+        عکس پیانویی بازشده بسته می‌شود.
+      */
+      document.addEventListener("click", event => {
+        const pianoWrapper = document.getElementById("pianoWrapper");
+
+        if (!pianoWrapper.contains(event.target)) {
+          document.querySelectorAll(".piano-item").forEach(pianoItem => {
+            pianoItem.classList.remove("piano-active");
+          });
+        }
       });
     });
 

@@ -3,169 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#000000">
-<title>Sam Gitipasand | Official Portfolio</title>
+<title>Sam Gitipasand | Official Website</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 :root {
-  --bg: #000;
-  --text: #fff;
-  --muted: rgba(255,255,255,.68);
-  --glass: rgba(255,255,255,.09);
-  --glass-strong: rgba(255,255,255,.14);
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: rgba(255,255,255,.7);
+  --glass: rgba(255,255,255,.1);
   --glass-border: rgba(255,255,255,.2);
   --accent: #00d4ff;
-  --accent-soft: rgba(0,212,255,.2);
-  --key-shadow: rgba(0,212,255,.22);
-  --danger: #ff5577;
+  --key-shadow: rgba(0,212,255,.2);
 }
 
 [data-theme="light"] {
-  --bg: #f1f4f7;
-  --text: #161616;
-  --muted: rgba(0,0,0,.62);
-  --glass: rgba(0,0,0,.055);
-  --glass-strong: rgba(255,255,255,.75);
-  --glass-border: rgba(0,0,0,.13);
+  --bg: #f0f0f0;
+  --text: #1a1a1a;
+  --muted: rgba(0,0,0,.65);
+  --glass: rgba(0,0,0,.05);
+  --glass-border: rgba(0,0,0,.12);
   --accent: #0071e3;
-  --accent-soft: rgba(0,113,227,.16);
-  --key-shadow: rgba(0,113,227,.18);
+  --key-shadow: rgba(0,113,227,.15);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
+  transition: background .5s, color .5s;
 }
 
 body {
-  min-height: 100vh;
-  overflow-x: hidden;
-  background:
-    radial-gradient(circle at 50% -20%, var(--accent-soft), transparent 36%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-  transition: background .5s, color .5s;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  overflow-x: hidden;
 }
 
 button,
 a {
-  font: inherit;
-}
-
-button {
-  color: inherit;
+  font-family: inherit;
 }
 
 .top-controls {
   position: fixed;
   top: 20px;
   inset-inline-end: 20px;
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   gap: 10px;
   direction: ltr;
 }
 
 .btn-control {
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--glass-border);
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+  border: 1px solid var(--glass-border);
   background: var(--glass);
   color: var(--text);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   cursor: pointer;
-  display: grid;
-  place-items: center;
-  font-size: .85rem;
-  font-weight: 700;
-  box-shadow: 0 6px 22px rgba(0,0,0,.22);
-  transition: .3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
 }
 
 .btn-control:hover {
   background: var(--accent);
   color: #000;
-  transform: translateY(-3px) scale(1.08);
+  transform: scale(1.1);
 }
 
 .welcome-text {
-  margin: 82px 15px 14px;
   text-align: center;
   font-size: clamp(1.2rem, 3.5vw, 2rem);
   font-weight: 300;
   letter-spacing: 3px;
-  background: linear-gradient(90deg, var(--text), var(--accent));
+  margin: 80px 15px 10px;
+  background: linear-gradient(to right, var(--text), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Piano gallery */
+/* Piano Gallery - بدون تغییر در ساختار و تعداد عکس‌ها */
 .piano-wrapper {
-  width: 100%;
-  height: 72vh;
-  min-height: 350px;
   display: flex;
+  width: 100%;
+  height: 75vh;
   gap: 8px;
   padding: 10px;
   perspective: 1000px;
 }
 
 .piano-item {
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 1;
   height: 100%;
+  border-radius: 0 0 15px 15px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  border: 1px solid var(--glass-border);
-  border-top: 0;
-  border-radius: 0 0 16px 16px;
-  box-shadow: 0 12px 28px rgba(0,0,0,.35);
-  transform-origin: center top;
   transition:
     flex .7s cubic-bezier(.25,1,.5,1),
+    border-radius .5s,
     transform .4s ease,
-    border-radius .4s ease,
-    box-shadow .4s ease;
-}
-
-.piano-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.45), transparent 45%);
-  pointer-events: none;
+    box-shadow .4s ease,
+    filter .4s ease;
+  border: 1px solid var(--glass-border);
+  border-top: none;
+  transform-origin: center top;
+  box-shadow: 0 10px 25px rgba(0,0,0,.3);
 }
 
 .piano-item img {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
+  display: block;
   transition: transform .7s ease, filter .4s ease;
 }
 
 .piano-item:hover {
   flex: 6;
-  transform: translateY(-3px);
-  border-radius: 0 0 22px 22px;
-  box-shadow: 0 18px 35px rgba(0,0,0,.42);
+  border-radius: 0 0 20px 20px;
+  transform: rotateX(0deg) translateY(0);
 }
 
 .piano-item:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.08);
+  transform: scale(1.1);
 }
 
 .piano-wrapper.music-playing .piano-item {
@@ -182,39 +154,41 @@ button {
 
 @keyframes pianoKeyDown {
   0%,100% {
-    transform: translateY(0) rotateX(0);
+    transform: rotateX(0deg) translateY(0);
+    box-shadow: 0 12px 28px rgba(0,0,0,.35), 0 0 0 var(--key-shadow);
     filter: brightness(1);
   }
+
   45%,55% {
-    transform: translateY(6px) rotateX(-5deg);
+    transform: rotateX(-5deg) translateY(6px) translateZ(-10px);
+    box-shadow: 0 4px 8px rgba(0,0,0,.15), 0 0 12px var(--key-shadow);
     filter: brightness(.9);
-    box-shadow: 0 4px 8px rgba(0,0,0,.15), 0 0 14px var(--key-shadow);
   }
 }
 
-/* Main content */
+/* Main Content */
 .content-container {
   width: calc(100% - 40px);
-  max-width: 900px;
-  margin: 30px auto 60px;
-  padding: 48px 30px;
-  position: relative;
-  z-index: 5;
+  max-width: 850px;
+  margin: 28px auto 60px;
+  padding: 50px 30px;
   text-align: center;
-  border: 1px solid var(--glass-border);
-  border-radius: 40px;
+  position: relative;
+  z-index: 10;
   background: var(--glass);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
 }
 
 .actor-name {
-  margin-bottom: 28px;
   font-size: clamp(2rem, 6vw, 3.5rem);
   font-weight: 200;
   letter-spacing: 5px;
-  background: linear-gradient(90deg, var(--text), var(--accent));
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  background: linear-gradient(to right, var(--text), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -223,49 +197,45 @@ button {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 24px;
-}
-
-.tab-btn,
-.filter-btn {
-  border: 1px solid var(--glass-border);
-  background: var(--glass);
-  color: var(--text);
-  cursor: pointer;
-  transition: .3s ease;
+  margin-bottom: 30px;
 }
 
 .tab-btn {
   padding: 12px 28px;
   border-radius: 30px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text);
+  cursor: pointer;
   font-size: .95rem;
 }
 
-.tab-btn:hover,
-.filter-btn:hover {
+.tab-btn:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
 }
 
-.tab-btn.active,
-.filter-btn.active {
+.tab-btn.active {
   background: var(--accent);
-  border-color: var(--accent);
   color: #000;
-  font-weight: 700;
-  box-shadow: 0 8px 24px var(--accent-soft);
+  border-color: var(--accent);
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(0,212,255,.35);
 }
 
 .tab-content {
   display: none;
-  padding: 30px 25px;
-  border: 1px solid var(--glass-border);
-  border-radius: 26px;
   background: var(--glass);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 25px;
+  padding: 30px 25px;
+  line-height: 2;
+  opacity: .95;
+  font-size: 1.05rem;
   color: var(--muted);
   text-align: right;
-  line-height: 2;
-  font-size: 1.04rem;
 }
 
 html[dir="ltr"] .tab-content {
@@ -282,6 +252,7 @@ html[dir="ltr"] .tab-content {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -289,76 +260,12 @@ html[dir="ltr"] .tab-content {
 }
 
 .category-title {
-  margin: 15px 0 7px;
   color: var(--accent);
-  font-weight: 700;
+  font-weight: 600;
+  margin: 15px 0 5px;
 }
 
-/* Internal filters */
-.filter-bar {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 4px 2px 14px;
-  margin-bottom: 15px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-}
-
-.filter-btn {
-  flex: 0 0 auto;
-  padding: 9px 16px;
-  border-radius: 22px;
-  font-size: .86rem;
-  white-space: nowrap;
-}
-
-/* Piano backstage galleries */
-.backstage-gallery {
-  display: flex;
-  width: 100%;
-  height: 310px;
-  gap: 7px;
-  margin-top: 20px;
-  overflow: hidden;
-  perspective: 900px;
-}
-
-.backstage-gallery a {
-  flex: 1 1 0;
-  min-width: 0;
-  overflow: hidden;
-  display: block;
-  border: 1px solid var(--glass-border);
-  border-radius: 0 0 13px 13px;
-  background: var(--glass);
-  transition: flex .65s cubic-bezier(.25,1,.5,1), transform .35s ease;
-}
-
-.backstage-gallery a:hover {
-  flex: 4;
-  transform: translateY(-3px);
-}
-
-.backstage-gallery img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  transition: transform .6s ease, filter .4s ease;
-}
-
-.backstage-gallery a:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.1);
-}
-
-.gallery-loading {
-  padding: 35px 10px;
-  text-align: center;
-  color: var(--muted);
-}
-
+/* Project Cards */
 .project-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -370,27 +277,149 @@ html[dir="ltr"] .tab-content {
   padding: 20px;
   border: 1px solid var(--glass-border);
   border-radius: 20px;
-  background: var(--glass);
+  background: rgba(255,255,255,.04);
   transition: .3s ease;
 }
 
 .project-card:hover {
   transform: translateY(-4px);
   border-color: var(--accent);
-  background: var(--glass-strong);
 }
 
 .project-card h3 {
-  margin-bottom: 8px;
   color: var(--accent);
+  margin-bottom: 8px;
   font-size: 1.05rem;
 }
 
-.project-card p {
-  color: var(--muted);
-  line-height: 1.9;
+/* Backstage filters and gallery */
+.backstage-filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 5px 2px 15px;
+  margin-top: 18px;
+  scrollbar-width: thin;
 }
 
+.filter-btn {
+  flex: 0 0 auto;
+  padding: 9px 17px;
+  border-radius: 22px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: .88rem;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.backstage-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.backstage-gallery a {
+  display: block;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 8px 20px rgba(0,0,0,.18);
+  cursor: pointer;
+}
+
+.backstage-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.backstage-gallery a:hover img {
+  transform: scale(1.07);
+  filter: brightness(1.1);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(0,0,0,.92);
+}
+
+.lightbox.open {
+  display: flex;
+  animation: fadeIn .25s ease;
+}
+
+.lightbox-image {
+  max-width: min(90vw, 1100px);
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 15px 60px rgba(0,0,0,.65);
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 2;
+}
+
+.lightbox-close {
+  top: 20px;
+  inset-inline-end: 25px;
+  font-size: 1.8rem;
+}
+
+.lightbox-prev {
+  inset-inline-start: 25px;
+}
+
+.lightbox-next {
+  inset-inline-end: 25px;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Social */
 .social-footer {
   display: flex;
   justify-content: center;
@@ -401,7 +430,7 @@ html[dir="ltr"] .tab-content {
 .social-footer a {
   color: var(--text);
   font-size: 2rem;
-  transition: .3s ease;
+  transition: .3s;
 }
 
 .social-footer a:hover {
@@ -409,76 +438,37 @@ html[dir="ltr"] .tab-content {
   transform: translateY(-5px);
 }
 
-/* Lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 3000;
-  display: none;
-  place-items: center;
-  padding: 25px;
-  background: rgba(0,0,0,.88);
-}
-
-.lightbox.open {
-  display: grid;
-  animation: fadeIn .25s ease;
-}
-
-.lightbox img {
-  max-width: min(100%, 1100px);
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 14px;
-  box-shadow: 0 15px 60px rgba(0,0,0,.6);
-}
-
-.lightbox-close {
-  position: absolute;
-  top: 18px;
-  inset-inline-end: 25px;
-  border: 0;
-  background: transparent;
-  color: #fff;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-/* Responsive */
 @media (max-width: 768px) {
-  .top-controls {
-    top: 10px;
-    inset-inline-end: 10px;
-    gap: 6px;
-  }
-
-  .btn-control {
-    width: 39px;
-    height: 39px;
-    font-size: .78rem;
-  }
-
   .welcome-text {
     margin-top: 70px;
-    letter-spacing: 1px;
   }
 
   .piano-wrapper {
-    height: 53vh;
-    min-height: 290px;
+    height: 50vh;
     gap: 4px;
     padding: 5px;
   }
 
   .piano-item {
-    border-radius: 0 0 9px 9px;
+    border-radius: 0 0 8px 8px;
+  }
+
+  .top-controls {
+    top: 10px;
+    inset-inline-end: 10px;
+  }
+
+  .btn-control {
+    width: 40px;
+    height: 40px;
+    font-size: .8rem;
   }
 
   .content-container {
-    width: calc(100% - 20px);
     margin: 20px auto 45px;
-    padding: 34px 15px;
+    padding: 35px 18px;
     border-radius: 30px;
+    width: calc(100% - 20px);
   }
 
   .tabs-container {
@@ -486,47 +476,42 @@ html[dir="ltr"] .tab-content {
   }
 
   .tab-btn {
-    flex: 1;
-    padding: 10px 8px;
-    font-size: .82rem;
+    padding: 10px 12px;
+    font-size: .85rem;
+    flex: 1 1 auto;
   }
 
   .tab-content {
     padding: 22px 16px;
-    font-size: .94rem;
+    font-size: .95rem;
   }
 
   .backstage-gallery {
-    height: 240px;
-    gap: 4px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .project-list {
     grid-template-columns: 1fr;
   }
+
+  .lightbox-prev {
+    inset-inline-start: 10px;
+  }
+
+  .lightbox-next {
+    inset-inline-end: 10px;
+  }
+
+  .lightbox-close {
+    inset-inline-end: 12px;
+  }
 }
 
 @media (max-width: 430px) {
-  .piano-wrapper {
-    height: 48vh;
-  }
-
   .piano-item:nth-child(4),
   .piano-item:nth-child(5) {
     display: none;
-  }
-
-  .backstage-gallery {
-    height: 210px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -535,13 +520,13 @@ html[dir="ltr"] .tab-content {
 <body>
 
 <div class="top-controls">
-  <button class="btn-control" id="langBtn" onclick="toggleLanguage()" title="تغییر زبان">EN</button>
+  <button class="btn-control" onclick="toggleLanguage()" id="langBtn" title="تغییر زبان">EN</button>
 
-  <button class="btn-control" id="themeBtn" onclick="toggleTheme()" title="تغییر تم">
+  <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
     <i class="fas fa-moon"></i>
   </button>
 
-  <button class="btn-control" id="musicBtn" onclick="toggleMusic()" title="تغییر موزیک">
+  <button class="btn-control" onclick="toggleMusic()" id="musicBtn" title="تغییر موزیک">
     <i class="fas fa-music"></i>
   </button>
 </div>
@@ -550,428 +535,270 @@ html[dir="ltr"] .tab-content {
   <source src="the_mountain-genetics-163878.mp3" type="audio/mpeg">
 </audio>
 
-<h2 class="welcome-text fa-text">به وب‌سایت رسمی من خوش آمدید</h2>
-<h2 class="welcome-text en-text" hidden>Welcome to my official website</h2>
+<h2 class="welcome-text fa-text">به وب‌سایت من خوش آمدید</h2>
+<h2 class="welcome-text en-text" style="display:none">
+  Welcome to my website
+</h2>
 
-<!-- Main piano portfolio -->
-<section class="piano-wrapper" id="pianoWrapper" aria-label="Portfolio gallery">
-  <div class="piano-item" data-image="1sam.jpg">
-    <img src="1sam.jpg" alt="Sam Gitipasand portfolio photo 1" fetchpriority="high" decoding="async">
-  </div>
-  <div class="piano-item" data-image="3sam.jpg">
-    <img src="3sam.jpg" alt="Sam Gitipasand portfolio photo 2" fetchpriority="high" decoding="async">
-  </div>
-  <div class="piano-item" data-image="4sam.jpg">
-    <img src="4sam.jpg" alt="Sam Gitipasand portfolio photo 3" loading="lazy" decoding="async">
-  </div>
-  <div class="piano-item" data-image="5sam.jpg">
-    <img src="5sam.jpg" alt="Sam Gitipasand portfolio photo 4" loading="lazy" decoding="async">
-  </div>
-  <div class="piano-item" data-image="7sam.jpg">
-    <img src="7sam.jpg" alt="Sam Gitipasand portfolio photo 5" loading="lazy" decoding="async">
-  </div>
-  <div class="piano-item" data-image="8sam.jpg">
-    <img src="8sam.jpg" alt="Sam Gitipasand portfolio photo 6" loading="lazy" decoding="async">
-  </div>
-  <div class="piano-item" data-image="9sam.jpg">
-    <img src="9sam.jpg" alt="Sam Gitipasand portfolio photo 7" loading="lazy" decoding="async">
-  </div>
-</section>
+<!-- Piano gallery: هر ۷ عکس حفظ شده‌اند -->
+<div class="piano-wrapper" id="pianoWrapper">
 
-<main class="content-container">
+  <div class="piano-item">
+    <img src="1sam.jpg" alt="Sam photo 1" loading="lazy" decoding="async">
+  </div>
+
+  <div class="piano-item">
+    <img src="3sam.jpg" alt="Sam photo 2" loading="lazy" decoding="async">
+  </div>
+
+  <div class="piano-item">
+    <img src="4sam.jpg" alt="Sam photo 3" loading="lazy" decoding="async">
+  </div>
+
+  <div class="piano-item">
+    <img src="5sam.jpg" alt="Sam photo 4" loading="lazy" decoding="async">
+  </div>
+
+  <div class="piano-item">
+    <img src="7sam.jpg" alt="Sam photo 5" loading="lazy" decoding="async">
+  </div>
+
+  <div class="piano-item">
+    <img src="8sam.jpg" alt="Sam photo 6" loading="lazy" decoding="async">
+  </div>
+
+  <div class="piano-item">
+    <img src="9sam.jpg" alt="Sam photo 7" loading="lazy" decoding="async">
+  </div>
+
+</div>
+
+<div class="content-container">
 
   <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
-  <h1 class="actor-name en-text" hidden>SAM GITIPASAND</h1>
+  <h1 class="actor-name en-text" style="display:none">
+    SAM GITIPASAND
+  </h1>
 
-  <!-- Only three main tabs -->
-  <nav class="tabs-container" aria-label="Main navigation">
-    <button class="tab-btn active" data-tab="portfolio">
-      <span class="fa-text">پورتفولیو</span>
-      <span class="en-text" hidden>Portfolio</span>
+  <!-- دقیقاً سه تب به ترتیب درخواستی -->
+  <div class="tabs-container">
+
+    <button class="tab-btn active" onclick="openTab(event, 'about')">
+      <span class="fa-text">درباره من</span>
+      <span class="en-text" style="display:none">About Me</span>
     </button>
 
-    <button class="tab-btn" data-tab="behind-scenes">
-      <span class="fa-text">پشت‌صحنه</span>
-      <span class="en-text" hidden>Behind the Scenes</span>
-    </button>
-
-    <button class="tab-btn" data-tab="projects">
+    <button class="tab-btn" onclick="openTab(event, 'projects')">
       <span class="fa-text">پروژه‌ها</span>
-      <span class="en-text" hidden>Projects</span>
+      <span class="en-text" style="display:none">Projects</span>
     </button>
-  </nav>
 
-  <!-- Portfolio -->
-  <section id="portfolio" class="tab-content active">
+    <button class="tab-btn" onclick="openTab(event, 'backstage')">
+      <span class="fa-text">پشت صحنه</span>
+      <span class="en-text" style="display:none">Behind the Scenes</span>
+    </button>
+
+  </div>
+
+  <!-- About -->
+  <div id="about" class="tab-content active">
+
     <div class="fa-text">
       من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
       متولد ۱۳۹۸ و آغاز فعالیت حرفه‌ای من از سال ۱۴۰۱ بوده است.<br>
       علاقه‌مند به هنر، بازیگری، مدلینگ و حضور جلوی دوربین هستم و تجربه همکاری با پروژه‌ها و برندهای مختلف را دارم.
 
-      <div class="category-title">مهارت‌ها و توانایی‌ها</div>
+      <div class="category-title">زبان‌ها و مهارت‌ها</div>
       مسلط به زبان‌های فارسی، انگلیسی و چینی.<br>
-      فعال در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.
+      آشنا و فعال در ورزش‌های دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک.
     </div>
 
-    <div class="en-text" hidden>
+    <div class="en-text" style="display:none">
       I am Sam Gitipasand, a child actor and model.<br>
       Born in 2019, I began my professional career in 2022.<br>
-      I am passionate about acting, modeling, art, and working in front of the camera.
+      I am passionate about art, acting, modeling, and working in front of the camera, with experience collaborating on various projects and brands.
 
-      <div class="category-title">Skills & Abilities</div>
+      <div class="category-title">Languages & Skills</div>
       Fluent in Persian, English, and Chinese.<br>
-      Active in cycling, badminton, swimming, basketball, and gymnastics.
-    </div>
-  </section>
-
-  <!-- Behind scenes -->
-  <section id="behind-scenes" class="tab-content">
-
-    <div class="fa-text">
-      مجموعه عکس‌های پشت‌صحنه را بر اساس پروژه انتخاب کنید.
+      Experienced in cycling, badminton, swimming, basketball, and gymnastics.
     </div>
 
-    <div class="en-text" hidden>
-      Select a project to view its backstage photo gallery.
-    </div>
-
-    <div class="filter-bar" role="tablist">
-      <button class="filter-btn active" data-gallery="negin">
-        <span class="fa-text">نگین ارباب</span>
-        <span class="en-text" hidden>Negin-e-Arbab</span>
-      </button>
-
-      <button class="filter-btn" data-gallery="festival">
-        <span class="fa-text">فیلم‌های جشنواره‌ای</span>
-        <span class="en-text" hidden>Festival Films</span>
-      </button>
-
-      <button class="filter-btn" data-gallery="berta">
-        <span class="fa-text">برتا</span>
-        <span class="en-text" hidden>Berta</span>
-      </button>
-
-      <button class="filter-btn" data-gallery="marz">
-        <span class="fa-text">مرز</span>
-        <span class="en-text" hidden>Marz</span>
-      </button>
-
-      <button class="filter-btn" data-gallery="commercials">
-        <span class="fa-text">تیزرها</span>
-        <span class="en-text" hidden>Commercials</span>
-      </button>
-
-      <button class="filter-btn" data-gallery="industrial">
-        <span class="fa-text">عکاسی صنعتی</span>
-        <span class="en-text" hidden>Industrial</span>
-      </button>
-
-      <button class="filter-btn" data-gallery="music">
-        <span class="fa-text">موزیک‌ویدیو</span>
-        <span class="en-text" hidden>Music Video</span>
-      </button>
-    </div>
-
-    <div id="galleryTitle" class="category-title"></div>
-    <div id="galleryDescription"></div>
-    <div id="dynamicGallery" class="backstage-gallery"></div>
-  </section>
+  </div>
 
   <!-- Projects -->
-  <section id="projects" class="tab-content">
+  <div id="projects" class="tab-content">
 
     <div class="fa-text">
-      <div class="category-title">سوابق حرفه‌ای</div>
-      سام گیتی‌پسند در پروژه‌های سریالی، فیلم‌های جشنواره‌ای، موزیک‌ویدیو، تبلیغات و مدلینگ کودک فعالیت داشته است.
+      <div class="category-title">سریال‌ها و فیلم‌ها</div>
+      سریال «مرز» به کارگردانی آقای سید حاتمی؛ در نقش اصلی کودک.<br>
+      سریال تاریخی «نگین ارباب» به کارگردانی آقای محمدحسین لطیفی.<br>
+      سریال نمایش خانگی «برتا» به کارگردانی آقای ترابی.<br>
+      فیلم جشنواره‌ای در نقش اصلی به کارگردانی خانم ریحانه نبویان.<br>
+      فیلم جشنواره‌ای به کارگردانی خانم الهام محمدزاده.<br>
+      فیلم جشنواره‌ای به کارگردانی آقای اسدی‌پور.<br>
+      فیلم جشنواره‌ای با تکنیک کروماکی در نقش اصلی به کارگردانی آقای محمود کریمی.<br>
+      حضور در موزیک‌ویدیو در نقش کودکی آقای روزبه بمانی.
+
+      <div class="category-title">تیزرها و تبلیغات</div>
+      حضور در تیزرهای تلویزیونی و سوشال‌مدیا برای برندهایی مانند کاله، ماجان،
+      آقای فرش، بیمه دی، آربیانا، شکلات فرمند و بینگو.<br>
+      همکاری با محصولات دوو.<br>
+      عکاسی صنعتی برای برند بین‌المللی «نخودی‌نمکی».<br>
+      همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک.
     </div>
 
-    <div class="en-text" hidden>
-      <div class="category-title">Professional Experience</div>
-      Sam Gitipasand has worked in series, festival films, music videos, commercials, and children's fashion modeling.
+    <div class="en-text" style="display:none">
+      <div class="category-title">Series & Films</div>
+      "Marz" series directed by Mr. Seyed Hatami; leading child role.<br>
+      Historical series "Negin-e-Arbab" directed by Mr. Mohammad Hossein Latifi.<br>
+      Home video series "Berta" directed by Mr. Torabi.<br>
+      Festival film in a leading role directed by Ms. Reyhaneh Nabavian.<br>
+      Festival film directed by Ms. Elham Mohammadzadeh.<br>
+      Festival film directed by Mr. Asadipour.<br>
+      Festival film using chroma key technique in a leading role directed by Mr. Mahmoud Karim.<br>
+      Music video appearance as the childhood version of Mr. Roozbeh Bemani.
+
+      <div class="category-title">Commercials & Modeling</div>
+      Appearances in TV and social media commercials for brands such as Kaleh,
+      Majan, Mr. Farsh, Day Insurance, Arbiana, Farmand Chocolate, and Bingo.<br>
+      Collaboration with Daewoo products.<br>
+      Industrial photography for the international brand "Nokhodi Namaki".<br>
+      Photography and modeling collaborations with over 300 children's clothing brands.
     </div>
 
-    <div class="project-list">
+  </div>
 
-      <article class="project-card">
-        <h3 class="fa-text">سریال مرز</h3>
-        <h3 class="en-text" hidden>Marz Series</h3>
-        <p class="fa-text">به کارگردانی آقای سید حاتمی؛ در نقش اصلی کودک.</p>
-        <p class="en-text" hidden>Directed by Mr. Seyed Hatami; leading child role.</p>
-      </article>
+  <!-- Backstage -->
+  <div id="backstage" class="tab-content">
 
-      <article class="project-card">
-        <h3 class="fa-text">سریال نگین ارباب</h3>
-        <h3 class="en-text" hidden>Negin-e-Arbab Series</h3>
-        <p class="fa-text">سریال تاریخی به کارگردانی آقای محمدحسین لطیفی.</p>
-        <p class="en-text" hidden>Historical series directed by Mr. Mohammad Hossein Latifi.</p>
-      </article>
+    <div class="fa-text">
+      <div class="category-title">پشت صحنه پروژه‌ها</div>
+      مجموعه عکس موردنظر را انتخاب کنید.
+    </div>
 
-      <article class="project-card">
-        <h3 class="fa-text">سریال برتا</h3>
-        <h3 class="en-text" hidden>Berta Series</h3>
-        <p class="fa-text">سریال نمایش خانگی به کارگردانی آقای ترابی.</p>
-        <p class="en-text" hidden>Home video series directed by Mr. Torabi.</p>
-      </article>
+    <div class="en-text" style="display:none">
+      <div class="category-title">Project Backstage</div>
+      Select a collection to view the photos.
+    </div>
 
-      <article class="project-card">
-        <h3 class="fa-text">فیلم‌های جشنواره‌ای</h3>
-        <h3 class="en-text" hidden>Festival Films</h3>
-        <p class="fa-text">
-          همکاری با کارگردانانی از جمله ریحانه نبویان، الهام محمدزاده، اسدی‌پور و محمود کریمی؛
-          شامل نقش اصلی و تکنیک کروماکی.
-        </p>
-        <p class="en-text" hidden>
-          Collaborations with Reyhaneh Nabavian, Elham Mohammadzadeh,
-          Asadipour, and Mahmoud Karim, including leading roles and chroma key work.
-        </p>
-      </article>
+    <!-- ترتیب دقیق دسته‌ها -->
+    <div class="backstage-filters">
 
-      <article class="project-card">
-        <h3 class="fa-text">تبلیغات و مدلینگ</h3>
-        <h3 class="en-text" hidden>Commercials & Modeling</h3>
-        <p class="fa-text">
-          حضور در تیزرهای تلویزیونی و شبکه‌های اجتماعی برندهایی مانند کاله، ماجان،
-          آقای فرش، بیمه دی، آربیانا، شکلات فرمند و بینگو.
-        </p>
-        <p class="en-text" hidden>
-          Commercial appearances for brands including Kaleh, Majan, Mr. Farsh,
-          Day Insurance, Arbiana, Farmand Chocolate, and Bingo.
-        </p>
-      </article>
+      <button class="filter-btn active" onclick="showGallery('series', this)">
+        <span class="fa-text">سریال‌ها</span>
+        <span class="en-text" style="display:none">Series</span>
+      </button>
 
-      <article class="project-card">
-        <h3 class="fa-text">مدلینگ کودک</h3>
-        <h3 class="en-text" hidden>Children's Modeling</h3>
-        <p class="fa-text">
-          همکاری عکاسی و مدلینگ با بیش از ۳۰۰ برند لباس کودک و عکاسی صنعتی برای برند نخودی‌نمکی.
-        </p>
-        <p class="en-text" hidden>
-          Photography and modeling collaborations with more than 300 children's clothing brands,
-          including industrial photography for Nokhodi Namaki.
-        </p>
-      </article>
+      <button class="filter-btn" onclick="showGallery('festival', this)">
+        <span class="fa-text">فیلم‌های جشنواره‌ای</span>
+        <span class="en-text" style="display:none">Festival Films</span>
+      </button>
 
-      <article class="project-card">
-        <h3 class="fa-text">موزیک‌ویدیو</h3>
-        <h3 class="en-text" hidden>Music Video</h3>
-        <p class="fa-text">حضور در موزیک‌ویدیو در نقش کودکی آقای روزبه بمانی.</p>
-        <p class="en-text" hidden>Music video appearance as the childhood version of Mr. Roozbeh Bemani.</p>
-      </article>
+      <button class="filter-btn" onclick="showGallery('commercials', this)">
+        <span class="fa-text">تیزرها</span>
+        <span class="en-text" style="display:none">Commercials</span>
+      </button>
 
-      <article class="project-card">
-        <h3 class="fa-text">همکاری با برند دوو</h3>
-        <h3 class="en-text" hidden>Daewoo Collaboration</h3>
-        <p class="fa-text">همکاری تبلیغاتی با محصولات دوو.</p>
-        <p class="en-text" hidden>Commercial collaboration with Daewoo products.</p>
-      </article>
+      <button class="filter-btn" onclick="showGallery('music', this)">
+        <span class="fa-text">موزیک ویدیو</span>
+        <span class="en-text" style="display:none">Music Video</span>
+      </button>
 
     </div>
-  </section>
 
-  <footer class="social-footer">
-    <a href="https://t.me/sam_gitipasand1" target="_blank" rel="noopener" aria-label="Telegram">
+    <div id="galleryDescription"></div>
+    <div id="backstageGallery" class="backstage-gallery"></div>
+
+  </div>
+
+  <div class="social-footer">
+    <a href="https://t.me/sam_gitipasand1"
+       target="_blank" rel="noopener" aria-label="Telegram">
       <i class="fab fa-telegram"></i>
     </a>
+
     <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3"
        target="_blank" rel="noopener" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
-    <a href="https://wa.me/989369957018" target="_blank" rel="noopener" aria-label="WhatsApp">
+
+    <a href="https://wa.me/989369957018"
+       target="_blank" rel="noopener" aria-label="WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
-  </footer>
+  </div>
 
-</main>
+</div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
-  <img id="lightboxImage" src="" alt="">
+<!-- Lightbox with Previous / Next -->
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+    &times;
+  </button>
+
+  <button class="lightbox-prev" onclick="previousImage()" aria-label="Previous image">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+
+  <img id="lightboxImage" class="lightbox-image" src="" alt="">
+
+  <button class="lightbox-next" onclick="nextImage()" aria-label="Next image">
+    <i class="fas fa-chevron-left"></i>
+  </button>
 </div>
 
 <script>
-const galleries = {
-  negin: {
-    faTitle: "پشت‌صحنه سریال نگین ارباب",
-    enTitle: "Negin-e-Arbab Backstage",
-    faDescription: "عکس‌های پشت‌صحنه سریال «نگین ارباب».",
-    enDescription: "Backstage photos from the series Negin-e-Arbab.",
-    images: ["s1.jpg","s2.jpg","s3.jpg","s4.jpg","s5.jpg","s6.jpg","s7.jpg","s8.jpg"]
+const backstageData = {
+  series: {
+    faTitle: "پشت صحنه سریال‌ها",
+    enTitle: "Series Backstage",
+    faDescription: "تصاویر پشت صحنه سریال‌های «نگین ارباب»، «برتا» و «مرز».",
+    enDescription: "Backstage photos from Negin-e-Arbab, Berta, and Marz series.",
+    images: [
+      "s1.jpg","s2.jpg","s3.jpg","s4.jpg","s5.jpg","s6.jpg","s7.jpg","s8.jpg",
+      "s45.jpg","s46.jpg","s47.jpg","s48.jpg","s49.jpg","s50.jpg","s51.jpg",
+      "s52.jpg","s53.jpg","s54.jpg","s55.jpg","s56.jpg","s57.jpg","s58.jpg",
+      "s59.jpg","s60.jpg","s61.jpg","s62.jpg","s63.jpg","s64.jpg"
+    ]
   },
 
   festival: {
-    faTitle: "پشت‌صحنه فیلم‌های جشنواره‌ای",
+    faTitle: "پشت صحنه فیلم‌های جشنواره‌ای",
     enTitle: "Festival Films Backstage",
-    faDescription: "عکس‌های پشت‌صحنه فیلم‌های جشنواره‌ای.",
-    enDescription: "Backstage photos from festival films.",
-    images: ["s11.jpg","s12.jpg","s13.jpg","s14.jpg","s15.jpg","s16.jpg","s17.jpg","s19.jpg","s20.jpg","s21.jpg","s9.JPG","s10.JPG"]
-  },
-
-  berta: {
-    faTitle: "پشت‌صحنه سریال برتا",
-    enTitle: "Berta Series Backstage",
-    faDescription: "عکس‌های پشت‌صحنه سریال «برتا».",
-    enDescription: "Backstage photos from the Berta series.",
-    images: ["s45.jpg","s46.jpg","s47.jpg","s48.jpg","s49.jpg","s50.jpg","s51.jpg"]
-  },
-
-  marz: {
-    faTitle: "پشت‌صحنه سریال مرز",
-    enTitle: "Marz Series Backstage",
-    faDescription: "عکس‌های پشت‌صحنه سریال «مرز».",
-    enDescription: "Backstage photos from the Marz series.",
-    images: ["s52.jpg","s53.jpg","s54.jpg","s55.jpg","s56.jpg","s57.jpg","s58.jpg","s59.jpg","s60.jpg","s61.jpg","s62.jpg","s63.jpg","s64.jpg"]
+    faDescription: "این بخش مخصوص عکس‌های پشت صحنه فیلم‌های جشنواره‌ای است.",
+    enDescription: "This section is dedicated to backstage photos from festival films.",
+    images: [
+      "s11.jpg","s12.jpg","s13.jpg","s14.jpg","s15.jpg","s16.jpg",
+      "s17.jpg","s19.jpg","s20.jpg","s21.jpg","s9.JPG","s10.JPG"
+    ]
   },
 
   commercials: {
-    faTitle: "پشت‌صحنه تیزرهای تبلیغاتی",
+    faTitle: "پشت صحنه تیزرهای تبلیغاتی",
     enTitle: "Commercials Backstage",
-    faDescription: "عکس‌های پشت‌صحنه همکاری با برندهای مختلف.",
-    enDescription: "Backstage photos from different brand collaborations.",
-    images: ["s23.jpg","s24.jpg","s25.jpg","s26.jpg","s27.jpg","s28.jpg","s29.jpg","s30.jpg","s32.jpg","s34.jpg","s35.jpg","s36.jpg","s37.jpg","s38.jpg","s39.jpg","s40.jpg"]
-  },
-
-  industrial: {
-    faTitle: "پشت‌صحنه عکاسی صنعتی",
-    enTitle: "Industrial Photography",
-    faDescription: "تصاویر مربوط به عکاسی صنعتی و تبلیغات محصولات.",
-    enDescription: "Photos from industrial shoots and product advertising.",
-    images: ["s70.jpg","s71.jpg","s72.jpg","s73.jpg","s74.jpg","s75.jpg"]
+    faDescription: "تصاویر پشت صحنه مربوط به همکاری با برندهای مختلف.",
+    enDescription: "Backstage photos from various brand collaborations.",
+    images: [
+      "s23.jpg","s24.jpg","s25.jpg","s26.jpg","s27.jpg","s28.jpg",
+      "s29.jpg","s30.jpg","s32.jpg","s34.jpg","s35.jpg","s36.jpg",
+      "s37.jpg","s38.jpg","s39.jpg","s40.jpg"
+    ]
   },
 
   music: {
-    faTitle: "پشت‌صحنه موزیک‌ویدیو",
+    faTitle: "پشت صحنه موزیک ویدیو",
     enTitle: "Music Video Backstage",
-    faDescription: "تصاویر مربوط به حضور سام گیتی‌پسند در موزیک‌ویدیو.",
+    faDescription: "تصاویر مربوط به حضور سام گیتی‌پسند در موزیک ویدیو.",
     enDescription: "Photos from Sam Gitipasand's music video project.",
-    images: ["s65.jpg","s66.jpg","s67.jpg","s68.jpg","s69.jpg"]
+    images: [
+      "s65.jpg","s66.jpg","s67.jpg","s68.jpg","s69.jpg"
+    ]
   }
 };
 
-let currentGallery = "negin";
-
-const $ = selector => document.querySelector(selector);
-const $$ = selector => document.querySelectorAll(selector);
-
-function isEnglish() {
-  return document.documentElement.dir === "ltr";
-}
-
-function updateLanguageVisibility() {
-  const english = isEnglish();
-
-  $$(".fa-text").forEach(el => {
-    el.hidden = english;
-    el.style.display = english ? "none" : "";
-  });
-
-  $$(".en-text").forEach(el => {
-    el.hidden = !english;
-    el.style.display = english ? "" : "none";
-  });
-
-  renderGallery(currentGallery);
-}
-
-function toggleLanguage() {
-  const html = document.documentElement;
-  const english = html.dir === "rtl";
-
-  html.dir = english ? "ltr" : "rtl";
-  html.lang = english ? "en" : "fa";
-  $("#langBtn").textContent = english ? "FA" : "EN";
-
-  localStorage.setItem("lang", english ? "en" : "fa");
-  updateLanguageVisibility();
-}
-
-function toggleTheme() {
-  const light = document.body.getAttribute("data-theme") === "light";
-  const btn = $("#themeBtn");
-
-  if (light) {
-    document.body.removeAttribute("data-theme");
-    btn.innerHTML = '<i class="fas fa-moon"></i>';
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.body.setAttribute("data-theme", "light");
-    btn.innerHTML = '<i class="fas fa-sun"></i>';
-    localStorage.setItem("theme", "light");
-  }
-}
-
-function updatePianoState(playing) {
-  $("#pianoWrapper").classList.toggle("music-playing", playing);
-}
-
-function toggleMusic() {
-  const audio = $("#bg-audio");
-
-  if (audio.paused) {
-    audio.play().catch(() => {});
-  } else {
-    audio.pause();
-  }
-}
-
-$("#bg-audio").addEventListener("play", () => {
-  $("#musicBtn").innerHTML = '<i class="fas fa-pause"></i>';
-  updatePianoState(true);
-});
-
-$("#bg-audio").addEventListener("pause", () => {
-  $("#musicBtn").innerHTML = '<i class="fas fa-music"></i>';
-  updatePianoState(false);
-});
-
-function openTab(tabName) {
-  $$(".tab-content").forEach(tab => tab.classList.remove("active"));
-  $$(".tab-btn").forEach(btn => btn.classList.remove("active"));
-
-  $("#" + tabName).classList.add("active");
-  document.querySelector(`[data-tab="${tabName}"]`).classList.add("active");
-}
-
-function renderGallery(name) {
-  const gallery = galleries[name];
-  const english = isEnglish();
-
-  $("#galleryTitle").textContent = english ? gallery.enTitle : gallery.faTitle;
-  $("#galleryDescription").textContent =
-    english ? gallery.enDescription : gallery.faDescription;
-
-  const container = $("#dynamicGallery");
-  container.innerHTML = "";
-
-  gallery.images.forEach((image, index) => {
-    const link = document.createElement("a");
-    link.href = image;
-    link.dataset.image = image;
-    link.setAttribute("aria-label", `Open image ${index + 1}`);
-
-    const img = document.createElement("img");
-    img.src = image;
-    img.alt = `${english ? gallery.enTitle : gallery.faTitle} ${index + 1}`;
-    img.loading = "lazy";
-    img.decoding = "async";
-
-    link.appendChild(img);
-    container.appendChild(link);
-  });
-}
-
-function openLightbox(image, alt) {
-  $("#lightboxImage").src = image;
-  $("#lightboxImage").alt = alt || "";
-  $("#lightbox").classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeLightbox() {
-  $("#lightbox").classList.remove("open");
-  $("#lightboxImage").src = "";
-  document.body.style.overflow = "";
-}
+let currentGallery = "series";
+let currentImages = [];
+let currentImageIndex = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   const savedTheme = localStorage.getItem("theme") || "dark";
@@ -979,58 +806,247 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (savedTheme === "light") {
     document.body.setAttribute("data-theme", "light");
-    $("#themeBtn").innerHTML = '<i class="fas fa-sun"></i>';
+    document.getElementById("themeBtn").innerHTML =
+      '<i class="fas fa-sun"></i>';
   }
 
   if (savedLang === "en") {
     document.documentElement.dir = "ltr";
     document.documentElement.lang = "en";
-    $("#langBtn").textContent = "FA";
+    document.getElementById("langBtn").innerText = "FA";
+
+    document.querySelectorAll(".fa-text").forEach(el => {
+      el.style.display = "none";
+    });
+
+    document.querySelectorAll(".en-text").forEach(el => {
+      el.style.display = "block";
+    });
   }
 
-  $$(".tab-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      openTab(button.dataset.tab);
+  showGallery("series", document.querySelector(".filter-btn.active"));
+
+  // باز شدن عکس‌های اصلی پیانویی در لایت‌باکس
+  document.querySelectorAll(".piano-item img").forEach((image, index) => {
+    image.addEventListener("click", () => {
+      currentImages = [
+        "1sam.jpg",
+        "3sam.jpg",
+        "4sam.jpg",
+        "5sam.jpg",
+        "7sam.jpg",
+        "8sam.jpg",
+        "9sam.jpg"
+      ];
+
+      openLightbox(index);
     });
   });
+});
 
-  $$(".filter-btn").forEach(button => {
-    button.addEventListener("click", () => {
-      $$(".filter-btn").forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-      currentGallery = button.dataset.gallery;
-      renderGallery(currentGallery);
+function updatePianoState(isPlaying) {
+  const pianoWrapper = document.getElementById("pianoWrapper");
+
+  pianoWrapper.classList.toggle("music-playing", isPlaying);
+}
+
+function toggleMusic() {
+  const audio = document.getElementById("bg-audio");
+
+  if (audio.paused) {
+    audio.play().catch(() => {
+      console.log("برای پخش موزیک نیاز به تعامل کاربر است.");
     });
+  } else {
+    audio.pause();
+  }
+}
+
+document.getElementById("bg-audio").addEventListener("play", () => {
+  document.getElementById("musicBtn").innerHTML =
+    '<i class="fas fa-pause"></i>';
+
+  updatePianoState(true);
+});
+
+document.getElementById("bg-audio").addEventListener("pause", () => {
+  document.getElementById("musicBtn").innerHTML =
+    '<i class="fas fa-music"></i>';
+
+  updatePianoState(false);
+});
+
+function toggleTheme() {
+  const body = document.body;
+  const btn = document.getElementById("themeBtn");
+
+  if (body.getAttribute("data-theme") === "light") {
+    body.removeAttribute("data-theme");
+    btn.innerHTML = '<i class="fas fa-moon"></i>';
+    localStorage.setItem("theme", "dark");
+  } else {
+    body.setAttribute("data-theme", "light");
+    btn.innerHTML = '<i class="fas fa-sun"></i>';
+    localStorage.setItem("theme", "light");
+  }
+}
+
+function toggleLanguage() {
+  const html = document.documentElement;
+  const langBtn = document.getElementById("langBtn");
+
+  if (html.dir === "rtl") {
+    html.dir = "ltr";
+    html.lang = "en";
+    langBtn.innerText = "FA";
+
+    document.querySelectorAll(".fa-text").forEach(el => {
+      el.style.display = "none";
+    });
+
+    document.querySelectorAll(".en-text").forEach(el => {
+      el.style.display = "block";
+    });
+
+    localStorage.setItem("lang", "en");
+  } else {
+    html.dir = "rtl";
+    html.lang = "fa";
+    langBtn.innerText = "EN";
+
+    document.querySelectorAll(".fa-text").forEach(el => {
+      el.style.display = "block";
+    });
+
+    document.querySelectorAll(".en-text").forEach(el => {
+      el.style.display = "none";
+    });
+
+    localStorage.setItem("lang", "fa");
+  }
+
+  showGallery(currentGallery, null, false);
+}
+
+function openTab(evt, tabName) {
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active");
   });
 
-  $("#pianoWrapper").addEventListener("click", event => {
-    const item = event.target.closest(".piano-item");
-    if (!item) return;
-
-    const image = item.dataset.image;
-    openLightbox(image, item.querySelector("img").alt);
+  document.querySelectorAll(".tab-btn").forEach(button => {
+    button.classList.remove("active");
   });
 
-  $("#dynamicGallery").addEventListener("click", event => {
-    const link = event.target.closest("a");
-    if (!link) return;
+  document.getElementById(tabName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+}
 
-    event.preventDefault();
-    openLightbox(link.dataset.image, link.querySelector("img").alt);
+function showGallery(category, clickedButton, updateButton = true) {
+  currentGallery = category;
+
+  if (updateButton && clickedButton) {
+    document.querySelectorAll(".filter-btn").forEach(button => {
+      button.classList.remove("active");
+    });
+
+    clickedButton.classList.add("active");
+  }
+
+  const data = backstageData[category];
+  const isEnglish = document.documentElement.dir === "ltr";
+
+  currentImages = data.images;
+
+  const description = document.getElementById("galleryDescription");
+  const gallery = document.getElementById("backstageGallery");
+
+  description.innerHTML = `
+    <div class="category-title">
+      ${isEnglish ? data.enTitle : data.faTitle}
+    </div>
+    <div>
+      ${isEnglish ? data.enDescription : data.faDescription}
+    </div>
+  `;
+
+  gallery.innerHTML = "";
+
+  data.images.forEach((image, index) => {
+    const link = document.createElement("a");
+    link.href = image;
+    link.setAttribute("aria-label", `Open image ${index + 1}`);
+
+    const img = document.createElement("img");
+    img.src = image;
+    img.alt = `${isEnglish ? data.enTitle : data.faTitle} ${index + 1}`;
+    img.loading = "lazy";
+    img.decoding = "async";
+
+    link.appendChild(img);
+
+    link.addEventListener("click", event => {
+      event.preventDefault();
+      currentImages = data.images;
+      openLightbox(index);
+    });
+
+    gallery.appendChild(link);
   });
+}
 
-  $("#lightboxClose").addEventListener("click", closeLightbox);
+function openLightbox(index) {
+  currentImageIndex = index;
+  updateLightboxImage();
 
-  $("#lightbox").addEventListener("click", event => {
-    if (event.target.id === "lightbox") closeLightbox();
-  });
+  document.getElementById("lightbox").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
 
-  document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeLightbox();
-  });
+function updateLightboxImage() {
+  const image = document.getElementById("lightboxImage");
 
-  updateLanguageVisibility();
-  renderGallery(currentGallery);
+  image.src = currentImages[currentImageIndex];
+  image.alt = `Image ${currentImageIndex + 1} of ${currentImages.length}`;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+  document.getElementById("lightboxImage").src = "";
+  document.body.style.overflow = "";
+}
+
+function nextImage() {
+  if (!currentImages.length) return;
+
+  currentImageIndex =
+    (currentImageIndex + 1) % currentImages.length;
+
+  updateLightboxImage();
+}
+
+function previousImage() {
+  if (!currentImages.length) return;
+
+  currentImageIndex =
+    (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+
+  updateLightboxImage();
+}
+
+document.getElementById("lightbox").addEventListener("click", event => {
+  if (event.target.id === "lightbox") {
+    closeLightbox();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  const lightbox = document.getElementById("lightbox");
+
+  if (!lightbox.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeLightbox();
+  if (event.key === "ArrowLeft") nextImage();
+  if (event.key === "ArrowRight") previousImage();
 });
 </script>
 
